@@ -2,6 +2,7 @@ package cn.edu.nju.trainingcollege.controller;
 
 import cn.edu.nju.trainingcollege.dao.UserRepository;
 import cn.edu.nju.trainingcollege.entity.UserEntity;
+import cn.edu.nju.trainingcollege.service.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -10,16 +11,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 
+
 @Controller
 public class UserController {
 
     private final UserRepository userRepository;
-    private final JavaMailSender javaMailSender;
+    private final MailService mailService;
 
     @Autowired
-    public UserController(UserRepository userRepository, JavaMailSender javaMailSender) {
+    public UserController(UserRepository userRepository,MailService mailService) {
         this.userRepository = userRepository;
-        this.javaMailSender = javaMailSender;
+        this.mailService = mailService;
     }
 
 
@@ -37,12 +39,7 @@ public class UserController {
             entity = userRepository.save(entity);
 
 
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("liuhehuangyunfei@163.com");
-        message.setTo("1140617436@qq.com");
-        message.setSubject("标题：测试标题");
-        message.setText("测试内容部份");
-        javaMailSender.send(message);
+            mailService.send("1140617436@qq.com","标题：测试标题","测试内容部份");
 
            return "redirect:/index";
 
