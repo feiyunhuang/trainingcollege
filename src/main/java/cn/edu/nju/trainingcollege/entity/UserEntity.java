@@ -30,7 +30,7 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "password", nullable = false, length = 20)
+    @Column(name = "password", nullable = false, length = 50)
     public String getPassword() {
         return password;
     }
