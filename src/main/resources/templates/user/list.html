@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>study01 - helloWorld</title>
+</head>
+
+<body>
+
+<li>List循环：
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>balance</th>
+            <th>memberstate</th>
+            <th>name</th>
+            <th>registdate</th>
+
+        </tr>
+        <tr  th:each="user : ${list}">
+            <td th:text="${user.id}">Onions</td>
+            <td th:text="${user.balance}">test@test.com.cn</td>
+            <td th:text="${user.memberState}">yes</td>
+            <th th:text="${user.name}">状态变量：index</th>
+            <th th:text="${user.registdate}">状态变量：count</th>
+
+        </tr>
+    </table>
+</li>
+</body>
+</html>
