@@ -8,12 +8,12 @@ public class PersonInfoVo {
     private int id;
     private String mail;
     private String name;
-    private MemberState memberState;
+    private String memberState;
     private double balance;
-    private Timestamp registdate;
+    private String registdate;
     private String portraitpath="../../static/portrait/timg.jpg";
 
-    public PersonInfoVo(int id, String mail, String name, MemberState memberState, double balance, Timestamp registdate, String portraitpath) {
+    public PersonInfoVo(int id, String mail, String name, String memberState, double balance, String registdate, String portraitpath) {
         this.id = id;
         this.mail = mail;
         this.name = name;
@@ -49,11 +49,11 @@ public class PersonInfoVo {
         this.name = name;
     }
 
-    public MemberState getMemberState() {
+    public String getMemberState() {
         return memberState;
     }
 
-    public void setMemberState(MemberState memberState) {
+    public void setMemberState(String memberState) {
         this.memberState = memberState;
     }
 
@@ -65,11 +65,11 @@ public class PersonInfoVo {
         this.balance = balance;
     }
 
-    public Timestamp getRegistdate() {
+    public String getRegistdate() {
         return registdate;
     }
 
-    public void setRegistdate(Timestamp registdate) {
+    public void setRegistdate(String registdate) {
         this.registdate = registdate;
     }
 

@@ -45,11 +45,11 @@
         </div>
     </div>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        <h1 class="page-header">邮箱：</h1>
+        <h1 class="page-header" th:text="${personinfo.mail}">邮箱：</th:text></h1>
 
         <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
-                <img src="../../static/portrait/timg.jpg" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+                <img th:src="@{/portrait/timg.jpg}" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
                 <h4>Uid</h4>
                 <span class="text-muted">自我介绍</span>
             </div>
@@ -61,33 +61,29 @@
                 <h3>个人信息：</h3>
                 <table class="table table-bordered table-striped">
                     <tr>
-                        <th>属性</th>
-                        <td>具体信息</td>
+                    <tr>
+                        <th>用户ID</th>
+                    <td th:text="${personinfo.id}">1</td>
                     </tr>
                     <tr>
-                    <tr>
-                        <th>UserID</th>
-                    <td th:text="${personinfo.id}"></td>
+                        <th>邮箱</th>
+                        <td th:text="${personinfo.mail}">1140617436@qq.com</td>
                     </tr>
                     <tr>
-                        <th>mail</th>
-                        <td th:text="${personinfo.mail}">Otto</td>
+                        <th>姓名</th>
+                        <td th:text="${personinfo.name}">黄某某</td>
                     </tr>
                     <tr>
-                        <th>name</th>
-                        <td th:text="${personinfo.name}">Otto</td>
+                        <th>会员状态</th>
+                        <td th:text="${(personinfo.memberState)}">Valid</td>
                     </tr>
-                    <!--<tr>-->
-                        <!--<th>state</th>-->
-                        <!--<td th:text="${String(personinfo.memberState)}">Otto</td>-->
-                    <!--</tr>-->
-                    <!--<tr>-->
-                        <!--<th>balance</th>-->
-                         <!--<td th:text="${personinfo.balance}">Otto</td>-->
-                    <!--<tr>-->
-                        <!--<th>registdate</th>-->
-                    <!--<td th:text="${String(personinfo.registdate)}">Otto</td>-->
-                    <!--</tr>-->
+                    <tr>
+                        <th>账户余额</th>
+                         <td th:text="${personinfo.balance}">0.0</td>
+                    <tr>
+                        <th>注册日期</th>
+                    <td th:text="${(personinfo.registdate)}"></td>
+                    </tr>
                     </tr>
                 </table>
             </div>
@@ -99,11 +95,11 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="../../static/js/jquery.min.js"></script>
+<script src="../../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
 <script>window.jQuery || document.write('<script src="../js/jquery.min.js"><\/script>')</script>
-<script src="../../static/js/bootstrap.min.js"></script>
+<script src="../../static/js/bootstrap.min.js" th:src="@{/js/jquery.min.js}"></script>
 <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-<script src="../../static/js/holder.min.js"></script>
+<script src="../../static/js/holder.min.js" th:src="@{/js/jquery.min.js}"></script>
 </body>
 </html>
 

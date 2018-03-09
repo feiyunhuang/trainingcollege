@@ -7,6 +7,7 @@ import cn.edu.nju.trainingcollege.entity.UserInfoEntity;
 import cn.edu.nju.trainingcollege.service.MailService;
 import cn.edu.nju.trainingcollege.service.UserLoginService;
 import cn.edu.nju.trainingcollege.service.UserRegisterService;
+import cn.edu.nju.trainingcollege.util.Helper;
 import cn.edu.nju.trainingcollege.vo.PersonInfoVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -45,12 +46,13 @@ public class UserController {
             UserInfoEntity userInfoEntity=userInfoRepository.getOne(userEntity.getId());
             session.setAttribute("userid", userEntity.getId());
 
-            PersonInfoVo personInfoVo=new PersonInfoVo(userInfoEntity.getId(), mail, userInfoEntity.getName(), userInfoEntity.getMemberState(), userInfoEntity.getBalance(), userInfoEntity.getRegistdate(),"../../static/portrait/timg.jpg");
+            Helper helper=new Helper();
+            PersonInfoVo personInfoVo=new PersonInfoVo(userInfoEntity.getId(), mail, userInfoEntity.getName(), userInfoEntity.getMemberState().toString(), userInfoEntity.getBalance(), helper.timeToDateString(userInfoEntity.getRegistdate()),"../../static/portrait/timg.jpg");
 
             model.addAttribute("personinfo",personInfoVo);
 
 
-            return "user/ok";
+            return "user/userinfo";
         }
         return "user/index";
 
