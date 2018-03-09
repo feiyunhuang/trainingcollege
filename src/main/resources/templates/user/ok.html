@@ -1,10 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>ok</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Dashboard Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="../../static/css/dashboard.css" th:href="@{/css/dashboard.css}" >
+
 </head>
+
 <body>
-ok
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">Reports</a></li>
+                <li><a href="#">Analytics</a></li>
+                <li><a href="#">Export</a></li>
+            </ul>
+            <ul class="nav nav-sidebar">
+                <li><a href="">Nav item</a></li>
+                <li><a href="">Nav item again</a></li>
+                <li><a href="">One more nav</a></li>
+                <li><a href="">Another nav item</a></li>
+                <li><a href="">More navigation</a></li>
+            </ul>
+            <ul class="nav nav-sidebar">
+                <li><a href="">Nav item again</a></li>
+                <li><a href="">One more nav</a></li>
+                <li><a href="">Another nav item</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h1 class="page-header">邮箱：</h1>
+
+        <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder">
+                <img src="../../static/portrait/timg.jpg" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+                <h4>Uid</h4>
+                <span class="text-muted">自我介绍</span>
+            </div>
+        </div>
+
+        <div class="right_section">
+            <!-- 个人信息 -->
+            <div class="person_info">
+                <h3>个人信息：</h3>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>属性</th>
+                        <td>具体信息</td>
+                    </tr>
+                    <tr>
+                    <tr>
+                        <th>UserID</th>
+                    <td th:text="${personinfo.id}"></td>
+                    </tr>
+                    <tr>
+                        <th>mail</th>
+                        <td th:text="${personinfo.mail}">Otto</td>
+                    </tr>
+                    <tr>
+                        <th>name</th>
+                        <td th:text="${personinfo.name}">Otto</td>
+                    </tr>
+                    <!--<tr>-->
+                        <!--<th>state</th>-->
+                        <!--<td th:text="${String(personinfo.memberState)}">Otto</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<th>balance</th>-->
+                         <!--<td th:text="${personinfo.balance}">Otto</td>-->
+                    <!--<tr>-->
+                        <!--<th>registdate</th>-->
+                    <!--<td th:text="${String(personinfo.registdate)}">Otto</td>-->
+                    <!--</tr>-->
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="../../static/js/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../js/jquery.min.js"><\/script>')</script>
+<script src="../../static/js/bootstrap.min.js"></script>
+<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+<script src="../../static/js/holder.min.js"></script>
 </body>
 </html>
+
