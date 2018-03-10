@@ -9,18 +9,20 @@ public class PersonInfoVo {
     private String mail;
     private String name;
     private String memberState;
-    private double balance;
     private String registdate;
     private String portraitpath="../../static/portrait/timg.jpg";
+    private String sex;
+    private String phone;
 
-    public PersonInfoVo(int id, String mail, String name, String memberState, double balance, String registdate, String portraitpath) {
+    public PersonInfoVo(int id, String mail, String name, String memberState, String registdate, String portraitpath, String sex, String phone) {
         this.id = id;
         this.mail = mail;
         this.name = name;
         this.memberState = memberState;
-        this.balance = balance;
         this.registdate = registdate;
         this.portraitpath = portraitpath;
+        this.sex = sex;
+        this.phone = phone;
     }
 
     public PersonInfoVo(){}
@@ -57,13 +59,6 @@ public class PersonInfoVo {
         this.memberState = memberState;
     }
 
-    public double getBalance() {
-        return balance;
-    }
-
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
 
     public String getRegistdate() {
         return registdate;
@@ -79,5 +74,21 @@ public class PersonInfoVo {
 
     public void setPortraitpath(String portraitpath) {
         this.portraitpath = portraitpath;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

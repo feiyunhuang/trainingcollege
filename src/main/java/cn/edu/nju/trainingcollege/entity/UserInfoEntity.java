@@ -13,19 +13,21 @@ public class UserInfoEntity {
     private int id;
     private String name;
     private MemberState memberState=MemberState.VALID;
+    private String sex;
+    private String phonenum;
     private Timestamp registdate = new Timestamp(System.currentTimeMillis());
-    private double balance=0;
 
     public UserInfoEntity(){
 
     }
 
-    public UserInfoEntity(int id, String name, MemberState memberState, Timestamp registdate, double balance) {
+    public UserInfoEntity(int id, String name, MemberState memberState, String sex, String phonenum, Timestamp registdate) {
         this.id = id;
         this.name = name;
         this.memberState = memberState;
+        this.sex = sex;
+        this.phonenum = phonenum;
         this.registdate = registdate;
-        this.balance = balance;
     }
 
     @Id
@@ -58,6 +60,25 @@ public class UserInfoEntity {
         this.memberState = memberState;
     }
 
+    @Column(name = "sex", nullable = false, length = 10)
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    @Basic
+    @Column(name = "phonenum", nullable = false, length = 20)
+    public String getPhonenum() {
+        return phonenum;
+    }
+
+    public void setPhonenum(String phonenum) {
+        this.phonenum = phonenum;
+    }
+
     @Basic
     @Column(name = "registdate", nullable = false)
     public Timestamp getRegistdate() {
@@ -68,13 +89,4 @@ public class UserInfoEntity {
         this.registdate = registdate;
     }
 
-    @Basic
-    @Column(name = "balance", nullable = false)
-    public double getBalance() {
-        return balance;
-    }
-
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
 }

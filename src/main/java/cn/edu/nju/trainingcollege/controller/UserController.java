@@ -47,7 +47,7 @@ public class UserController {
             session.setAttribute("userid", userEntity.getId());
 
             Helper helper=new Helper();
-            PersonInfoVo personInfoVo=new PersonInfoVo(userInfoEntity.getId(), mail, userInfoEntity.getName(), userInfoEntity.getMemberState().toString(), userInfoEntity.getBalance(), helper.timeToDateString(userInfoEntity.getRegistdate()),"../../static/portrait/timg.jpg");
+            PersonInfoVo personInfoVo=new PersonInfoVo(userInfoEntity.getId(), mail, userInfoEntity.getName(), userInfoEntity.getMemberState().toString(), helper.timeToDateString(userInfoEntity.getRegistdate()),"../../static/portrait/timg.jpg",userInfoEntity.getSex(),userInfoEntity.getPhonenum());
 
             model.addAttribute("personinfo",personInfoVo);
 
@@ -58,9 +58,9 @@ public class UserController {
 
     }
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(Model model, @RequestParam("mail") String mail,@RequestParam("password") String password,@RequestParam("name") String name) {
+    public String register(Model model, @RequestParam("mail") String mail,@RequestParam("password") String password,@RequestParam("name") String name,@RequestParam("phone") String phone,@RequestParam("sex") String sex) {
 
-        userRegisterService.register(mail,password,name);
+        userRegisterService.register(mail,password,name,phone,sex);
             mailService.send(mail,"trainingcollege","注册成功,"+"您的密码是"+password+",请牢记");
 
            return "redirect:/index";

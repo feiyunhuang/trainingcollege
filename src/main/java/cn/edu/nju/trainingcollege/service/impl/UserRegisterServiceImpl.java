@@ -25,7 +25,7 @@ public class UserRegisterServiceImpl implements UserRegisterService {
         this.memberRepository = memberRepository;
     }
 
-    public void register(String mail, String password, String name) {
+    public void register(String mail, String password, String name,String phone,String sex) {
 
 
         UserEntity userEntity = new UserEntity();
@@ -38,6 +38,8 @@ public class UserRegisterServiceImpl implements UserRegisterService {
         UserInfoEntity userInfoEntity = new UserInfoEntity();
         userInfoEntity.setId(id);
         userInfoEntity.setName(name);
+        userInfoEntity.setPhonenum(phone);
+        userInfoEntity.setSex(sex);
         userInfoEntity = userInfoRepository.save(userInfoEntity);
 
         MemberEntity memberEntity = new MemberEntity();
