@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Helper {
     public static String timeToDateString(Timestamp time) {
@@ -25,6 +26,14 @@ public class Helper {
         if(accumulate>3000&&accumulate<=4000){return discount[3];}
         if(accumulate>4000&&accumulate<=5000){return discount[4];}
         return discount[5];
+    }
+
+    public static int random (int min,int max) {
+
+        Random random = new Random();
+
+        int s = random.nextInt(max)%(max-min+1) + min;
+        return s;
     }
 
 }
