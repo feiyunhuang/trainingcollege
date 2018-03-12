@@ -51,7 +51,7 @@ public class UserController {
 
             return "user/userinfo";
         }
-        return "/index";
+        return "user/wrongpassword";
 
     }
     @RequestMapping(value = "/register", method = RequestMethod.POST)
