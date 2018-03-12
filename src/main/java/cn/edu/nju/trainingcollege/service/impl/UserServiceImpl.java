@@ -7,13 +7,13 @@ import cn.edu.nju.trainingcollege.entity.MemberEntity;
 import cn.edu.nju.trainingcollege.entity.UserEntity;
 import cn.edu.nju.trainingcollege.entity.UserInfoEntity;
 import cn.edu.nju.trainingcollege.service.MailService;
-import cn.edu.nju.trainingcollege.service.UserRegisterService;
+import cn.edu.nju.trainingcollege.service.UserService;
 import cn.edu.nju.trainingcollege.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserRegisterServiceImpl implements UserRegisterService {
+public class UserServiceImpl implements UserService {
 
     private final UserInfoRepository userInfoRepository;
     private final UserRepository userRepository;
@@ -21,7 +21,7 @@ public class UserRegisterServiceImpl implements UserRegisterService {
     private final MailService mailService;
 
     @Autowired
-    public UserRegisterServiceImpl(UserInfoRepository userInfoRepository, UserRepository userRepository, MemberRepository memberRepository, MailService mailService) {
+    public UserServiceImpl(UserInfoRepository userInfoRepository, UserRepository userRepository, MemberRepository memberRepository, MailService mailService) {
         this.userInfoRepository = userInfoRepository;
         this.userRepository = userRepository;
         this.memberRepository = memberRepository;
@@ -51,5 +51,27 @@ public class UserRegisterServiceImpl implements UserRegisterService {
         memberEntity = memberRepository.save(memberEntity);
 
     }
+
+    @Override
+    public UserEntity findByMail(String mail) {
+
+        return userRepository.findByMail(mail);
+    }
+
+    @Override
+    public boolean login(String mail, String password) {
+        UserEntity userEntity = userRepository.findByMail(mail);
+        if (userEntity != null&&userEntity.getPassword().equals(MD5Util.encode(password))) {
+            return true;
+        }
+        else
+            return false;
+    }
+
+    @Override
+    public UserInfoEntity getUserInfoById(int id) {
+        return userInfoRepository.getOne(id);
+    }
+
 
 }

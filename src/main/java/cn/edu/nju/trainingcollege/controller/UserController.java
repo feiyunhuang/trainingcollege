@@ -1,11 +1,9 @@
 package cn.edu.nju.trainingcollege.controller;
 
-import cn.edu.nju.trainingcollege.dao.UserInfoRepository;
-import cn.edu.nju.trainingcollege.dao.UserRepository;
+
 import cn.edu.nju.trainingcollege.entity.UserEntity;
 import cn.edu.nju.trainingcollege.entity.UserInfoEntity;
-import cn.edu.nju.trainingcollege.service.UserLoginService;
-import cn.edu.nju.trainingcollege.service.UserRegisterService;
+import cn.edu.nju.trainingcollege.service.UserService;
 import cn.edu.nju.trainingcollege.util.Helper;
 import cn.edu.nju.trainingcollege.vo.PersonInfoVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,27 +18,21 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class UserController {
 
-    private final UserRegisterService userRegisterService;
-    private final UserLoginService userLoginService;
-    private final UserRepository userRepository;
-    private final UserInfoRepository userInfoRepository;
+    private final UserService userService;
 
     @Autowired
-    public UserController(UserRegisterService userRegisterService, UserLoginService userLoginService, UserRepository userRepository, UserInfoRepository userInfoRepository) {
-        this.userRegisterService = userRegisterService;
-        this.userLoginService = userLoginService;
-        this.userRepository = userRepository;
-        this.userInfoRepository = userInfoRepository;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(Model model,HttpSession session, @RequestParam("username") String mail, @RequestParam("password") String password) {
 
-        if(userLoginService.login(mail,password)==true){
+        if(userService.login(mail,password)==true){
 
-           UserEntity userEntity = userRepository.findByMail(mail);
-            UserInfoEntity userInfoEntity=userInfoRepository.getOne(userEntity.getId());
+           UserEntity userEntity = userService.findByMail(mail);
+            UserInfoEntity userInfoEntity=userService.getUserInfoById(userEntity.getId());
             session.setAttribute("userid", userEntity.getId());
 
             Helper helper=new Helper();
@@ -57,7 +49,7 @@ public class UserController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String register(Model model, @RequestParam("mail") String mail,@RequestParam("password") String password,@RequestParam("name") String name,@RequestParam("phone") String phone,@RequestParam("sex") String sex) {
 
-        userRegisterService.register(mail,password,name,phone,sex);
+        userService.register(mail,password,name,phone,sex);
 
 
            return "/index";
