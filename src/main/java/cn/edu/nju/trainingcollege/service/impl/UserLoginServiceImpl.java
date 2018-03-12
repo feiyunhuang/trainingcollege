@@ -5,6 +5,7 @@ import cn.edu.nju.trainingcollege.dao.UserRepository;
 import cn.edu.nju.trainingcollege.entity.UserEntity;
 import cn.edu.nju.trainingcollege.service.UserLoginService;
 import cn.edu.nju.trainingcollege.util.MD5Util;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -12,6 +13,7 @@ public class UserLoginServiceImpl implements UserLoginService {
 
     private final UserRepository userRepository;
 
+    @Autowired
     public UserLoginServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
