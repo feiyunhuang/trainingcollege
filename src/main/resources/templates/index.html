@@ -9,61 +9,12 @@
 </head>
 <body>
 
-
-<!--<div class="index">-->
-    <!--<header>-->
-        <!--<div class="container">-->
-            <!--<div class="row">-->
-                <!--<div class="col-lg-12">-->
-                    <!--&lt;!&ndash;<img class="img-responsive" src="../../static/img/a.png" th:src="@{/img/a.png}" alt="ICON" />&ndash;&gt;-->
-                    <!--<div class="intro-text">-->
-                        <!--<span class="name">Training College</span>-->
-                        <!--<span class="skills">Welcome to Training College</span>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</header>-->
-    <!--<div class="container">-->
-
-
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2>Start From Here</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-                <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
-                <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
-                <form name="sentMessage" id="contactForm" method="post" role="form" action="index.html" th:action="@{user/login}" >
-                    <div class="form-group">
-                        <label for="mail">e-mail</label>
-                        <input type="email" class="form-control" name="username" id="mail" />
-                    </div>
-                    <div class="form-group">
-                        <label for="password">password</label>
-                        <input type="password" class="form-control" name="password" id="password" />
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox"/> Remember me
-                        </label>
-                    </div>
-                    <button type="submit" class=" btn btn-success">SIGN IN</button>
-                </form>
-                <a href="user/register.html" th:href="@{school/register}">机构注册</a>
-                <a href="school/register.html" th:href="@{user/register}">会员注册</a>
-            </div>
-        </div>
-
-    </div>
+<a href="user/login.html" th:href="@{user/login}">用户登录</a>
+<a href="user/register.html" th:href="@{school/register}">机构注册</a>
+<a href="school/register.html" th:href="@{user/register}">会员注册</a>
 
 
 
-
-
-</div>
 
 
 <!--<div th:include="footer :: copy"></div>-->

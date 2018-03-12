@@ -70,7 +70,7 @@ public class UserController {
 
     @RequestMapping({"/", "/login" , "/index"})
     public String login() {
-        return "/index";
+        return "user/login";
     }
 
     @RequestMapping("/register")
