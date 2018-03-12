@@ -45,6 +45,13 @@ public class ManagerController {
         managerService.disapproval(id);
         return "redirect:/manager/list";
     }
+
+    @RequestMapping("/add")
+    public String add(String id) {
+        managerService.approval(id);
+        return "redirect:/manager/list";
+    }
+
     @RequestMapping({"/", "/login" , "/index"})
     public String login() {
         return "manager/login";

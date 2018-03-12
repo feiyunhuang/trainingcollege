@@ -10,5 +10,7 @@ public interface ManagerService {
 
     void disapproval(String id);
 
+    void approval(String id);
+
     List<RegisterApprovalEntity> getAllApprovals();
 }

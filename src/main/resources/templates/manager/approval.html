@@ -70,7 +70,7 @@
                         <td th:text="${registerApproval.address}"></td>
 
 
-                        <td><a th:href="@{/manager/delete(id=${registerApproval.id})}"><button class="btn btn-large btn-success" type="button">同意</button></a>
+                        <td><a th:href="@{/manager/add(id=${registerApproval.id})}"><button class="btn btn-large btn-success" type="button">同意</button></a>
                             <a th:href="@{/manager/delete(id=${registerApproval.id})}"><button class="btn btn-large btn-danger" type="button">拒绝</button></a>
                         </td>
                     </tr>
