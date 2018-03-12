@@ -18,7 +18,7 @@ public class ManagerLoginServiceImpl implements ManagerLoginService {
 
     @Override
     public boolean login(String name, String password) {
-        
+
         if(managerRepository.existsById(name)&&managerRepository.getOne(name).getPassword().equals(password)){
             return true;
         }

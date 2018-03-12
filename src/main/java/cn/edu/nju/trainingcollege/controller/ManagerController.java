@@ -1,25 +1,30 @@
 package cn.edu.nju.trainingcollege.controller;
 
 
+import cn.edu.nju.trainingcollege.dao.RegisterApprovalRepository;
+import cn.edu.nju.trainingcollege.entity.RegisterApprovalEntity;
 import cn.edu.nju.trainingcollege.service.ManagerLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @RequestMapping(value = "/manager")
 @Controller
 public class ManagerController {
     private final ManagerLoginService managerLoginService;
-
+    private final RegisterApprovalRepository registerApprovalRepository;
 
     @Autowired
-    public ManagerController(ManagerLoginService managerLoginService) {
+    public ManagerController(ManagerLoginService managerLoginService, RegisterApprovalRepository registerApprovalRepository) {
         this.managerLoginService = managerLoginService;
+        this.registerApprovalRepository = registerApprovalRepository;
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -27,24 +32,34 @@ public class ManagerController {
 
         if(managerLoginService.login(name,password)==true){
 
-//            UserEntity userEntity = userRepository.findByMail(mail);
-//            UserInfoEntity userInfoEntity=userInfoRepository.getOne(userEntity.getId());
-//            session.setAttribute("userid", userEntity.getId());
-//
-//            Helper helper=new Helper();
-//            PersonInfoVo personInfoVo=new PersonInfoVo(userInfoEntity.getId(), mail, userInfoEntity.getName(), userInfoEntity.getMemberState().toString(), helper.timeToDateString(userInfoEntity.getRegistdate()),"../../static/portrait/timg.jpg",userInfoEntity.getSex(),userInfoEntity.getPhonenum());
-//
-//            model.addAttribute("personinfo",personInfoVo);
 
 
-            return "manager/approval";
+
+            return "redirect:/manager/list";
         }
         return "manager/login";
 
     }
 
+
+    @RequestMapping("/delete")
+    public String delete(String id) {
+        RegisterApprovalEntity registerApprovalEntity=registerApprovalRepository.getOne(id);
+        registerApprovalRepository.delete(registerApprovalEntity);
+        return "redirect:/manager/list";
+    }
     @RequestMapping({"/", "/login" , "/index"})
     public String login() {
         return "manager/login";
+    }
+
+    @RequestMapping({"/list"})
+    public String list(Model model) {
+        List<RegisterApprovalEntity> registerApprovals=registerApprovalRepository.findAll();
+        model.addAttribute("registerApprovals",registerApprovals);
+
+
+
+        return "manager/approval";
     }
 }
