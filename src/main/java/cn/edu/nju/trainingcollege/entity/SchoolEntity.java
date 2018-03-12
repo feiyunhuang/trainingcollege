@@ -7,14 +7,14 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "school", schema = "trainingcollege", catalog = "")
 public class SchoolEntity {
-    private int id;
+    private String id;
     private String name;
     private String password;
     private String mail;
     private Timestamp registdate = new Timestamp(System.currentTimeMillis());
     private String address;
 
-    public SchoolEntity(int id, String name,String password,String mail, Timestamp registdate, String address) {
+    public SchoolEntity(String id, String name,String password,String mail, Timestamp registdate, String address) {
         this.id = id;
         this.name=name;
         this.password = password;
@@ -27,11 +27,11 @@ public class SchoolEntity {
 
     @Id
     @Column(name = "id", nullable = false)
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -36,4 +36,23 @@ public class Helper {
         return s;
     }
 
+    public static String GenerateId(){
+        String result="";
+        char [] character={'A','B','C','D','E','F','G','H',
+                           'I','J','K','L','M','N','O','P',
+                           'Q','R','S','T','U','V','W','X',
+                           'Y','Z','1','2','3','4','5','6',
+                           '7','8','9','0'};
+
+        for(int i=0;i<7;i++){
+            int s=random(0,35);
+            result=result+character[s];
+        }
+        return result;
+    }
+
+
+    public static void main(String[] args) {
+        System.out.println(GenerateId());
+    }
 }

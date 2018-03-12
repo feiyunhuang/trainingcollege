@@ -4,7 +4,6 @@ import cn.edu.nju.trainingcollege.dao.UserInfoRepository;
 import cn.edu.nju.trainingcollege.dao.UserRepository;
 import cn.edu.nju.trainingcollege.entity.UserEntity;
 import cn.edu.nju.trainingcollege.entity.UserInfoEntity;
-import cn.edu.nju.trainingcollege.service.MailService;
 import cn.edu.nju.trainingcollege.service.UserLoginService;
 import cn.edu.nju.trainingcollege.service.UserRegisterService;
 import cn.edu.nju.trainingcollege.util.Helper;
@@ -17,20 +16,18 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import javax.servlet.http.HttpSession;
 
-
+@RequestMapping(value = "/user")
 @Controller
 public class UserController {
 
     private final UserRegisterService userRegisterService;
-    private final MailService mailService;
     private final UserLoginService userLoginService;
     private final UserRepository userRepository;
     private final UserInfoRepository userInfoRepository;
 
     @Autowired
-    public UserController(UserRegisterService userRegisterService, MailService mailService, UserLoginService userLoginService, UserRepository userRepository, UserInfoRepository userInfoRepository) {
+    public UserController(UserRegisterService userRegisterService, UserLoginService userLoginService, UserRepository userRepository, UserInfoRepository userInfoRepository) {
         this.userRegisterService = userRegisterService;
-        this.mailService = mailService;
         this.userLoginService = userLoginService;
         this.userRepository = userRepository;
         this.userInfoRepository = userInfoRepository;
@@ -54,16 +51,16 @@ public class UserController {
 
             return "user/userinfo";
         }
-        return "user/index";
+        return "/index";
 
     }
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String register(Model model, @RequestParam("mail") String mail,@RequestParam("password") String password,@RequestParam("name") String name,@RequestParam("phone") String phone,@RequestParam("sex") String sex) {
 
         userRegisterService.register(mail,password,name,phone,sex);
-            mailService.send(mail,"trainingcollege","注册成功,"+"您的密码是"+password+",请牢记");
 
-           return "redirect:/index";
+
+           return "/index";
 
 
     }
