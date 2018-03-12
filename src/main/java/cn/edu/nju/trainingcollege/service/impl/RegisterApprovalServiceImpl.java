@@ -33,7 +33,7 @@ public class RegisterApprovalServiceImpl implements RegisterApprovalService {
         do {
             id = helper.GenerateId();
 
-        } while (schoolRepository.getOne(id) != null && registerApprovalRepository.getOne(id) != null);
+        } while (schoolRepository.getOne(id) == null && registerApprovalRepository.getOne(id) == null);
         RegisterApprovalEntity registerApprovalEntity=new RegisterApprovalEntity();
        registerApprovalEntity.setId(id);
        registerApprovalEntity.setName(name);

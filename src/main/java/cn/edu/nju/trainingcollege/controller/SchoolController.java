@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 
+@RequestMapping(value = "/school")
 @Controller
 public class SchoolController {
 
@@ -18,17 +19,23 @@ public class SchoolController {
         this.registerApprovalService = registerApprovalService;
     }
 
-    @RequestMapping(value = "/school/register", method = RequestMethod.POST)
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String register(Model model, @RequestParam("name") String name, @RequestParam("password") String password, @RequestParam("mail") String mail,@RequestParam("address") String address) {
 
 
         registerApprovalService.register(name,password,address,mail);
 
-        return "user/index";
+        return "school/ok";
 
 
     }
-    @RequestMapping("/school/register")
+
+    @RequestMapping({"/", "/login" , "/index"})
+    public String login() {
+        return "/index";
+    }
+
+    @RequestMapping("/register")
     public String register(SessionStatus sessionStatus) {
         sessionStatus.setComplete();
         return "school/register";
