@@ -8,7 +8,9 @@ import cn.edu.nju.trainingcollege.entity.UserEntity;
 import cn.edu.nju.trainingcollege.entity.UserInfoEntity;
 import cn.edu.nju.trainingcollege.service.MailService;
 import cn.edu.nju.trainingcollege.service.UserService;
+import cn.edu.nju.trainingcollege.util.Helper;
 import cn.edu.nju.trainingcollege.util.MD5Util;
+import cn.edu.nju.trainingcollege.vo.MemberInfoVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -71,6 +73,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserInfoEntity getUserInfoById(int id) {
         return userInfoRepository.getOne(id);
+    }
+
+    @Override
+    public MemberInfoVo getMemberInfo(int id) {
+        UserInfoEntity userInfoEntity=userInfoRepository.getOne(id);
+        MemberEntity memberEntity=memberRepository.getOne(id);
+        Helper helper=new Helper();
+        MemberInfoVo memberInfoVo=new MemberInfoVo(id,memberEntity.getPoint(),memberEntity.getLevel(),memberEntity.getAccumulate(),helper.timeToDateString(userInfoEntity.getRegistdate()),""+helper.getDiscount(memberEntity.getAccumulate()),userInfoEntity.getName());
+        return  memberInfoVo;
     }
 
 

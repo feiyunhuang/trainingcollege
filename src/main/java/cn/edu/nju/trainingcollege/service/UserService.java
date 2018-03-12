@@ -3,6 +3,7 @@ package cn.edu.nju.trainingcollege.service;
 
 import cn.edu.nju.trainingcollege.entity.UserEntity;
 import cn.edu.nju.trainingcollege.entity.UserInfoEntity;
+import cn.edu.nju.trainingcollege.vo.MemberInfoVo;
 
 public interface UserService {
 
@@ -14,5 +15,5 @@ public interface UserService {
 
     UserInfoEntity getUserInfoById(int id);
 
-
+    MemberInfoVo getMemberInfo(int id);
 }

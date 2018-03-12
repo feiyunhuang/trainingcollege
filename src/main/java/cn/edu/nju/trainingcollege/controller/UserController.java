@@ -5,6 +5,7 @@ import cn.edu.nju.trainingcollege.entity.UserEntity;
 import cn.edu.nju.trainingcollege.entity.UserInfoEntity;
 import cn.edu.nju.trainingcollege.service.UserService;
 import cn.edu.nju.trainingcollege.util.Helper;
+import cn.edu.nju.trainingcollege.vo.MemberInfoVo;
 import cn.edu.nju.trainingcollege.vo.PersonInfoVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,14 +35,10 @@ public class UserController {
            UserEntity userEntity = userService.findByMail(mail);
             UserInfoEntity userInfoEntity=userService.getUserInfoById(userEntity.getId());
             session.setAttribute("userid", userEntity.getId());
-
-            Helper helper=new Helper();
-            PersonInfoVo personInfoVo=new PersonInfoVo(userInfoEntity.getId(), mail, userInfoEntity.getName(), userInfoEntity.getMemberState().toString(), helper.timeToDateString(userInfoEntity.getRegistdate()),"../../static/portrait/timg.jpg",userInfoEntity.getSex(),userInfoEntity.getPhonenum());
-
-            model.addAttribute("personinfo",personInfoVo);
+            session.setAttribute("mail",mail);
 
 
-            return "user/userinfo";
+            return "redirect:/user/userinfo";
         }
         return "user/wrongpassword";
 
@@ -58,6 +55,30 @@ public class UserController {
     }
 
 
+    @RequestMapping({"/userinfo"})
+    public String userinfo(Model model,HttpSession session){
+
+        String mail= (String) session.getAttribute("mail");
+        UserEntity userEntity = userService.findByMail(mail);
+        UserInfoEntity userInfoEntity=userService.getUserInfoById(userEntity.getId());
+
+        Helper helper=new Helper();
+        PersonInfoVo personInfoVo=new PersonInfoVo(userInfoEntity.getId(), mail, userInfoEntity.getName(), userInfoEntity.getMemberState().toString(), helper.timeToDateString(userInfoEntity.getRegistdate()),"../../static/portrait/timg.jpg",userInfoEntity.getSex(),userInfoEntity.getPhonenum());
+
+        model.addAttribute("personinfo",personInfoVo);
+
+        return "user/userinfo";
+    }
+
+    @RequestMapping({"/memberinfo"})
+    public String index(Model model,HttpSession session) {
+
+        int id= (int) session.getAttribute("userid");
+
+        MemberInfoVo memberInfoVo=userService.getMemberInfo(id);
+        model.addAttribute("memberinfo",memberInfoVo);
+        return "user/memberinfo";
+    }
 
 
     @RequestMapping({"/", "/login" , "/index"})
