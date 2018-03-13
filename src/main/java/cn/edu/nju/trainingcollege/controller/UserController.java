@@ -20,6 +20,7 @@ import javax.servlet.http.HttpSession;
 public class UserController {
 
     private final UserService userService;
+    
 
     @Autowired
     public UserController(UserService userService) {
@@ -31,6 +32,7 @@ public class UserController {
     public String login(Model model,HttpSession session, @RequestParam("username") String mail, @RequestParam("password") String password) {
 
         if(userService.login(mail,password)==true){
+
 
            UserEntity userEntity = userService.findByMail(mail);
             UserInfoEntity userInfoEntity=userService.getUserInfoById(userEntity.getId());
