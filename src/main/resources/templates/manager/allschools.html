@@ -24,8 +24,8 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li class="active"><a href="approval.html" th:href="@{/manager/approval}">机构注册申请 <span class="sr-only">(current)</span></a></li>
-                <li><a href="allschools.html" th:href="@{/manager/allschools}">查看所有机构</a></li>
+                <li><a href="approval.html" th:href="@{/manager/approval}">机构注册申请</a></li>
+                <li class="active"><a href="allschools.html" th:href="@{/manager/allschools}">查看所有机构<span class="sr-only">(current)</span></a></li>
                 <li><a href="#">会员信息</a></li>
                 <li><a href="#">我的订单</a></li>
                 <li><a href="#">修改密码</a></li>
@@ -40,7 +40,7 @@
 
             </div>
 
-            <h2 class="sub-header">机构注册申请</h2>
+            <h2 class="sub-header">所有注册机构</h2>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
@@ -51,28 +51,24 @@
                         <th>联系方式</th>
                         <th>注册时间</th>
                         <th>地址</th>
-                        <th>操作</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="registerApproval : ${registerApprovals}">
+                    <tr th:each="school : ${schools}">
 
-                        <td th:text="${registerApproval.id}">1234567</td>
+                        <td th:text="${school.id}">1234567</td>
 
-                        <td th:text="${registerApproval.name}"></td>
+                        <td th:text="${school.name}"></td>
 
-                        <td th:text="${registerApproval.password}"></td>
+                        <td th:text="${school.password}"></td>
 
-                        <td th:text="${registerApproval.mail}"></td>
+                        <td th:text="${school.mail}"></td>
 
-                        <td th:text="${registerApproval.registdate}"></td>
+                        <td th:text="${school.registdate}"></td>
 
-                        <td th:text="${registerApproval.address}"></td>
+                        <td th:text="${school.address}"></td>
 
 
-                        <td><a th:href="@{/manager/add(id=${registerApproval.id})}"><button class="btn btn-large btn-success" type="button">同意</button></a>
-                            <a th:href="@{/manager/delete(id=${registerApproval.id})}"><button class="btn btn-large btn-danger" type="button">拒绝</button></a>
-                        </td>
                     </tr>
 
 

@@ -3,6 +3,7 @@ package cn.edu.nju.trainingcollege.controller;
 
 import cn.edu.nju.trainingcollege.dao.RegisterApprovalRepository;
 import cn.edu.nju.trainingcollege.entity.RegisterApprovalEntity;
+import cn.edu.nju.trainingcollege.entity.SchoolEntity;
 import cn.edu.nju.trainingcollege.service.ManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,10 +31,7 @@ public class ManagerController {
 
         if(managerService.login(name,password)==true){
 
-
-
-
-            return "redirect:/manager/list";
+            return "redirect:/manager/approval";
         }
         return "manager/login";
 
@@ -43,13 +41,13 @@ public class ManagerController {
     @RequestMapping("/delete")
     public String delete(String id) {
         managerService.disapproval(id);
-        return "redirect:/manager/list";
+        return "redirect:/manager/approval";
     }
 
     @RequestMapping("/add")
     public String add(String id) {
         managerService.approval(id);
-        return "redirect:/manager/list";
+        return "redirect:/manager/allschools";
     }
 
     @RequestMapping({"/", "/login" , "/index"})
@@ -57,13 +55,17 @@ public class ManagerController {
         return "manager/login";
     }
 
-    @RequestMapping({"/list"})
-    public String list(Model model) {
+    @RequestMapping({"/approval"})
+    public String approval(Model model) {
         List<RegisterApprovalEntity> registerApprovals=managerService.getAllApprovals();
         model.addAttribute("registerApprovals",registerApprovals);
-
-
-
         return "manager/approval";
+    }
+
+    @RequestMapping({"/allschools"})
+    public String allschool(Model model){
+        List<SchoolEntity> schools =managerService.getAllSchools();
+        model.addAttribute("schools",schools);
+        return "manager/allschools";
     }
 }

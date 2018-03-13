@@ -61,4 +61,9 @@ public class ManagerServiceImpl implements ManagerService {
         return registerApprovalRepository.findAll();
     }
 
+    @Override
+    public List<SchoolEntity> getAllSchools() {
+        return schoolRepository.findAll();
+    }
+
 }
