@@ -100,6 +100,7 @@ CREATE TABLE `member` (
   `point` int(11) NOT NULL DEFAULT '0',
   `level` int(11) NOT NULL DEFAULT '1',
   `accumulate` int(11) DEFAULT '0',
+  `coupon` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -110,7 +111,7 @@ CREATE TABLE `member` (
 
 LOCK TABLES `member` WRITE;
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
-INSERT INTO `member` VALUES (1,0,1,0),(2,0,1,0),(3,0,1,0);
+INSERT INTO `member` VALUES (1,0,1,0,100),(2,0,1,0,0),(3,0,1,0,0);
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -138,7 +139,6 @@ CREATE TABLE `registerapproval` (
 
 LOCK TABLES `registerapproval` WRITE;
 /*!40000 ALTER TABLE `registerapproval` DISABLE KEYS */;
-INSERT INTO `registerapproval` VALUES ('M4ZJHRU','学而思','123456','1140617436@qq.com','2018-03-12 16:30:35','上海'),('W151HTE','新希望','123456','1140617436@qq.com','2018-03-12 16:30:17','南京栖霞');
 /*!40000 ALTER TABLE `registerapproval` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,7 +166,7 @@ CREATE TABLE `school` (
 
 LOCK TABLES `school` WRITE;
 /*!40000 ALTER TABLE `school` DISABLE KEYS */;
-INSERT INTO `school` VALUES ('XVQDFKN','新东方','123456','1140617436@qq.com','2018-03-12 16:36:08','南京鼓楼');
+INSERT INTO `school` VALUES ('EBG956H','英雄联盟教学','123456','1140617436@qq.com','2018-03-13 03:36:33','华瑞网咖'),('M4ZJHRU','学而思','123456','1140617436@qq.com','2018-03-13 02:31:48','上海'),('W151HTE','新希望','123456','1140617436@qq.com','2018-03-13 02:28:19','南京栖霞'),('XVQDFKN','新东方','123456','1140617436@qq.com','2018-03-12 16:36:08','南京鼓楼');
 /*!40000 ALTER TABLE `school` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -232,4 +232,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-03-13  0:37:11
+-- Dump completed on 2018-03-13 14:28:00

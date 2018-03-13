@@ -4,14 +4,14 @@ import cn.edu.nju.trainingcollege.dao.RegisterApprovalRepository;
 import cn.edu.nju.trainingcollege.dao.SchoolRepository;
 import cn.edu.nju.trainingcollege.entity.RegisterApprovalEntity;
 import cn.edu.nju.trainingcollege.service.MailService;
-import cn.edu.nju.trainingcollege.service.RegisterApprovalService;
+import cn.edu.nju.trainingcollege.service.SchoolService;
 import cn.edu.nju.trainingcollege.util.Helper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 @Service
-public class RegisterApprovalServiceImpl implements RegisterApprovalService {
+public class SchoolServiceImpl implements SchoolService {
 
     private final RegisterApprovalRepository registerApprovalRepository;
     private final SchoolRepository schoolRepository;
@@ -19,7 +19,7 @@ public class RegisterApprovalServiceImpl implements RegisterApprovalService {
 
 
     @Autowired
-    public RegisterApprovalServiceImpl(RegisterApprovalRepository registerApprovalRepository, SchoolRepository schoolRepository, MailService mailService) {
+    public SchoolServiceImpl(RegisterApprovalRepository registerApprovalRepository, SchoolRepository schoolRepository, MailService mailService) {
         this.registerApprovalRepository = registerApprovalRepository;
         this.schoolRepository = schoolRepository;
         this.mailService = mailService;
@@ -27,7 +27,7 @@ public class RegisterApprovalServiceImpl implements RegisterApprovalService {
 
     @Override
     public void register(String name, String password, String address, String mail) {
-        mailService.send(mail,"trainingcollege","您好,"+name+"您的机构正在审批，审批通过会通过邮件发送给您！");
+        mailService.send(mail,"trainingcollege","您好,"+name+"您的机构正在由经理审批，请耐心等待，审批通过会通过邮件发送给您！");
         Helper helper = new Helper();
         String id;
         do {
@@ -42,5 +42,14 @@ public class RegisterApprovalServiceImpl implements RegisterApprovalService {
        registerApprovalEntity.setAddress(address);
         registerApprovalRepository.save(registerApprovalEntity);
 
+    }
+
+    @Override
+    public boolean login(String name, String password) {
+        if(schoolRepository.existsById(name)&&schoolRepository.getOne(name).getPassword().equals(password)){
+            return true;
+        }
+        else
+            return false;
     }
 }

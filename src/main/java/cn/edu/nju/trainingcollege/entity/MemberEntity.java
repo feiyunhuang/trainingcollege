@@ -11,15 +11,18 @@ public class MemberEntity {
     private int point=0;
     private int level=1;
     private int accumulate = 0;
+    private int coupon=0;
 
     public MemberEntity(){
 
     }
-    public MemberEntity(int id, int point, int level,int accumulate) {
+
+    public MemberEntity(int id, int point, int level, int accumulate, int coupon) {
         this.id = id;
         this.point = point;
         this.level = level;
-        this.accumulate=accumulate;
+        this.accumulate = accumulate;
+        this.coupon = coupon;
     }
 
     @Id
@@ -57,5 +60,15 @@ public class MemberEntity {
 
     public void setAccumulate(int accumulate) {
         this.accumulate = accumulate;
+    }
+
+    @Basic
+    @Column(name = "coupon", nullable = false)
+    public int getCoupon() {
+        return coupon;
+    }
+
+    public void setCoupon(int coupon) {
+        this.coupon = coupon;
     }
 }

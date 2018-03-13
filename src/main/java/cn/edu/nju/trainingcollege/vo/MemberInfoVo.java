@@ -8,15 +8,17 @@ public class MemberInfoVo {
     private String registdate;
     private String discount;
     private String name;
+    private int coupon;
 
-    public MemberInfoVo(int id, int point, int level, int accumulate, String registdate, String discount,String name) {
+    public MemberInfoVo(int id, int point, int level, int accumulate, String registdate, String discount, String name, int coupon) {
         this.id = id;
         this.point = point;
         this.level = level;
         this.accumulate = accumulate;
         this.registdate = registdate;
         this.discount = discount;
-        this.name=name;
+        this.name = name;
+        this.coupon = coupon;
     }
 
     public  MemberInfoVo(){}
@@ -75,5 +77,13 @@ public class MemberInfoVo {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getCoupon() {
+        return coupon;
+    }
+
+    public void setCoupon(int coupon) {
+        this.coupon = coupon;
     }
 }

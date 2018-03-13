@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>个人信息</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="../../static/css/dashboard.css" th:href="@{/css/dashboard.css}" >
+
+</head>
+
+<body>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="#">机构信息<span class="sr-only">(current)</span></a></li>
+                <li><a href="#">选课商城</a></li>
+                <li><a href="#">会员信息</a></li>
+                <li><a href="#">我的订单</a></li>
+                <li><a href="#">修改密码</a></li>
+            </ul>
+        </div>
+    </div>
+    ok
+    <!--<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">-->
+        <!--<h1 class="page-header" th:text="${'邮箱：'+personinfo.mail}"></th:text></h1>-->
+
+        <!--<div class="row placeholders">-->
+            <!--<div class="col-xs-6 col-sm-3 placeholder">-->
+                <!--<img th:src="@{/portrait/timg.jpg}" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">-->
+
+                <!--<span class="text-muted"></span>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="right_section">-->
+            <!--&lt;!&ndash; 个人信息 &ndash;&gt;-->
+            <!--<div class="person_info">-->
+                <!--<h3>个人信息：</h3>-->
+                <!--<table class="table table-bordered table-striped">-->
+                    <!--<tr>-->
+                    <!--<tr>-->
+                        <!--<th>用户ID</th>-->
+                        <!--<td th:text="${personinfo.id}">1</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<th>邮箱</th>-->
+                        <!--<td th:text="${personinfo.mail}">1140617436@qq.com</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<th>姓名</th>-->
+                        <!--<td th:text="${personinfo.name}">黄某某</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<th>会员状态</th>-->
+                        <!--<td th:text="${(personinfo.memberState)}">Valid</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<th>性别</th>-->
+                        <!--<td th:text="${personinfo.sex}">0.0</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<th>已绑定网银</th>-->
+                        <!--<td th:text="${personinfo.phone+'（已通过认证）'}">0.0</td>-->
+                    <!--</tr>-->
+                    <!--<th>注册日期</th>-->
+                    <!--<td th:text="${(personinfo.registdate)}"></td>-->
+                    <!--</tr>-->
+                    <!--</tr>-->
+                <!--</table>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+</div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="../../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+<script>window.jQuery || document.write('<script src="../js/jquery.min.js"><\/script>')</script>
+<script src="../../static/js/bootstrap.min.js" th:src="@{/js/jquery.min.js}"></script>
+<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+<script src="../../static/js/holder.min.js" th:src="@{/js/jquery.min.js}"></script>
+</body>
+</html>
+

@@ -80,7 +80,7 @@ public class UserServiceImpl implements UserService {
         UserInfoEntity userInfoEntity=userInfoRepository.getOne(id);
         MemberEntity memberEntity=memberRepository.getOne(id);
         Helper helper=new Helper();
-        MemberInfoVo memberInfoVo=new MemberInfoVo(id,memberEntity.getPoint(),memberEntity.getLevel(),memberEntity.getAccumulate(),helper.timeToDateString(userInfoEntity.getRegistdate()),""+helper.getDiscount(memberEntity.getAccumulate()),userInfoEntity.getName());
+        MemberInfoVo memberInfoVo=new MemberInfoVo(id,memberEntity.getPoint(),memberEntity.getLevel(),memberEntity.getAccumulate(),helper.timeToDateString(userInfoEntity.getRegistdate()),""+helper.getDiscount(memberEntity.getAccumulate()),userInfoEntity.getName(),memberEntity.getCoupon());
         return  memberInfoVo;
     }
 
