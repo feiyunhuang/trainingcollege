@@ -37,39 +37,23 @@
 
         <div class="row placeholders">
         </div>
-        <h2 class="sub-header">已经发布的课程</h2>
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>课id</th>
-                    <th>课程名</th>
-                    <th>发布时间</th>
-                    <th>开始时间</th>
-                    <th>操作</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="class : ${classes}">
+        <h2 class="sub-header">发布新的课程</h2>
 
-                    <td th:text="${class.id}">1234567</td>
+        <form class="form-horizontal" method="post" role="form" action="register.html" th:action="@{/school/register}">
 
-                    <td th:text="${class.name}"></td>
-
-                    <td th:text="${class.registdate}"></td>
-
-                    <td th:text="${class.begindate}"></td>
-
-                    <td><a th:href="@{/school/add(id=${class.id})}"><button class="btn btn-large btn-success" type="button">具体查看</button></a></td>
-
-
-
-                </tr>
-
-
-                </tbody>
-            </table>
+        <div class="form-group">
+            <label for="password" class="col-sm-2 control-label">密码：</label>
+            <div class="col-sm-4">
+                <input type="password" class="form-control" id="password"
+                       name="password">
+            </div>
+            <div style="display: inline">
+                <label class="help-block">6-16位字母、数字、符号、区分大小写</label>
+            </div>
         </div>
+
+        </form>
+
     </div>
 </div>
 </div>

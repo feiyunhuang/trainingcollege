@@ -1,13 +1,17 @@
 package cn.edu.nju.trainingcollege.service.impl;
 
+import cn.edu.nju.trainingcollege.dao.ClassRepository;
 import cn.edu.nju.trainingcollege.dao.RegisterApprovalRepository;
 import cn.edu.nju.trainingcollege.dao.SchoolRepository;
+import cn.edu.nju.trainingcollege.entity.ClassEntity;
 import cn.edu.nju.trainingcollege.entity.RegisterApprovalEntity;
 import cn.edu.nju.trainingcollege.service.MailService;
 import cn.edu.nju.trainingcollege.service.SchoolService;
 import cn.edu.nju.trainingcollege.util.Helper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 @Service
@@ -16,13 +20,15 @@ public class SchoolServiceImpl implements SchoolService {
     private final RegisterApprovalRepository registerApprovalRepository;
     private final SchoolRepository schoolRepository;
     private final MailService mailService;
+    private final ClassRepository classRepository;
 
 
     @Autowired
-    public SchoolServiceImpl(RegisterApprovalRepository registerApprovalRepository, SchoolRepository schoolRepository, MailService mailService) {
+    public SchoolServiceImpl(RegisterApprovalRepository registerApprovalRepository, SchoolRepository schoolRepository, MailService mailService, ClassRepository classRepository) {
         this.registerApprovalRepository = registerApprovalRepository;
         this.schoolRepository = schoolRepository;
         this.mailService = mailService;
+        this.classRepository = classRepository;
     }
 
     @Override
@@ -51,5 +57,11 @@ public class SchoolServiceImpl implements SchoolService {
         }
         else
             return false;
+    }
+
+    @Override
+    public List<ClassEntity> findMyClass(String schoolid) {
+
+        return classRepository.findBySchoolid(schoolid);
     }
 }
