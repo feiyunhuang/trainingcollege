@@ -43,6 +43,62 @@ LOCK TABLES `changeapproval` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `class`
+--
+
+DROP TABLE IF EXISTS `class`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `class` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) COLLATE utf8_bin NOT NULL,
+  `schoolid` varchar(10) COLLATE utf8_bin NOT NULL,
+  `timeaweek` int(11) NOT NULL,
+  `week` int(11) NOT NULL,
+  `classnum` int(11) NOT NULL,
+  `studentaclass` int(11) NOT NULL,
+  `price` double NOT NULL,
+  `teacherid` int(11) NOT NULL,
+  `registdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `begindate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `description` varchar(255) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `class`
+--
+
+LOCK TABLES `class` WRITE;
+/*!40000 ALTER TABLE `class` DISABLE KEYS */;
+INSERT INTO `class` VALUES (1,'大学数学','XVQDFKN',2,10,3,5,2000,1,'2018-03-14 03:12:59','2018-03-14 03:12:59','这是一节黄老师的强化课');
+/*!40000 ALTER TABLE `class` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `classandlabel`
+--
+
+DROP TABLE IF EXISTS `classandlabel`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `classandlabel` (
+  `classid` int(11) NOT NULL,
+  `label` varchar(20) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `classandlabel`
+--
+
+LOCK TABLES `classandlabel` WRITE;
+/*!40000 ALTER TABLE `classandlabel` DISABLE KEYS */;
+/*!40000 ALTER TABLE `classandlabel` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `hibernate_sequence`
 --
 
@@ -171,6 +227,54 @@ INSERT INTO `school` VALUES ('EBG956H','英雄联盟教学','123456','1140617436
 UNLOCK TABLES;
 
 --
+-- Table structure for table `teacher`
+--
+
+DROP TABLE IF EXISTS `teacher`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `teacher` (
+  `id` int(11) NOT NULL,
+  `name` varchar(20) COLLATE utf8_bin NOT NULL,
+  `description` varchar(255) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `teacher`
+--
+
+LOCK TABLES `teacher` WRITE;
+/*!40000 ALTER TABLE `teacher` DISABLE KEYS */;
+INSERT INTO `teacher` VALUES (1,'黄泽鹏','数学满分教师'),(2,'惠晗涛','德语教师');
+/*!40000 ALTER TABLE `teacher` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `teacherandschool`
+--
+
+DROP TABLE IF EXISTS `teacherandschool`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `teacherandschool` (
+  `schoolid` varchar(10) COLLATE utf8_bin NOT NULL,
+  `teacherid` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `teacherandschool`
+--
+
+LOCK TABLES `teacherandschool` WRITE;
+/*!40000 ALTER TABLE `teacherandschool` DISABLE KEYS */;
+INSERT INTO `teacherandschool` VALUES ('XVQDFKN',1),('XVQDFKN',2);
+/*!40000 ALTER TABLE `teacherandschool` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user`
 --
 
@@ -232,4 +336,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-03-13 14:28:00
+-- Dump completed on 2018-03-14 11:13:50
