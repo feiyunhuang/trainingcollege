@@ -3,14 +3,18 @@ package cn.edu.nju.trainingcollege.service.impl;
 import cn.edu.nju.trainingcollege.dao.ClassRepository;
 import cn.edu.nju.trainingcollege.dao.RegisterApprovalRepository;
 import cn.edu.nju.trainingcollege.dao.SchoolRepository;
+import cn.edu.nju.trainingcollege.dao.TeacherRepository;
 import cn.edu.nju.trainingcollege.entity.ClassEntity;
 import cn.edu.nju.trainingcollege.entity.RegisterApprovalEntity;
+import cn.edu.nju.trainingcollege.entity.TeacherEntity;
 import cn.edu.nju.trainingcollege.service.MailService;
 import cn.edu.nju.trainingcollege.service.SchoolService;
 import cn.edu.nju.trainingcollege.util.Helper;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -21,14 +25,16 @@ public class SchoolServiceImpl implements SchoolService {
     private final SchoolRepository schoolRepository;
     private final MailService mailService;
     private final ClassRepository classRepository;
+    private final TeacherRepository teacherRepository;
 
 
     @Autowired
-    public SchoolServiceImpl(RegisterApprovalRepository registerApprovalRepository, SchoolRepository schoolRepository, MailService mailService, ClassRepository classRepository) {
+    public SchoolServiceImpl(RegisterApprovalRepository registerApprovalRepository, SchoolRepository schoolRepository, MailService mailService, ClassRepository classRepository, TeacherRepository teacherRepository) {
         this.registerApprovalRepository = registerApprovalRepository;
         this.schoolRepository = schoolRepository;
         this.mailService = mailService;
         this.classRepository = classRepository;
+        this.teacherRepository = teacherRepository;
     }
 
     @Override
@@ -63,5 +69,12 @@ public class SchoolServiceImpl implements SchoolService {
     public List<ClassEntity> findMyClass(String schoolid) {
 
         return classRepository.findBySchoolid(schoolid);
+    }
+
+    @Override
+    public List<TeacherEntity> findAllTeacher(String schoolid) {
+
+        return teacherRepository.findBySchoolid(schoolid);
+
     }
 }

@@ -46,6 +46,7 @@
                     <th>课程名</th>
                     <th>发布时间</th>
                     <th>开始时间</th>
+                    <th>上课时间</th>
                     <th>操作</th>
                 </tr>
                 </thead>
@@ -59,6 +60,8 @@
                     <td th:text="${class.registdate}"></td>
 
                     <td th:text="${class.begindate}"></td>
+
+                    <td th:text="${class.daytime}"></td>
 
                     <td><a th:href="@{/school/add(id=${class.id})}"><button class="btn btn-large btn-success" type="button">具体查看</button></a></td>
 

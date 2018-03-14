@@ -10,17 +10,18 @@ public class ClassEntity {
     private int id;
     private String name;
     private String schoolid;
-    private int timeaweek;
+    private String timeaweek;
     private int week;
     private int classnum;
     private int studentaclass;
     private double price;
     private int teacherid;
+    private String daytime;
     private Timestamp registdate = new Timestamp(System.currentTimeMillis());
     private Timestamp begindate  = new Timestamp(System.currentTimeMillis());
     private String description;
 
-    public ClassEntity(int id, String name, String schoolid, int timeaweek, int week, int classnum, int studentaclass, double price, int teacherid, Timestamp registdate, Timestamp begindate, String description) {
+    public ClassEntity(int id, String name, String schoolid, String timeaweek, int week, int classnum, int studentaclass, double price, int teacherid, String daytime, Timestamp registdate, Timestamp begindate, String description) {
         this.id = id;
         this.name = name;
         this.schoolid = schoolid;
@@ -30,6 +31,7 @@ public class ClassEntity {
         this.studentaclass = studentaclass;
         this.price = price;
         this.teacherid = teacherid;
+        this.daytime = daytime;
         this.registdate = registdate;
         this.begindate = begindate;
         this.description = description;
@@ -68,12 +70,12 @@ public class ClassEntity {
     }
 
     @Basic
-    @Column(name = "timeaweek", nullable = false)
-    public int getTimeaweek() {
+    @Column(name = "timeaweek", nullable = false,length=10)
+    public String getTimeaweek() {
         return timeaweek;
     }
 
-    public void setTimeaweek(int timeaweek) {
+    public void setTimeaweek(String timeaweek) {
         this.timeaweek = timeaweek;
     }
 
@@ -125,6 +127,16 @@ public class ClassEntity {
 
     public void setTeacherid(int teacherid) {
         this.teacherid = teacherid;
+    }
+
+    @Basic
+    @Column(name = "daytime", nullable = false)
+    public String getDaytime() {
+        return daytime;
+    }
+
+    public void setDaytime(String daytime) {
+        this.daytime = daytime;
     }
 
     @Basic

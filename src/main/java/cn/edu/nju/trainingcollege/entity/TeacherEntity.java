@@ -8,11 +8,13 @@ import javax.persistence.*;
 public class TeacherEntity {
     private int id;
     private String name;
+    private String schoolid;
     private String description;
 
-    public TeacherEntity(int id, String name, String description) {
+    public TeacherEntity(int id, String name, String schoolid, String description) {
         this.id = id;
         this.name = name;
+        this.schoolid = schoolid;
         this.description = description;
     }
 
@@ -37,6 +39,16 @@ public class TeacherEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Basic
+    @Column(name = "schoolid", nullable = false, length = 10)
+    public String getSchoolid() {
+        return schoolid;
+    }
+
+    public void setSchoolid(String schoolid) {
+        this.schoolid = schoolid;
     }
 
     @Basic

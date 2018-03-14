@@ -2,6 +2,7 @@ package cn.edu.nju.trainingcollege.controller;
 
 
 import cn.edu.nju.trainingcollege.entity.ClassEntity;
+import cn.edu.nju.trainingcollege.entity.TeacherEntity;
 import cn.edu.nju.trainingcollege.service.SchoolService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,7 +41,7 @@ public class SchoolController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(Model model, @RequestParam("name") String name, @RequestParam("password") String password, @RequestParam("mail") String mail,@RequestParam("address") String address) {
+    public String register(@RequestParam("name") String name, @RequestParam("password") String password, @RequestParam("mail") String mail,@RequestParam("address") String address) {
 
 
         schoolService.register(name,password,address,mail);
@@ -57,6 +58,7 @@ public class SchoolController {
     public String approval(Model model,HttpSession session) {
         String schoolid= (String) session.getAttribute("schoolid");
 
+
         List<ClassEntity> classes=schoolService.findMyClass(schoolid);
         model.addAttribute("classes",classes);
 
@@ -65,8 +67,23 @@ public class SchoolController {
 
 
     @RequestMapping({"/addclass"})
-    public String addclass(){
+    public String showaddclass(Model model,HttpSession session){
+
+        List<TeacherEntity> teachers=schoolService.findAllTeacher((String) session.getAttribute("schoolid"));
+        model.addAttribute("teachers",teachers);
+
+
         return "school/addclass";
+    }
+
+    @RequestMapping(value = "/addclass", method = RequestMethod.POST)
+    public String addclass(@RequestParam("name") String classname,@RequestParam("teacher") int teacherid,@RequestParam("timeaweek") String[] timeaweek){
+
+
+        System.out.println(classname);
+        System.out.println(teacherid);
+        System.out.println(timeaweek);
+        return "redirect:/school/loginsuccess";
     }
 
 
