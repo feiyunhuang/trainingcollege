@@ -1,8 +1,10 @@
 package cn.edu.nju.trainingcollege.util;
 
 import java.sql.Timestamp;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -10,6 +12,17 @@ public class Helper {
     public static String timeToDateString(Timestamp time) {
         SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
         return fmt.format(time);
+    }
+
+    public static String strtostr(String time) throws ParseException {
+        SimpleDateFormat fmt = new SimpleDateFormat("MM/dd/yyyy");
+        Date date = fmt.parse(time);
+        SimpleDateFormat fmt1 = new SimpleDateFormat("yyyy-MM-dd");
+        return fmt1.format(date);
+    }
+
+    public static Timestamp getTimeStamp(String time) {
+        return Timestamp.valueOf(time + " 00:00:00.0");
     }
 
     public static int getLevel(int accumulate) {
@@ -51,8 +64,46 @@ public class Helper {
         return result;
     }
 
+    public static String dayaweek(String[] a){
 
-    public static void main(String[] args) {
-        System.out.println(GenerateId());
+        int length=a.length;
+        int mon=0;
+        int tue=0;
+        int wed=0;
+        int thu=0;
+        int fri=0;
+        int sat=0;
+        int sun=0;
+        for(int i=0;i<length;i++){
+            if(a[i].equals("mon")){
+                mon=1;
+            }
+            if(a[i].equals("tue")){
+                tue=1;
+            }
+            if(a[i].equals("wed")){
+                wed=1;
+            }
+            if(a[i].equals("thu")){
+                thu=1;
+            }
+            if(a[i].equals("fri")){
+                fri=1;
+            }
+            if(a[i].equals("sat")){
+                sat=1;
+            }
+            if(a[i].equals("sun")){
+                sun=1;
+            }
+        }
+
+        return ""+mon+tue+wed+thu+fri+sat+sun;
+    }
+
+
+    public static void main(String[] args) throws ParseException {
+        String date="03/14/2018";
+        System.out.println(strtostr(date));
     }
 }

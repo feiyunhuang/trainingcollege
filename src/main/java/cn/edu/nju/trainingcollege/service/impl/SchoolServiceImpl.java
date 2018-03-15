@@ -14,6 +14,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -76,5 +77,30 @@ public class SchoolServiceImpl implements SchoolService {
 
         return teacherRepository.findBySchoolid(schoolid);
 
+    }
+
+    @Override
+    public void addclass(String classname, String schoolid, String timeaweek, int week, int classnum, int studentaclass, double price, int teacherid, String daytime, String begindate, String description) {
+
+        Helper helper=new Helper();
+        try {
+            begindate=helper.strtostr(begindate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        ClassEntity classEntity=new ClassEntity();
+        classEntity.setName(classname);
+        classEntity.setSchoolid(schoolid);
+        classEntity.setTimeaweek(timeaweek);
+        classEntity.setWeek(week);
+        classEntity.setClassnum(classnum);
+        classEntity.setStudentaclass(studentaclass);
+        classEntity.setPrice(price);
+        classEntity.setTeacherid(teacherid);
+        classEntity.setDaytime(daytime);
+        classEntity.setBegindate(helper.getTimeStamp(begindate));
+        classEntity.setDescription(description);
+
+        classRepository.save(classEntity);
     }
 }

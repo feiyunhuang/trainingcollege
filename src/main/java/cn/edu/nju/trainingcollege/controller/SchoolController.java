@@ -4,6 +4,7 @@ package cn.edu.nju.trainingcollege.controller;
 import cn.edu.nju.trainingcollege.entity.ClassEntity;
 import cn.edu.nju.trainingcollege.entity.TeacherEntity;
 import cn.edu.nju.trainingcollege.service.SchoolService;
+import cn.edu.nju.trainingcollege.util.Helper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -77,12 +78,16 @@ public class SchoolController {
     }
 
     @RequestMapping(value = "/addclass", method = RequestMethod.POST)
-    public String addclass(@RequestParam("name") String classname,@RequestParam("teacher") int teacherid,@RequestParam("timeaweek") String[] timeaweek){
+    public String addclass(HttpSession session,@RequestParam("name") String classname,@RequestParam("teacher") int teacherid,@RequestParam("timeaweek") String[] timeaweek,
+                           @RequestParam("begindate") String begindate,@RequestParam("begintime") String begintime, @RequestParam("endtime") String endtime,
+                           @RequestParam("week") int week,@RequestParam("classnum") int classnum, @RequestParam("studentaclass") int studentaclass,  @RequestParam("price") double price,
+                           @RequestParam("description") String description){
 
+        Helper helper=new Helper();
 
-        System.out.println(classname);
-        System.out.println(teacherid);
-        System.out.println(timeaweek);
+        String daytime=begintime+"-"+endtime;
+        schoolService.addclass(classname,(String) session.getAttribute("schoolid"),helper.dayaweek(timeaweek),week,classnum,studentaclass,price,
+                teacherid,daytime,begindate,description);
         return "redirect:/school/loginsuccess";
     }
 
