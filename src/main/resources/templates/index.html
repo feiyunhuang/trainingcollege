@@ -1,28 +1,383 @@
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
-    <link rel="stylesheet" href="../static/css/bootstrap-theme.min.css" th:href="@{/css/bootstrap-theme.min.css}"/>
-    <link rel="stylesheet" href="../static/css/hotel.css" th:href="@{/css/hotel.css}"/>
-</head>
+    <meta charset="UTF-8">
+    <title>TrainingCollege首页</title>
+
+    <link rel="stylesheet" href="../../static/css/qfbase.css" th:href="@{/css/qfbase.css}">
+    <link rel="stylesheet" href="css/ql_index.css" th:href="@{/css/ql_index.css}">
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js" th:src="@{js/jquery.min.js}"></script>
 <body>
+<!--web-top start-->
+<div class="w-all w-minw bd-sd-b hg-45">
+    <div class="w-main m-auto">
+        <!-- top left start-->
 
-<a href="user/login.html" th:href="@{/user/login}">用户登录</a>
-<a href="school/login.html" th:href="@{/school/login}">机构登录</a>
-<a href="manager/login.html" th:href="@{/manager/login}">管理员登陆</a>
-<a href="user/register.html" th:href="@{/school/register}">机构注册</a>
-<a href="school/register.html" th:href="@{/user/register}">会员注册</a>
+        <div class="hover-topnav fl m-l-45">
+            <div class="dh_nav fl fs-12 ftc-000000 line-h45"><span class="dsblock hg-45"><i class="p-l-15 ql_icon dh_topnav hg-45 fl"></i>导航</span>
+                <ul class="dh_nav_sub bg-c-ffffff bd-sd-b">
+                    <li> <a href="课程列表页面.html"><i class="ql_icon"></i>小学</a> </li>
+                    <li> <a href="课程列表页面.html"><i class="ql_icon"></i>初中</a> </li>
+                    <li> <a href="课程列表页面.html"><i class="ql_icon"></i>高中</a> </li>
+                    <li> <a href="课程列表页面.html"><i class="ql_icon"></i>考研</a> </li>
+                    <li> <a href="课程列表页面.html"><i class="ql_icon"></i>名师</a> </li>
+                    <div class="clear"></div>
+                </ul>
+            </div>
+        </div>
+        <!--top 导航 end-->
+        <!--top wap start-->
+    </div>
+    <!-- top left end-->
+    <!-- top right start-->
+    <div class="fr">
+        <!--登录注册 start-->
+        <div class="fl"> <a class="fs-12 ftc-000000 line-h45" href="user/login.html" th:href="@{/user/login}"><i class="p-l-20 ql_icon login_icon hg-45 fl m-r-10"></i>用户登录</a> <span class="fs-12 ftc-000000 line-h45 m-l-15 m-r-15">|</span>
+                         <a class="fs-12 ftc-000000 line-h45" href="school/register.html" th:href="@{/user/register}">用户注册</a> <span class="fs-12 ftc-000000 line-h45 m-l-15 m-r-15">|</span>
+                         <a class="fs-12 ftc-000000 line-h45" href="school/login.html" th:href="@{/school/login}">机构登录</a> <span class="fs-12 ftc-000000 line-h45 m-l-15 m-r-15">|</span>
+                         <a class="fs-12 ftc-000000 line-h45" href="user/register.html" th:href="@{/school/register}">机构注册</a>
+
+            <a th:unless="${session.user != null}" >Login</a>
+        </div>
+        <!--登录注册 end-->
+
+        <!--top 客服中心 start-->
+        <div class="hover-topkf fl m-l-45">
+            <div class="top_kf fl fs-12 ftc-000000 line-h45"><span class="dsblock hg-45">管理员登陆<i class="p-l-10 m-l-10 ql_icon top_kficon hg-45 fr"></i></span>
+                <ul class="top_kf_list bg-c-ffffff bd-sd-b">
+                    <li> <a href=href="manager/login.html" th:href="@{/manager/login}"><i class="ql_icon"></i>我的名字：admin</a> </li>
+                    <div class="clear"></div>
+                </ul>
+            </div>
+        </div>
+        <!--top 客服中心 start-->
+    </div>
+    <!-- top right end-->
+</div>
+</div>
 
 
 
 
+<!--web-top end-->
+<div class="clear"></div>
+<!--web logo and search start-->
+<div class="w-main m-auto m-t-37 m-b-25 ovhidden">
+    <!--web logo start-->
+    <a href="index.html" class="logo fl"><h1>trainingcollege</h1></a>
+    <!--web logo end-->
+    <!--web search start-->
+    <div class="search w-540 m-l-115 m-t-15 fl">
+        <form action="#" method="get" id="searchform" name="searchform" onSubmit="return checkSearchForm()" class="w-540 search-form">
+            <input class="p-l-15 bd-2s-e9511b w-435 line-h35 hg-35 fs-12 ftc-a9a9a9 fl" type="text" name="keywords" id="keyword" value="搜索：初中物理" onfocus="if(this.value == '搜索：初中物理')this.value = ''" onblur="if(this.value == '')this.value='搜索：初中物理'" autocomplete="off">
+            <input type="hidden" value="k1" name="dataBi">
+            <button type="submit" class="w-85 line-h39 hg-39 fs-16 ftc-ffffff bg-c-e9511b fl">提交</button>
+        </form>
+        <div class="w-540 fl" id="hotkeywords"> <a href="#" class="dsblock fs-12 ftc-8b8b8b line-h30 fl m-r-20">一年级</a> <a href="#" class="dsblock fs-12 ftc-8b8b8b line-h30 fl m-r-20">二年级</a> <a href="#" class="dsblock fs-12 ftc-8b8b8b line-h30 fl m-r-20">三年级</a> <a href="#" class="dsblock fs-12 ftc-8b8b8b line-h30 fl m-r-20">语文</a> <a href="#" class="dsblock fs-12 ftc-8b8b8b line-h30 fl m-r-20">数学</a>
+            <div class="clear"></div>
+        </div>
+    </div>
 
+</div>
+<!--web logo and search end-->
+<!--网站导航 start-->
+<div class="w-all w-minw hg-60 bg-c-ffffff ql_webnav">
+    <div class="w-main m-auto ps-r hg-60">
+        <!--全部商品分类-->
+        <div class="hc_lnav jslist">
+            <div class="allbtn">
+                <h2><a href="#">全部课程分类</a></h2>
+                <ul style="width:250px" class="jspop box">
+                    <!--导航-->
+                    <li class="a1">
+                        <div class="tx"><a href="#">小学</a> </div>
+                        <dl>
+                            <dd> <a href="#">一年级</a><span>/</span> <a href="#">二年级</a><span>/</span> <a href="#">三年级</a> <a href="#">四年级</a><span>/</span> <a href="#">五年级</a><span>/</span> <a href="#">六年级</a>  <a href="#">特色课程</a> </dd>
+                        </dl>
+                        <div class="pop">
+                            <dl>
+                                <dt><a href="#">一年级 ></a></dt>
+                                <dd> <a class="ui-link" href="#">数学</a><span>|</span> <a class="ui-link" href="#">语文</a><span>|</span> <a class="ui-link" href="#">英语</a></dd>
+                            </dl>
+                            <dl>
+                                <dt><a href="#">二年级 ></a></dt>
+                                <dd> <a class="ui-link" href="#">数学</a><span>|</span> <a class="ui-link" href="#">语文</a><span>|</span> <a class="ui-link" href="#">英语</a></dd>
+                            </dl>
+                            <dl>
+                                <dt><a href="#">三年级 ></a></dt>
+                                <dd> <a class="ui-link" href="#">数学</a><span>|</span> <a class="ui-link" href="#">语文</a><span>|</span> <a class="ui-link" href="#">英语</a></dd>
+                            </dl>
 
-<!--<div th:include="footer :: copy"></div>-->
-<!--Scripts-->
-<script src="../static/js/jquery-3.1.1.min.js" th:src="@{/js/jquery-3.1.1.min.js}"></script>
-<script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+                            <dl>
+                                <dt><a href="#">四年级 ></a></dt>
+                                <dd> <a class="ui-link" href="#">数学</a><span>|</span> <a class="ui-link" href="#">语文</a><span>|</span> <a class="ui-link" href="#">英语</a></dd>
+                            </dl>
+
+                            <dl>
+                                <dt><a href="#">五年级 ></a></dt>
+                                <dd> <a class="ui-link" href="#">数学</a><span>|</span> <a class="ui-link" href="#">语文</a><span>|</span> <a class="ui-link" href="#">英语</a></dd>
+                            </dl>
+
+                            <dl>
+                                <dt><a href="#">六年级 ></a></dt>
+                                <dd> <a class="ui-link" href="#">数学</a><span>|</span> <a class="ui-link" href="#">语文</a><span>|</span> <a class="ui-link" href="#">英语</a></dd>
+                            </dl>
+
+                            <dl>
+                                <dt><a href="#">特色课程 ></a></dt>
+                                <dd> <a class="ui-link" href="#">小升初专题班</a><span>|</span> <a class="ui-link" href="#">小学作文班</a></dd>
+                            </dl>
+
+                            <div class="clr"></div>
+                        </div>
+                    </li>
+                    <!--导航-->
+                    <!--导航-->
+                    <li class="a1">
+                        <div class="tx"><a href="#">初中</a> </div>
+                        <dl>
+                            <dd> <a href="#">一年级</a><span>/</span> <a href="#">二年级</a><span>/</span> <a href="#">三年级</a> <a href="#">特色课程</a> </dd>
+                        </dl>
+                        <div class="pop">
+                            <dl>
+                                <dt><a href="#">初一 ></a></dt>
+                                <dd> <a class="ui-link" href="#">数学</a><span>|</span> <a class="ui-link" href="#">语文</a><span>|</span> <a class="ui-link" href="#">英语</a><span>|</span> <a class="ui-link" href="#">地理</a><span>|</span> <a class="ui-link" href="#">政治</a> <a class="ui-link" href="#">生物</a><span>|</span> <a class="ui-link" href="#">历史</a> </dd>
+                            </dl>
+                            <dl>
+                                <dt><a href="#">初二 ></a></dt>
+                                <dd> <a class="ui-link" href="#">数学</a><span>|</span> <a class="ui-link" href="#">语文</a><span>|</span> <a class="ui-link" href="#">英语</a><span>|</span> <a class="ui-link" href="#">地理</a><span>|</span> <a class="ui-link" href="#">政治</a> <a class="ui-link" href="#">生物</a><span>|</span> <a class="ui-link" href="#">历史</a><span>|</span> <a class="ui-link" href="#">物理</a> </dd>
+                            </dl>
+                            <dl>
+                                <dt><a href="#">初三 ></a></dt>
+                                <dd> <a class="ui-link" href="#">数学</a><span>|</span> <a class="ui-link" href="#">语文</a><span>|</span> <a class="ui-link" href="#">英语</a><span>|</span> <a class="ui-link" href="#">地理</a><span>|</span> <a class="ui-link" href="#">政治</a> <a class="ui-link" href="#">生物</a><span>|</span> <a class="ui-link" href="#">历史</a><span>|</span> <a class="ui-link" href="#">物理</a><span>|</span> <a class="ui-link" href="#">化学</a> </dd>
+                            </dl>
+                            <dl>
+                                <dt><a href="#">特色课程 ></a></dt>
+                                <dd> <a class="ui-link" href="#">中考冲刺班</a><span>|</span> <a class="ui-link" href="#">奥数培训班</a></dd>
+                            </dl>
+                            <div class="clr"></div>
+                        </div>
+                    </li>
+                    <!--导航-->
+                    <!--导航-->
+                    <li class="a1">
+                        <div class="tx"><a href="#">高中</a> </div>
+                        <dl>
+                            <dd> <a href="#">一年级</a><span>/</span> <a href="#">二年级</a><span>/</span> <a href="#">三年级</a> <a href="#">特色课程</a> </dd>
+                        </dl>
+                        <div class="pop">
+                            <dl>
+                                <dt><a href="#">初一 ></a></dt>
+                                <dd> <a class="ui-link" href="#">数学</a><span>|</span> <a class="ui-link" href="#">语文</a><span>|</span> <a class="ui-link" href="#">英语</a><span>|</span> <a class="ui-link" href="#">地理</a><span>|</span> <a class="ui-link" href="#">政治</a> <a class="ui-link" href="#">生物</a><span>|</span> <a class="ui-link" href="#">历史</a><span>|</span> <a class="ui-link" href="#">物理</a><span>|</span> <a class="ui-link" href="#">化学</a> </dd>
+                            </dl>
+                            <dl>
+                                <dt><a href="#">初二 ></a></dt>
+                                <dd> <a class="ui-link" href="#">数学</a><span>|</span> <a class="ui-link" href="#">语文</a><span>|</span> <a class="ui-link" href="#">英语</a><span>|</span> <a class="ui-link" href="#">地理</a><span>|</span> <a class="ui-link" href="#">政治</a> <a class="ui-link" href="#">生物</a><span>|</span> <a class="ui-link" href="#">历史</a><span>|</span> <a class="ui-link" href="#">物理</a><span>|</span> <a class="ui-link" href="#">化学</a></dd>
+                            </dl>
+                            <dl>
+                                <dt><a href="#">初三 ></a></dt>
+                                <dd> <a class="ui-link" href="#">数学</a><span>|</span> <a class="ui-link" href="#">语文</a><span>|</span> <a class="ui-link" href="#">英语</a><span>|</span> <a class="ui-link" href="#">地理</a><span>|</span> <a class="ui-link" href="#">政治</a> <a class="ui-link" href="#">生物</a><span>|</span> <a class="ui-link" href="#">历史</a><span>|</span> <a class="ui-link" href="#">物理</a><span>|</span> <a class="ui-link" href="#">化学</a> </dd>
+                            </dl>
+                            <dl>
+                                <dt><a href="#">特色课程 ></a></dt>
+                                <dd> <a class="ui-link" href="#">高中数学竞赛班</a><span>|</span> <a class="ui-link" href="#">小高考冲A班</a><span>|</span> <a class="ui-link" href="#">高中作文竞赛班</a> </dd>
+                            </dl>
+                            <div class="clr"></div>
+                        </div>
+                    </li>
+                    <!--导航-->
+                    <!--导航-->
+                    <li class="a1">
+                        <div class="tx"><a href="#">考研</a> </div>
+                        <dl>
+                            <dd> <a href="#">数学</a><span>/</span> <a href="#">政治</a><span>/</span> <a href="#">英语</a>  </dd>
+                        </dl>
+                        <div class="pop">
+                            <dl>
+                                <dt><a href="#">数学 ></a></dt>
+                                <dd> <a class="ui-link" href="#">数学一</a><span>|</span> <a class="ui-link" href="#">数学二</a><span>|</span> <a class="ui-link" href="#">数学三</a>" href="#">政治</a>  </dd>
+                            </dl>
+                            <dl>
+                                <dt><a href="#">政治 ></a></dt>
+                                <dd> <a class="ui-link" href="#">肖秀荣专题</a></dd>
+                            </dl>
+                            <dl>
+                                <dt><a href="#">英语 ></a></dt>
+                                <dd> <a class="ui-link" href="#">英语一</a><span>|</span> <a class="ui-link" href="#">英语二</a><span>  </dd>
+                            </dl>
+                            <div class="clr"></div>
+                        </div>
+                    </li>
+                    <!--导航-->
+                </ul>
+            </div>
+        </div>
+        <!--全部商品分类-->
+        <ul class="w-950 hg-60 ql_nav">
+            <li><a href="index.html" class="cur">首页</a></li>
+            <li><a href="课程列表页面.html">小学</a></li>
+            <li><a href="双师单页.html">初中</a></li>
+            <li><a href="考试日历.html">高中</a></li>
+            <li><a href="讲师.html">考研</a></li>
+            <li><a href="招商单页.html" class="ql_navhot">名师</a></li>
+        </ul>
+    </div>
+</div>
+<!--网站导航 end-->
+<!--web banner start-->
+<div class="w-all w-minw banner ps-r">
+    <div id="full-screen-slider">
+        <ul id="slides">
+            <img th:src="@{/pics/2.jpg}" width="1450" height="400" class="img-responsive" alt="Generic placeholder thumbnail">
+        </ul>
+    </div>
+
+</div>
+<script type="text/javascript" src="js/banner.index.js" th:src="@{js/banner.index.js}"></script>
+<!--web banner end-->
+<!--web home main-body start-->
+<div class="w-all w-minw bg-c-fcfcfc ovhidden">
+    <!--hot_news start-->
+    <div class="w-main m-auto">
+        <!--title start-->
+
+        <!--分割线 start-->
+        <!--精选课程 start-->
+        <div class="w-main m-auto">
+            <!--title start-->
+            <div class="w-main m-t-15 ovhidden fl">
+                <h3 class="fl fs-20 ft-w-b line-h50"><span class="dsblock ql_icon ql_h_class tx-ind m-r-15 fl">精选课程</span>精选课程</h3>
+                <a href="课程列表页面.html" class="fr fs-14 ftc-000000 line-h50">查看更多></a> </div>
+            <!--title end-->
+        </div>
+        <div class="w-main m-auto">
+            <ul class="home_calss w-1224 ovhidden">
+                <li class="w-280 m-l-13 m-r-13 bg-c-ffffff m-t-8 m-b-23 fl"> <a href="课程详情.html" class="dsblock w-280 hg-200 ovhidden ps-r"> <img src="pics/12.jpg" alt=""/> </a>
+                    <div class="w-255 p-l-10 p-r-15 fl">
+                        <div class="home_calsstxt w-155 fl">
+                            <h3 class="w-all fs-16 ftc-000000 line-h32  one_hidden  m-t-6 fl">高中数学提高班高中数学提高班</h3>
+                            <span class="dsblock w-all fs-14 ftc-ff0000 line-h32 fl">班   容：3人开班</span> </div>
+                        <a href="课程详情.html" class="dsblock ql_icon hg-34 line-h34 fs-14 ftc-ffffff m-t-22 ql_h_btnfr w-86 text-c fr">立即参入</a> </div>
+                </li>
+                <li class="w-280 m-l-13 m-r-13 bg-c-ffffff m-t-8 m-b-23 fl"> <a href="课程详情.html" class="dsblock w-280 hg-200 ovhidden ps-r"> <img src="pics/12.jpg" alt=""/> </a>
+                    <div class="w-255 p-l-10 p-r-15 fl">
+                        <div class="home_calsstxt w-155 fl">
+                            <h3 class="w-all fs-16 ftc-000000 line-h32  one_hidden  m-t-6 fl">高中数学提高班高中数学提高班</h3>
+                            <span class="dsblock w-all fs-14 ftc-ff0000 line-h32 fl">班   容：3人开班</span> </div>
+                        <a href="课程详情.html" class="dsblock ql_icon hg-34 line-h34 fs-14 ftc-ffffff m-t-22 ql_h_btnfr w-86 text-c fr">免费体验</a> </div>
+                </li>
+                <li class="w-280 m-l-13 m-r-13 bg-c-ffffff m-t-8 m-b-23 fl"> <a href="课程详情.html" class="dsblock w-280 hg-200 ovhidden ps-r"> <img src="pics/12.jpg" alt=""/> </a>
+                    <div class="w-255 p-l-10 p-r-15 fl">
+                        <div class="home_calsstxt w-155 fl">
+                            <h3 class="w-all fs-16 ftc-000000 line-h32  one_hidden  m-t-6 fl">高中数学提高班高中数学提高班</h3>
+                            <span class="dsblock w-all fs-14 ftc-ff0000 line-h32 fl">班   容：3人开班</span> </div>
+                        <a href="课程详情.html" class="dsblock ql_icon hg-34 line-h34 fs-14 ftc-ffffff m-t-22 ql_h_btnfr w-86 text-c fr">免费体验</a> </div>
+                </li>
+                <li class="w-280 m-l-13 m-r-13 bg-c-ffffff m-t-8 m-b-23 fl"> <a href="课程详情.html" class="dsblock w-280 hg-200 ovhidden ps-r"> <img src="pics/12.jpg" alt=""/> </a>
+                    <div class="w-255 p-l-10 p-r-15 fl">
+                        <div class="home_calsstxt w-155 fl">
+                            <h3 class="w-all fs-16 ftc-000000 line-h32  one_hidden  m-t-6 fl">高中数学提高班高中数学提高班</h3>
+                            <span class="dsblock w-all fs-14 ftc-ff0000 line-h32 fl">班   容：3人开班</span> </div>
+                        <a href="课程详情.html" class="dsblock ql_icon hg-34 line-h34 fs-14 ftc-ffffff m-t-22 ql_h_btnfr w-86 text-c fr">免费体验</a> </div>
+                </li>
+                <li class="w-280 m-l-13 m-r-13 bg-c-ffffff m-t-8 m-b-23 fl"> <a href="课程详情.html" class="dsblock w-280 hg-200 ovhidden ps-r"> <img src="pics/12.jpg" alt=""/> </a>
+                    <div class="w-255 p-l-10 p-r-15 fl">
+                        <div class="home_calsstxt w-155 fl">
+                            <h3 class="w-all fs-16 ftc-000000 line-h32  one_hidden  m-t-6 fl">高中数学提高班高中数学提高班</h3>
+                            <span class="dsblock w-all fs-14 ftc-ff0000 line-h32 fl">班   容：3人开班</span> </div>
+                        <a href="课程详情.html" class="dsblock ql_icon hg-34 line-h34 fs-14 ftc-ffffff m-t-22 ql_h_btnfr w-86 text-c fr">免费体验</a> </div>
+                </li>
+                <li class="w-280 m-l-13 m-r-13 bg-c-ffffff m-t-8 m-b-23 fl"> <a href="课程详情.html" class="dsblock w-280 hg-200 ovhidden ps-r"> <img src="pics/12.jpg" alt=""/> </a>
+                    <div class="w-255 p-l-10 p-r-15 fl">
+                        <div class="home_calsstxt w-155 fl">
+                            <h3 class="w-all fs-16 ftc-000000 line-h32  one_hidden  m-t-6 fl">高中数学提高班高中数学提高班</h3>
+                            <span class="dsblock w-all fs-14 ftc-ff0000 line-h32 fl">班   容：3人开班</span> </div>
+                        <a href="课程详情.html" class="dsblock ql_icon hg-34 line-h34 fs-14 ftc-ffffff m-t-22 ql_h_btnfr w-86 text-c fr">免费体验</a> </div>
+                </li>
+                <li class="w-280 m-l-13 m-r-13 bg-c-ffffff m-t-8 m-b-23 fl"> <a href="课程详情.html" class="dsblock w-280 hg-200 ovhidden ps-r"> <img src="pics/12.jpg" alt=""/> </a>
+                    <div class="w-255 p-l-10 p-r-15 fl">
+                        <div class="home_calsstxt w-155 fl">
+                            <h3 class="w-all fs-16 ftc-000000 line-h32  one_hidden  m-t-6 fl">高中数学提高班高中数学提高班</h3>
+                            <span class="dsblock w-all fs-14 ftc-ff0000 line-h32 fl">班   容：3人开班</span> </div>
+                        <a href="课程详情.html" class="dsblock ql_icon hg-34 line-h34 fs-14 ftc-ffffff m-t-22 ql_h_btnfr w-86 text-c fr">免费体验</a> </div>
+                </li>
+                <li class="w-280 m-l-13 m-r-13 bg-c-ffffff m-t-8 m-b-23 fl"> <a href="课程详情.html" class="dsblock w-280 hg-200 ovhidden ps-r"> <img src="pics/12.jpg" alt=""/> </a>
+                    <div class="w-255 p-l-10 p-r-15 fl">
+                        <div class="home_calsstxt w-155 fl">
+                            <h3 class="w-all fs-16 ftc-000000 line-h32  one_hidden  m-t-6 fl">高中数学提高班高中数学提高班</h3>
+                            <span class="dsblock w-all fs-14 ftc-ff0000 line-h32 fl">班   容：3人开班</span> </div>
+                        <a href="课程详情.html" class="dsblock ql_icon hg-34 line-h34 fs-14 ftc-ffffff m-t-22 ql_h_btnfr w-86 text-c fr">免费体验</a> </div>
+                </li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+        <!--精选课程 end-->
+        <!--分割线 start-->
+        <div class="w-main m-auto">
+            <div class="w-main fl hg-11"></div>
+            <div class="w-main fl hg-1 bg-c-e5e5e5"></div>
+            <div class="w-main fl hg-8"></div>
+        </div>
+        <!--分割线 start-->
+        <!--名师团队 start-->
+        <div class="w-main m-auto">
+            <!--title start-->
+            <div class="w-main m-t-15 ovhidden fl">
+                <h3 class="fl fs-20 ft-w-b line-h50"><span class="dsblock ql_icon ql_h_tea tx-ind m-r-15 fl">名师团</span>名师团</h3>
+                <a href="讲师.html" class="fr fs-14 ftc-000000 line-h50">查看更多></a> </div>
+            <!--title end-->
+        </div>
+        <div class="w-main m-auto">
+            <ul class="home_tearch w-main ovhidden">
+                <li>
+                    <div class="h_tea_img w-120"> <a href="讲师详情.html" class="dsblock"><img src="pics/13.png" alt=""/></a>
+                        <p class="w-all fl fs-14 ft-w-b ftc-000000 text-c line-h30">齐峰</p>
+                    </div>
+                    <div class="w-200 fl">
+                        <h3 class="fs-14 fl ftc-000000 line-h22">疯狂老师硅谷级名师</h3>
+                        <h3 class="fs-14 fl ftc-000000 line-h22">疯狂老师金宗奖运营总监</h3>
+                    </div>
+                    <div class="w-all fl fs-14 ftc-000000 line-h22 m-t-50 fu_hidden"> 这里放优秀教师的介绍这里放优秀教师的介绍这里放优秀教师的介绍这里放优秀教师的介绍，或者个人著名言论，或者其他的文字介绍。这里放优秀教师的介绍，或者个人著名言论，或者其他的文字介绍。这里放优秀教师的介绍，或者个人著名言论，或者其他的文字介绍。 </div>
+                </li>
+                <li>
+                    <div class="h_tea_img w-120"> <a href="讲师详情.html" class="dsblock"><img src="pics/13.png" alt=""/></a>
+                        <p class="w-all fl fs-14 ft-w-b ftc-000000 text-c line-h30">齐峰</p>
+                    </div>
+                    <div class="w-200 fl">
+                        <h3 class="fs-14 fl ftc-000000 line-h22">疯狂老师硅谷级名师</h3>
+                        <h3 class="fs-14 fl ftc-000000 line-h22">疯狂老师金宗奖运营总监</h3>
+                    </div>
+                    <div class="w-all fl fs-14 ftc-000000 line-h22 m-t-50 fu_hidden"> 这里放优秀教师的介绍这里放优秀教师的介绍这里放优秀教师的介绍这里放优秀教师的介绍，或者个人著名言论，或者其他的文字介绍。这里放优秀教师的介绍，或者个人著名言论，或者其他的文字介绍。这里放优秀教师的介绍，或者个人著名言论，或者其他的文字介绍。 </div>
+                </li>
+                <li>
+                    <div class="h_tea_img w-120"> <a href="讲师详情.html" class="dsblock"><img src="pics/13.png" alt=""/></a>
+                        <p class="w-all fl fs-14 ft-w-b ftc-000000 text-c line-h30">齐峰</p>
+                    </div>
+                    <div class="w-200 fl">
+                        <h3 class="fs-14 fl ftc-000000 line-h22">疯狂老师硅谷级名师</h3>
+                        <h3 class="fs-14 fl ftc-000000 line-h22">疯狂老师金宗奖运营总监</h3>
+                    </div>
+                    <div class="w-all fl fs-14 ftc-000000 line-h22 m-t-50 fu_hidden"> 这里放优秀教师的介绍这里放优秀教师的介绍这里放优秀教师的介绍这里放优秀教师的介绍，或者个人著名言论，或者其他的文字介绍。这里放优秀教师的介绍，或者个人著名言论，或者其他的文字介绍。这里放优秀教师的介绍，或者个人著名言论，或者其他的文字介绍。 </div>
+                </li>
+                <div class="clear"></div>
+            </ul>
+            <!--分割线 start-->
+            <div class="w-main m-auto hg-60"></div>
+            <!--分割线 start-->
+        </div>
+        <!--名师团队 end-->
+    </div>
+    <!--web home main-body end-->
+
+    <!--web footer start-->
+
+</div>
+<script>
+    $(document).ready(function(){
+        var w = parseInt(($(window).width()-1200)/2);
+        $(".qlban_ad").css("right",w)
+    });
+
+</script>
 </body>
 </html>
