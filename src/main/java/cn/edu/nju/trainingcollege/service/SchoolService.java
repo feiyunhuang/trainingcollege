@@ -15,4 +15,5 @@ public interface SchoolService {
     List<TeacherEntity> findAllTeacher(String schoolid);
 
     void addclass(String classname,String schoolid,String timeaweek,int week,int classnum,int studentaclass,double price,int teacherid,String daytime,String begindate,String description);
+
 }

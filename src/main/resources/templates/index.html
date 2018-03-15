@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <title>TrainingCollege首页</title>
 
-    <link rel="stylesheet" href="../../static/css/qfbase.css" th:href="@{/css/qfbase.css}">
-    <link rel="stylesheet" href="css/ql_index.css" th:href="@{/css/ql_index.css}">
-    <script type="text/javascript" src="js/jquery-1.11.3.min.js" th:src="@{js/jquery.min.js}"></script>
+    <link rel="stylesheet" href="../static/css/qfbase.css" th:href="@{/css/qfbase.css}">
+    <link rel="stylesheet" href="../static/css/ql_index.css" th:href="@{/css/ql_index.css}">
+    <script type="text/javascript" src="../static/js/jquery-1.11.3.min.js" th:src="@{js/jquery-1.11.3.min.js}"></script>
 <body>
 <!--web-top start-->
 <div class="w-all w-minw bd-sd-b hg-45">
@@ -250,64 +250,18 @@
                 <a href="课程列表页面.html" class="fr fs-14 ftc-000000 line-h50">查看更多></a> </div>
             <!--title end-->
         </div>
+
         <div class="w-main m-auto">
             <ul class="home_calss w-1224 ovhidden">
-                <li class="w-280 m-l-13 m-r-13 bg-c-ffffff m-t-8 m-b-23 fl"> <a href="课程详情.html" class="dsblock w-280 hg-200 ovhidden ps-r"> <img src="pics/12.jpg" alt=""/> </a>
+
+                <li class="w-280 m-l-13 m-r-13 bg-c-ffffff m-t-8 m-b-23 fl" th:each="class : ${classes}"> <a href="课程详情.html" class="dsblock w-280 hg-200 ovhidden ps-r"> <img th:src="@{/pics/12.jpg}" src="pics/12.jpg" alt=""/> </a>
                     <div class="w-255 p-l-10 p-r-15 fl">
                         <div class="home_calsstxt w-155 fl">
-                            <h3 class="w-all fs-16 ftc-000000 line-h32  one_hidden  m-t-6 fl">高中数学提高班高中数学提高班</h3>
-                            <span class="dsblock w-all fs-14 ftc-ff0000 line-h32 fl">班   容：3人开班</span> </div>
+                            <h3 class="w-all fs-16 ftc-000000 line-h32  one_hidden  m-t-6 fl" th:text="${class.name}">高中数学提高班高中数学提高班</h3>
+                            <span class="dsblock w-all fs-14 ftc-ff0000 line-h32 fl" th:text="'一共有'+${class.classnum}+'个班级'">班   容：3人开班</span> </div>
                         <a href="课程详情.html" class="dsblock ql_icon hg-34 line-h34 fs-14 ftc-ffffff m-t-22 ql_h_btnfr w-86 text-c fr">立即参入</a> </div>
                 </li>
-                <li class="w-280 m-l-13 m-r-13 bg-c-ffffff m-t-8 m-b-23 fl"> <a href="课程详情.html" class="dsblock w-280 hg-200 ovhidden ps-r"> <img src="pics/12.jpg" alt=""/> </a>
-                    <div class="w-255 p-l-10 p-r-15 fl">
-                        <div class="home_calsstxt w-155 fl">
-                            <h3 class="w-all fs-16 ftc-000000 line-h32  one_hidden  m-t-6 fl">高中数学提高班高中数学提高班</h3>
-                            <span class="dsblock w-all fs-14 ftc-ff0000 line-h32 fl">班   容：3人开班</span> </div>
-                        <a href="课程详情.html" class="dsblock ql_icon hg-34 line-h34 fs-14 ftc-ffffff m-t-22 ql_h_btnfr w-86 text-c fr">免费体验</a> </div>
-                </li>
-                <li class="w-280 m-l-13 m-r-13 bg-c-ffffff m-t-8 m-b-23 fl"> <a href="课程详情.html" class="dsblock w-280 hg-200 ovhidden ps-r"> <img src="pics/12.jpg" alt=""/> </a>
-                    <div class="w-255 p-l-10 p-r-15 fl">
-                        <div class="home_calsstxt w-155 fl">
-                            <h3 class="w-all fs-16 ftc-000000 line-h32  one_hidden  m-t-6 fl">高中数学提高班高中数学提高班</h3>
-                            <span class="dsblock w-all fs-14 ftc-ff0000 line-h32 fl">班   容：3人开班</span> </div>
-                        <a href="课程详情.html" class="dsblock ql_icon hg-34 line-h34 fs-14 ftc-ffffff m-t-22 ql_h_btnfr w-86 text-c fr">免费体验</a> </div>
-                </li>
-                <li class="w-280 m-l-13 m-r-13 bg-c-ffffff m-t-8 m-b-23 fl"> <a href="课程详情.html" class="dsblock w-280 hg-200 ovhidden ps-r"> <img src="pics/12.jpg" alt=""/> </a>
-                    <div class="w-255 p-l-10 p-r-15 fl">
-                        <div class="home_calsstxt w-155 fl">
-                            <h3 class="w-all fs-16 ftc-000000 line-h32  one_hidden  m-t-6 fl">高中数学提高班高中数学提高班</h3>
-                            <span class="dsblock w-all fs-14 ftc-ff0000 line-h32 fl">班   容：3人开班</span> </div>
-                        <a href="课程详情.html" class="dsblock ql_icon hg-34 line-h34 fs-14 ftc-ffffff m-t-22 ql_h_btnfr w-86 text-c fr">免费体验</a> </div>
-                </li>
-                <li class="w-280 m-l-13 m-r-13 bg-c-ffffff m-t-8 m-b-23 fl"> <a href="课程详情.html" class="dsblock w-280 hg-200 ovhidden ps-r"> <img src="pics/12.jpg" alt=""/> </a>
-                    <div class="w-255 p-l-10 p-r-15 fl">
-                        <div class="home_calsstxt w-155 fl">
-                            <h3 class="w-all fs-16 ftc-000000 line-h32  one_hidden  m-t-6 fl">高中数学提高班高中数学提高班</h3>
-                            <span class="dsblock w-all fs-14 ftc-ff0000 line-h32 fl">班   容：3人开班</span> </div>
-                        <a href="课程详情.html" class="dsblock ql_icon hg-34 line-h34 fs-14 ftc-ffffff m-t-22 ql_h_btnfr w-86 text-c fr">免费体验</a> </div>
-                </li>
-                <li class="w-280 m-l-13 m-r-13 bg-c-ffffff m-t-8 m-b-23 fl"> <a href="课程详情.html" class="dsblock w-280 hg-200 ovhidden ps-r"> <img src="pics/12.jpg" alt=""/> </a>
-                    <div class="w-255 p-l-10 p-r-15 fl">
-                        <div class="home_calsstxt w-155 fl">
-                            <h3 class="w-all fs-16 ftc-000000 line-h32  one_hidden  m-t-6 fl">高中数学提高班高中数学提高班</h3>
-                            <span class="dsblock w-all fs-14 ftc-ff0000 line-h32 fl">班   容：3人开班</span> </div>
-                        <a href="课程详情.html" class="dsblock ql_icon hg-34 line-h34 fs-14 ftc-ffffff m-t-22 ql_h_btnfr w-86 text-c fr">免费体验</a> </div>
-                </li>
-                <li class="w-280 m-l-13 m-r-13 bg-c-ffffff m-t-8 m-b-23 fl"> <a href="课程详情.html" class="dsblock w-280 hg-200 ovhidden ps-r"> <img src="pics/12.jpg" alt=""/> </a>
-                    <div class="w-255 p-l-10 p-r-15 fl">
-                        <div class="home_calsstxt w-155 fl">
-                            <h3 class="w-all fs-16 ftc-000000 line-h32  one_hidden  m-t-6 fl">高中数学提高班高中数学提高班</h3>
-                            <span class="dsblock w-all fs-14 ftc-ff0000 line-h32 fl">班   容：3人开班</span> </div>
-                        <a href="课程详情.html" class="dsblock ql_icon hg-34 line-h34 fs-14 ftc-ffffff m-t-22 ql_h_btnfr w-86 text-c fr">免费体验</a> </div>
-                </li>
-                <li class="w-280 m-l-13 m-r-13 bg-c-ffffff m-t-8 m-b-23 fl"> <a href="课程详情.html" class="dsblock w-280 hg-200 ovhidden ps-r"> <img src="pics/12.jpg" alt=""/> </a>
-                    <div class="w-255 p-l-10 p-r-15 fl">
-                        <div class="home_calsstxt w-155 fl">
-                            <h3 class="w-all fs-16 ftc-000000 line-h32  one_hidden  m-t-6 fl">高中数学提高班高中数学提高班</h3>
-                            <span class="dsblock w-all fs-14 ftc-ff0000 line-h32 fl">班   容：3人开班</span> </div>
-                        <a href="课程详情.html" class="dsblock ql_icon hg-34 line-h34 fs-14 ftc-ffffff m-t-22 ql_h_btnfr w-86 text-c fr">免费体验</a> </div>
-                </li>
+
                 <div class="clear"></div>
             </ul>
         </div>
@@ -329,36 +283,19 @@
         </div>
         <div class="w-main m-auto">
             <ul class="home_tearch w-main ovhidden">
-                <li>
-                    <div class="h_tea_img w-120"> <a href="讲师详情.html" class="dsblock"><img src="pics/13.png" alt=""/></a>
-                        <p class="w-all fl fs-14 ft-w-b ftc-000000 text-c line-h30">齐峰</p>
+
+                <li th:each="teacher : ${teachers}">
+                    <div class="h_tea_img w-120"> <a href="讲师详情.html" class="dsblock"><img th:src="@{/pics/13.jpg}" src="pics/13.png" alt=""/></a>
+                        <p class="w-all fl fs-14 ft-w-b ftc-000000 text-c line-h30"  th:text="${teacher.name}">齐峰</p>
                     </div>
+
                     <div class="w-200 fl">
-                        <h3 class="fs-14 fl ftc-000000 line-h22">疯狂老师硅谷级名师</h3>
-                        <h3 class="fs-14 fl ftc-000000 line-h22">疯狂老师金宗奖运营总监</h3>
+                        <h3 class="fs-14 fl ftc-000000 line-h22"  th:text="${teacher.description}">疯狂老师硅谷级名师</h3>
                     </div>
-                    <div class="w-all fl fs-14 ftc-000000 line-h22 m-t-50 fu_hidden"> 这里放优秀教师的介绍这里放优秀教师的介绍这里放优秀教师的介绍这里放优秀教师的介绍，或者个人著名言论，或者其他的文字介绍。这里放优秀教师的介绍，或者个人著名言论，或者其他的文字介绍。这里放优秀教师的介绍，或者个人著名言论，或者其他的文字介绍。 </div>
+
+
                 </li>
-                <li>
-                    <div class="h_tea_img w-120"> <a href="讲师详情.html" class="dsblock"><img src="pics/13.png" alt=""/></a>
-                        <p class="w-all fl fs-14 ft-w-b ftc-000000 text-c line-h30">齐峰</p>
-                    </div>
-                    <div class="w-200 fl">
-                        <h3 class="fs-14 fl ftc-000000 line-h22">疯狂老师硅谷级名师</h3>
-                        <h3 class="fs-14 fl ftc-000000 line-h22">疯狂老师金宗奖运营总监</h3>
-                    </div>
-                    <div class="w-all fl fs-14 ftc-000000 line-h22 m-t-50 fu_hidden"> 这里放优秀教师的介绍这里放优秀教师的介绍这里放优秀教师的介绍这里放优秀教师的介绍，或者个人著名言论，或者其他的文字介绍。这里放优秀教师的介绍，或者个人著名言论，或者其他的文字介绍。这里放优秀教师的介绍，或者个人著名言论，或者其他的文字介绍。 </div>
-                </li>
-                <li>
-                    <div class="h_tea_img w-120"> <a href="讲师详情.html" class="dsblock"><img src="pics/13.png" alt=""/></a>
-                        <p class="w-all fl fs-14 ft-w-b ftc-000000 text-c line-h30">齐峰</p>
-                    </div>
-                    <div class="w-200 fl">
-                        <h3 class="fs-14 fl ftc-000000 line-h22">疯狂老师硅谷级名师</h3>
-                        <h3 class="fs-14 fl ftc-000000 line-h22">疯狂老师金宗奖运营总监</h3>
-                    </div>
-                    <div class="w-all fl fs-14 ftc-000000 line-h22 m-t-50 fu_hidden"> 这里放优秀教师的介绍这里放优秀教师的介绍这里放优秀教师的介绍这里放优秀教师的介绍，或者个人著名言论，或者其他的文字介绍。这里放优秀教师的介绍，或者个人著名言论，或者其他的文字介绍。这里放优秀教师的介绍，或者个人著名言论，或者其他的文字介绍。 </div>
-                </li>
+
                 <div class="clear"></div>
             </ul>
             <!--分割线 start-->

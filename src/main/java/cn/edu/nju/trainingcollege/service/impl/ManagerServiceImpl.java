@@ -1,15 +1,16 @@
 package cn.edu.nju.trainingcollege.service.impl;
 
-import cn.edu.nju.trainingcollege.dao.ManagerRepository;
-import cn.edu.nju.trainingcollege.dao.RegisterApprovalRepository;
-import cn.edu.nju.trainingcollege.dao.SchoolRepository;
+import cn.edu.nju.trainingcollege.dao.*;
+import cn.edu.nju.trainingcollege.entity.ClassEntity;
 import cn.edu.nju.trainingcollege.entity.RegisterApprovalEntity;
 import cn.edu.nju.trainingcollege.entity.SchoolEntity;
+import cn.edu.nju.trainingcollege.entity.TeacherEntity;
 import cn.edu.nju.trainingcollege.service.MailService;
 import cn.edu.nju.trainingcollege.service.ManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,13 +20,17 @@ public class ManagerServiceImpl implements ManagerService {
     private final RegisterApprovalRepository registerApprovalRepository;
     private final SchoolRepository schoolRepository;
     private final MailService mailService;
+    private final ClassRepository classRepository;
+    private final TeacherRepository teacherRepository;
 
     @Autowired
-    public ManagerServiceImpl(ManagerRepository managerRepository, RegisterApprovalRepository registerApprovalRepository, SchoolRepository schoolRepository, MailService mailService) {
+    public ManagerServiceImpl(ManagerRepository managerRepository, RegisterApprovalRepository registerApprovalRepository, SchoolRepository schoolRepository, MailService mailService, ClassRepository classRepository, TeacherRepository teacherRepository) {
         this.managerRepository = managerRepository;
         this.registerApprovalRepository = registerApprovalRepository;
         this.schoolRepository = schoolRepository;
         this.mailService = mailService;
+        this.classRepository = classRepository;
+        this.teacherRepository = teacherRepository;
     }
 
     @Override
@@ -69,5 +74,28 @@ public class ManagerServiceImpl implements ManagerService {
     public List<SchoolEntity> getAllSchools() {
         return schoolRepository.findAll();
     }
+
+    @Override
+    public List<ClassEntity> getEightHotClass() {
+
+        List<ClassEntity> classes=classRepository.findAll();
+        List<ClassEntity> res=new ArrayList<>();
+        for(int i=0;i<8;i++){
+            res.add(classes.get(i));
+        }
+        return res;
+
+    }
+
+    @Override
+    public List<TeacherEntity> getThreeHotTeacher() {
+        List<TeacherEntity> teachers=teacherRepository.findAll();
+        List<TeacherEntity> res=new ArrayList<>();
+        for(int i=0;i<3;i++){
+            res.add(teachers.get(i));
+        }
+        return res;
+    }
+
 
 }
