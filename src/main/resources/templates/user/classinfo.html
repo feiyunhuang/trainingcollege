@@ -6,10 +6,10 @@
     <meta name="keywords" content="齐峰教育">
     <meta name="description" content="齐峰教育">
     <meta name="author" content="山东商讯在线 http://www.sdsoon.com/">
-    <link rel="stylesheet" href="../../static/css/qfbase.css">
+    <link rel="stylesheet" href="../../static/css/qfbase.css" th:href="@{/css/qfbase.css}">
     <!--齐峰的共有样式-->
-    <script type="text/javascript" src="../../static/js/jquery.min.js"></script>
-    <script type="text/javascript" src="../../static/js/qlclass.pl.js"></script>
+    <script type="text/javascript" src="../../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+    <script type="text/javascript" src="../../static/js/qlclass.pl.js" th:src="@{/js/qlclass.pl.js}"></script>
 <body>
 <!--web-top start-->
 <div class="w-all w-minw bd-sd-b hg-45">
@@ -202,7 +202,7 @@
                             </dl>
                             <dl>
                                 <dt><a href="#">英语 ></a></dt>
-                                <dd> <a class="ui-link" href="#">英语一</a><span>|</span> <a class="ui-link" href="#">英语二</a><span>  </dd>
+                                <dd> <a class="ui-link" href="#">英语一</a><span>|</span> <a class="ui-link" href="#">英语二</a></dd>
                             </dl>
                             <div class="clr"></div>
                         </div>
@@ -233,20 +233,20 @@
     <div class="w-main m-auto ovhidden">
         <div class="w-main m-auto bg-c-ffffff ovhidden">
             <!--left img start-->
-            <div class="w-450 hg-338 fl"> <img src="../../static/pics/calsscon.jpg" width="450" height="338" alt=""/> </div>
+            <div class="w-450 hg-338 fl"> <img th:src="@{/pics/calsscon.jpg}" src="../../static/pics/calsscon.jpg" width="450" height="338" alt=""/> </div>
             <!--left img end-->
             <!--right info start-->
             <div class="w-680 hg-338 m-l-40 ovhidden ps-r fl">
-                <h3 class="w-all fs-24 ftc-000000 m-t-15 m-b-10 line-h36 fl">中小学金牌新概念英语1、2册连读【升级版】</h3>
+                <h3 class="w-all fs-24 ftc-000000 m-t-15 m-b-10 line-h36 fl" th:text="${class.name}"></h3>
                 <!--info right start-->
                 <div class="w-all fl">
                     <ul class="con_rig_class">
-                        <li class="w-all fs-14 ftc-000000 line-h40 m-b-10 fl">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：<span class="fs-24 ftc-e9511b">￥1300</span><del class="fs-14 ftc-000000 line-h40 m-l-24">原价：￥1580</del></li>
-                        <li class="w-all fs-14 ftc-000000 line-h28 fl">课&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时：32</li>
-                        <li class="w-all fs-14 ftc-000000 line-h28 fl">班&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级：3人开班</li>
-                        <li class="w-all fs-14 ftc-000000 line-h28 fl">备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注：</li>
-                        <li class="w-all fs-14 ftc-000000 line-h28 fl">适用学员：初中一年级</li>
-                        <li class="w-all fs-14 ftc-000000 line-h28 fl">开班规律：循环开班</li>
+                        <li class="w-all fs-14 ftc-000000 line-h40 m-b-10 fl">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：<span class="fs-24 ftc-e9511b" th:text="'￥'+${class.price}">￥1300</span></li>
+                        <li class="w-all fs-14 ftc-000000 line-h28 fl" th:text="'开设机构：'+${class.schoolname}"></li>
+                        <li class="w-all fs-14 ftc-000000 line-h28 fl" th:text="'老&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;师：'+${class.teachername}"></li>
+                        <li class="w-all fs-14 ftc-000000 line-h28 fl" th:text="'课&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时：'+${class.week}+'周'"></li>
+                        <li class="w-all fs-14 ftc-000000 line-h28 fl" th:text="'班&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级：'+${class.classnum}+'个'"></li>
+                        <li class="w-all fs-14 ftc-000000 line-h28 fl" th:text="'班级人数：'+${class.studentaclass}"></li>
                         <div class="claer"></div>
                     </ul>
                 </div>
@@ -266,11 +266,20 @@
             <!--课程总览 start-->
             <div class="w-1140 p-l-30 p-r-30 bg-c-ffffff p-b-30 ovhidden">
                 <h3 class="fs-16 ft-w-b ftc-e9511b line-26 p-l-15 m-t-15 m-b-15 line_h3 fl">课程介绍</h3>
-                <div class="w-1115 p-l-15 fs-16 line-h26 ftc-636363 fl">针对初一年级学生，根据英语课程，同步并强化提升重要知识点和常见典型题目，做到及时复习，有效的夯实基础。youwin独特方法，帮学员扫清学习障碍。1.帮助学生构建属于自己的个性化学习方案 2.课前精细备课，制定完整教学计划 3.我们承诺当堂课满分过关，不满意不计费 4.每次课结束后会有作业，帮助巩固吸收学习内容。每月进行月考，检测知识学习情况 。 <br/>
+                <div class="w-1115 p-l-15 fs-16 line-h26 ftc-636363 fl" th:text="${class.description}"><br/>
                     <br/>
                 </div>
+
+                <h3 class="fs-16 ft-w-b ftc-e9511b line-26 p-l-15 m-t-15 m-b-15 line_h3 fl">开课时间</h3>
+                <div class="w-1115 p-l-15 fs-16 line-h26 ftc-636363 fl" th:text="${class.begintime}+'起'"><br/>
+                    <br/>
+                </div>
+                <div class="w-1115 p-l-15 fs-16 line-h26 ftc-636363 fl" th:text="${class.daytime}"><br/>
+                    <br/>
+                </div>
+
                 <h3 class="fs-16 ft-w-b ftc-e9511b line-26 p-l-15 m-t-15 m-b-15 line_h3 fl">名师简介</h3>
-                <div class="w-1115 p-l-15 fs-16 line-h26 ftc-636363 fl">根据基础知识的理解加深对题目的理解，达到理解题型和题干信息相匹配。<br/>
+                <div class="w-1115 p-l-15 fs-16 line-h26 ftc-636363 fl" th:text="${class.teacherdescription}"><br/>
                     <br/>
                 </div>
                 </div>

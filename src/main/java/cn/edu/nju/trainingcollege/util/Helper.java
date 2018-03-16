@@ -101,9 +101,26 @@ public class Helper {
         return ""+mon+tue+wed+thu+fri+sat+sun;
     }
 
+    public static String daytostr(String day){
+        List<String> week=new ArrayList<>();
+        week.add("周一");
+        week.add("周二");
+        week.add("周三");
+        week.add("周四");
+        week.add("周五");
+        week.add("周六");
+        week.add("周日");
+        String str=" ";
+        for(int i=0;i<7;i++){
+            if(day.charAt(i)=='1'){
+                str=str+" "+week.get(i);
+            }
+        }
+        return str;
+    }
 
     public static void main(String[] args) throws ParseException {
-        String date="03/14/2018";
-        System.out.println(strtostr(date));
+        String date="1000110";
+        System.out.println(daytostr(date));
     }
 }

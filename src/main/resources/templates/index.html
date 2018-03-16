@@ -254,12 +254,12 @@
         <div class="w-main m-auto">
             <ul class="home_calss w-1224 ovhidden">
 
-                <li class="w-280 m-l-13 m-r-13 bg-c-ffffff m-t-8 m-b-23 fl" th:each="class : ${classes}"> <a href="课程详情.html" class="dsblock w-280 hg-200 ovhidden ps-r"> <img th:src="@{/pics/12.jpg}" src="pics/12.jpg" alt=""/> </a>
+                <li class="w-280 m-l-13 m-r-13 bg-c-ffffff m-t-8 m-b-23 fl" th:each="class : ${classes}"> <a th:href="@{/user/classinfo(id=${class.id})}" class="dsblock w-280 hg-200 ovhidden ps-r"> <img th:src="@{/pics/12.jpg}" src="pics/12.jpg" alt=""/> </a>
                     <div class="w-255 p-l-10 p-r-15 fl">
                         <div class="home_calsstxt w-155 fl">
                             <h3 class="w-all fs-16 ftc-000000 line-h32  one_hidden  m-t-6 fl" th:text="${class.name}">高中数学提高班高中数学提高班</h3>
                             <span class="dsblock w-all fs-14 ftc-ff0000 line-h32 fl" th:text="'一共有'+${class.classnum}+'个班级'">班   容：3人开班</span> </div>
-                        <a href="课程详情.html" class="dsblock ql_icon hg-34 line-h34 fs-14 ftc-ffffff m-t-22 ql_h_btnfr w-86 text-c fr">立即参入</a> </div>
+                        <a th:href="@{/user/classinfo(id=${class.id})}" class="dsblock ql_icon hg-34 line-h34 fs-14 ftc-ffffff m-t-22 ql_h_btnfr w-86 text-c fr">立即参入</a> </div>
                 </li>
 
                 <div class="clear"></div>

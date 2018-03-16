@@ -1,10 +1,12 @@
 package cn.edu.nju.trainingcollege.controller;
 
 
+import cn.edu.nju.trainingcollege.entity.ClassEntity;
 import cn.edu.nju.trainingcollege.entity.UserEntity;
 import cn.edu.nju.trainingcollege.entity.UserInfoEntity;
 import cn.edu.nju.trainingcollege.service.UserService;
 import cn.edu.nju.trainingcollege.util.Helper;
+import cn.edu.nju.trainingcollege.vo.ClassInfoVo;
 import cn.edu.nju.trainingcollege.vo.MemberInfoVo;
 import cn.edu.nju.trainingcollege.vo.PersonInfoVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,6 +84,15 @@ public class UserController {
         return "user/memberinfo";
     }
 
+
+    @RequestMapping("/classinfo")
+    public String classinfo(int id,Model mode,HttpSession session) {
+
+        ClassInfoVo classInfo =userService.getClassInfo(id);
+        mode.addAttribute("class",classInfo);
+
+        return "user/classinfo";
+    }
 
     @RequestMapping({"/", "/login" , "/index"})
     public String login() {
