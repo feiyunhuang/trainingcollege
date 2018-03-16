@@ -251,7 +251,8 @@
                     </ul>
                 </div>
                 <!--info right end-->
-                <div class="standard ps-a pa-b-22"> <a class="dsblock w-140 hg-46 text-c line-h46 bg-c-e9511b ftc-ffffff fs-18 bd-rd-6 m-r-28 fl" href="#" >创建订单</a> </div>
+                <div class="standard ps-a pa-b-22"> <a class="dsblock w-140 hg-46 text-c line-h46 bg-c-e9511b ftc-ffffff fs-18 bd-rd-6 m-r-28 fl" href="#" >选班级加入</a>
+                 <a class="dsblock w-140 hg-46 text-c line-h46 bg-c-e9511b ftc-ffffff fs-18 bd-rd-6 m-r-28 fl" href="#" >不选班级加入</a> </div>
             </div>
             <!--right info end-->
         </div>
@@ -271,7 +272,7 @@
                 </div>
 
                 <h3 class="fs-16 ft-w-b ftc-e9511b line-26 p-l-15 m-t-15 m-b-15 line_h3 fl">开课时间</h3>
-                <div class="w-1115 p-l-15 fs-16 line-h26 ftc-636363 fl" th:text="${class.begintime}+'起'"><br/>
+                <div class="w-1115 p-l-15 fs-16 line-h26 ftc-636363 fl" th:text="${class.begintime}+'起，'+${class.timeaweek}"><br/>
                     <br/>
                 </div>
                 <div class="w-1115 p-l-15 fs-16 line-h26 ftc-636363 fl" th:text="${class.daytime}"><br/>
