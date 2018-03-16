@@ -85,38 +85,39 @@
 
         <div class="row placeholders">
         </div>
-        <h2 class="sub-header">生成订单</h2>
+        <h2 class="sub-header">生成订单（不选班级）</h2>
 
         <div class="person_info">
-            <h3>个人信息：</h3>
+            <h3>订单信息：</h3>
             <table class="table table-bordered table-striped">
                 <tr>
-                <tr>
-                    <th>订单编号</th>
-                    <td th:text="${personinfo.id}">1</td>
-                </tr>
+
                 <tr>
                     <th>课程名</th>
-                    <td th:text="${personinfo.mail}">高等数学</td>
+                    <td th:text="${order.classname}">高等数学</td>
                 </tr>
                 <tr>
                     <th>单价</th>
-                    <td th:text="${personinfo.name}">1200.0</td>
+                    <td th:text="${order.price}">1200.0</td>
+                </tr>
+                <tr>
+                    <th>会员id</th>
+                    <td th:text="${order.memberid}">1</td>
                 </tr>
                 <tr>
                     <th>会员等级</th>
-                    <td th:text="${(personinfo.memberState)}">1</td>
+                    <td th:text="${order.memberlevel}">1</td>
                 </tr>
                 <tr>
                     <th>可享受折扣</th>
-                    <td th:text="${personinfo.sex}">98折</td>
+                    <td th:text="${order.discount}+'折'">98折</td>
                 </tr>
                 <tr>
                     <th>已绑定网银</th>
-                    <td th:text="${personinfo.phone+'（已通过认证）'}">18994360017</td>
+                    <td th:text="${order.phone}">18994360017</td>
                 </tr>
                 <th>当前可用折扣券</th>
-                <td th:text="${(personinfo.registdate)}">0</td>
+                <td th:text="${order.coupon}">0</td>
                 </tr>
                 </tr>
             </table>
@@ -148,12 +149,18 @@
             </div>
 
 
+            <label class="col-sm-2 control-label"></label>
 
             <label  class="col-sm-2 control-label"></label>
             <div class="col-sm-4">
-                <button class="btn btn-lg btn-primary btn-block" type="submit">前往支付</button>
+                <button class="btn btn-lg btn-success btn-block" type="submit">前往支付</button>
             </div>
         </form>
+
+        <label  class="col-sm-2 control-label"></label>
+        <div class="col-sm-4">
+            <a th:href="@{/index}"><button class="btn btn-lg btn-primary btn-block">生成订单，等等再付</button></a>
+        </div>
 
     </div>
 </div>

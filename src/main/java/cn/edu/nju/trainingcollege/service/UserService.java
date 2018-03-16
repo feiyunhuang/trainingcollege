@@ -6,6 +6,7 @@ import cn.edu.nju.trainingcollege.entity.UserEntity;
 import cn.edu.nju.trainingcollege.entity.UserInfoEntity;
 import cn.edu.nju.trainingcollege.vo.ClassInfoVo;
 import cn.edu.nju.trainingcollege.vo.MemberInfoVo;
+import cn.edu.nju.trainingcollege.vo.OrderVo;
 
 public interface UserService {
 
@@ -20,4 +21,6 @@ public interface UserService {
     MemberInfoVo getMemberInfo(int id);
 
     ClassInfoVo getClassInfo(int id);
+
+    OrderVo generateorder(int classid,int userid);
 }

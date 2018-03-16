@@ -8,6 +8,7 @@ import cn.edu.nju.trainingcollege.util.Helper;
 import cn.edu.nju.trainingcollege.util.MD5Util;
 import cn.edu.nju.trainingcollege.vo.ClassInfoVo;
 import cn.edu.nju.trainingcollege.vo.MemberInfoVo;
+import cn.edu.nju.trainingcollege.vo.OrderVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -114,6 +115,25 @@ public class UserServiceImpl implements UserService {
         classInfoVo.setTeacherdescription(teacherEntity.getDescription());
 
         return classInfoVo;
+    }
+
+    @Override
+    public OrderVo generateorder(int classid, int userid) {
+        ClassEntity classEntity= classRepository.getOne(classid);
+        MemberEntity memberEntity=memberRepository.getOne(userid);
+        UserInfoEntity userInfoEntity=userInfoRepository.getOne(userid);
+
+        Helper helper=new Helper();
+        OrderVo order=new OrderVo();
+        order.setClassname(classEntity.getName());
+        order.setPrice(classEntity.getPrice());
+        order.setMemberid(userid);
+        order.setMemberlevel(memberEntity.getLevel());
+        order.setDiscount(helper.getDiscount(memberEntity.getAccumulate()));
+        order.setPhone(userInfoEntity.getPhonenum());
+        order.setCoupon(memberEntity.getCoupon());
+
+        return order;
     }
 
 

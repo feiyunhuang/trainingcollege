@@ -8,7 +8,9 @@ import cn.edu.nju.trainingcollege.service.UserService;
 import cn.edu.nju.trainingcollege.util.Helper;
 import cn.edu.nju.trainingcollege.vo.ClassInfoVo;
 import cn.edu.nju.trainingcollege.vo.MemberInfoVo;
+import cn.edu.nju.trainingcollege.vo.OrderVo;
 import cn.edu.nju.trainingcollege.vo.PersonInfoVo;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -86,13 +88,24 @@ public class UserController {
 
 
     @RequestMapping("/classinfo")
-    public String classinfo(int id,Model mode,HttpSession session) {
+    public String classinfo(int id,Model model,HttpSession session) {
 
         ClassInfoVo classInfo =userService.getClassInfo(id);
-        mode.addAttribute("class",classInfo);
+        model.addAttribute("class",classInfo);
 
         return "user/classinfo";
     }
+
+    @RequestMapping("/generateunchooseorder")
+    public  String generateunchooseorder(int id, Model model,HttpSession session){
+        int userid= (int) session.getAttribute("userid");
+
+        OrderVo order=userService.generateorder(id,userid);
+        model.addAttribute("order",order);
+        return "user/generateunchooseorder";
+
+    }
+
 
     @RequestMapping({"/", "/login" , "/index"})
     public String login() {
