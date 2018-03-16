@@ -98,11 +98,16 @@ public class UserController {
 
     @RequestMapping("/generateunchooseorder")
     public  String generateunchooseorder(int id, Model model,HttpSession session){
-        int userid= (int) session.getAttribute("userid");
+        if(session.getAttribute("userid")==null)
+        {return "index";}
+        else {
+            int userid = (int) session.getAttribute("userid");
 
-        OrderVo order=userService.generateorder(id,userid);
-        model.addAttribute("order",order);
-        return "user/generateunchooseorder";
+            OrderVo order = userService.generateorder(id, userid);
+            session.setAttribute("classid",id);
+            model.addAttribute("order", order);
+            return "user/generateunchooseorder";
+        }
 
     }
 

@@ -53,12 +53,13 @@ CREATE TABLE `class` (
   `id` int(11) NOT NULL,
   `name` varchar(50) COLLATE utf8_bin NOT NULL,
   `schoolid` varchar(10) COLLATE utf8_bin NOT NULL,
-  `timeaweek` int(11) NOT NULL,
+  `timeaweek` varchar(10) COLLATE utf8_bin NOT NULL,
   `week` int(11) NOT NULL,
   `classnum` int(11) NOT NULL,
   `studentaclass` int(11) NOT NULL,
   `price` double NOT NULL,
   `teacherid` int(11) NOT NULL,
+  `daytime` varchar(50) COLLATE utf8_bin NOT NULL,
   `registdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `begindate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `description` varchar(255) COLLATE utf8_bin NOT NULL,
@@ -72,7 +73,7 @@ CREATE TABLE `class` (
 
 LOCK TABLES `class` WRITE;
 /*!40000 ALTER TABLE `class` DISABLE KEYS */;
-INSERT INTO `class` VALUES (1,'大学数学','XVQDFKN',2,10,3,5,2000,1,'2018-03-14 03:12:59','2018-03-14 03:12:59','这是一节黄老师的强化课');
+INSERT INTO `class` VALUES (1,'大学数学','XVQDFKN','0000011',10,3,10,1000,1,'10:00-12:00','2018-03-14 16:59:16','2018-03-14 16:59:16','黄老师授课'),(2,'德育课程','XVQDFKN','0000001',20,1,20,1500,2,'12:00-14:00','2018-03-14 16:59:16','2018-03-14 16:59:16','惠老师授课'),(4,'高等数学','XVQDFKN','0100001',10,2,5,1500,1,'10:00-12:00','2018-03-15 03:33:04','2018-03-13 16:00:00','泰州黄老师的课'),(5,'高中生物','XVQDFKN','0000011',10,3,40,500,1,'16:00-18:00','2018-03-15 03:37:03','2018-04-19 16:00:00','生物课'),(6,'大学数学','XVQDFKN','0000011',10,3,10,1000,1,'10:00-12:00','2018-03-14 16:59:16','2018-03-14 16:59:16','黄老师授课'),(7,'德育课程','XVQDFKN','0000001',20,1,20,1500,2,'12:00-14:00','2018-03-14 16:59:16','2018-03-14 16:59:16','惠老师授课'),(8,'高等数学','XVQDFKN','0100001',10,2,5,1500,1,'10:00-12:00','2018-03-15 03:33:04','2018-03-13 16:00:00','泰州黄老师的课'),(9,'高中生物','XVQDFKN','0000011',10,3,40,500,1,'16:00-18:00','2018-03-15 03:37:03','2018-04-19 16:00:00','生物课'),(10,'大学数学','XVQDFKN','0000011',10,3,10,1000,1,'10:00-12:00','2018-03-14 16:59:16','2018-03-14 16:59:16','黄老师授课'),(11,'德育课程','XVQDFKN','0000001',20,1,20,1500,2,'12:00-14:00','2018-03-14 16:59:16','2018-03-14 16:59:16','惠老师授课'),(12,'高等数学','XVQDFKN','0100001',10,2,5,1500,1,'10:00-12:00','2018-03-15 03:33:04','2018-03-13 16:00:00','泰州黄老师的课'),(13,'高中生物','XVQDFKN','0000011',10,3,40,500,1,'16:00-18:00','2018-03-15 03:37:03','2018-04-19 16:00:00','生物课');
 /*!40000 ALTER TABLE `class` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,8 +85,10 @@ DROP TABLE IF EXISTS `classandlabel`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `classandlabel` (
+  `id` int(11) NOT NULL,
   `classid` int(11) NOT NULL,
-  `label` varchar(20) COLLATE utf8_bin NOT NULL
+  `label` varchar(20) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -116,7 +119,7 @@ CREATE TABLE `hibernate_sequence` (
 
 LOCK TABLES `hibernate_sequence` WRITE;
 /*!40000 ALTER TABLE `hibernate_sequence` DISABLE KEYS */;
-INSERT INTO `hibernate_sequence` VALUES (4);
+INSERT INTO `hibernate_sequence` VALUES (6);
 /*!40000 ALTER TABLE `hibernate_sequence` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -167,8 +170,46 @@ CREATE TABLE `member` (
 
 LOCK TABLES `member` WRITE;
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
-INSERT INTO `member` VALUES (1,0,1,0,100),(2,0,1,0,0),(3,0,1,0,0);
+INSERT INTO `member` VALUES (1,0,1,0,10),(2,0,1,0,0),(3,0,1,0,0);
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `order`
+--
+
+DROP TABLE IF EXISTS `order`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `order` (
+  `id` int(11) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `schoolid` varchar(10) COLLATE utf8_bin NOT NULL,
+  `teacherid` int(11) NOT NULL,
+  `price` double NOT NULL,
+  `num` int(11) NOT NULL,
+  `totalprice` double NOT NULL,
+  `createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `topaytime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `classbegintime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `bankaccount` varchar(20) COLLATE utf8_bin NOT NULL,
+  `usecoupon` int(11) NOT NULL,
+  `state` varchar(10) COLLATE utf8_bin NOT NULL,
+  `chooseclass` int(11) NOT NULL,
+  `firstclass` int(11) NOT NULL,
+  `secondclass` int(11) NOT NULL,
+  `thirdclass` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `order`
+--
+
+LOCK TABLES `order` WRITE;
+/*!40000 ALTER TABLE `order` DISABLE KEYS */;
+/*!40000 ALTER TABLE `order` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -236,6 +277,7 @@ DROP TABLE IF EXISTS `teacher`;
 CREATE TABLE `teacher` (
   `id` int(11) NOT NULL,
   `name` varchar(20) COLLATE utf8_bin NOT NULL,
+  `schoolid` varchar(10) COLLATE utf8_bin NOT NULL,
   `description` varchar(255) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
@@ -247,31 +289,8 @@ CREATE TABLE `teacher` (
 
 LOCK TABLES `teacher` WRITE;
 /*!40000 ALTER TABLE `teacher` DISABLE KEYS */;
-INSERT INTO `teacher` VALUES (1,'黄泽鹏','数学满分教师'),(2,'惠晗涛','德语教师');
+INSERT INTO `teacher` VALUES (1,'黄泽鹏','XVQDFKN','数学满分老师！'),(2,'惠晗涛','XVQDFKN','德语老师！'),(3,'王后雄','XVQDFKN','出了很多的辅导书！');
 /*!40000 ALTER TABLE `teacher` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `teacherandschool`
---
-
-DROP TABLE IF EXISTS `teacherandschool`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `teacherandschool` (
-  `schoolid` varchar(10) COLLATE utf8_bin NOT NULL,
-  `teacherid` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `teacherandschool`
---
-
-LOCK TABLES `teacherandschool` WRITE;
-/*!40000 ALTER TABLE `teacherandschool` DISABLE KEYS */;
-INSERT INTO `teacherandschool` VALUES ('XVQDFKN',1),('XVQDFKN',2);
-/*!40000 ALTER TABLE `teacherandschool` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -336,4 +355,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-03-14 11:13:50
+-- Dump completed on 2018-03-17  0:12:49

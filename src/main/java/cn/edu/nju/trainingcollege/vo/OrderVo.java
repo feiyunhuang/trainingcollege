@@ -8,8 +8,9 @@ public class OrderVo {
     private int discount;
     private String phone;
     private int coupon;
+    private String begindate;
 
-    public OrderVo(String classname, double price, int memberid, int memberlevel, int discount, String phone, int coupon) {
+    public OrderVo(String classname, double price, int memberid, int memberlevel, int discount, String phone, int coupon, String begindate) {
         this.classname = classname;
         this.price = price;
         this.memberid = memberid;
@@ -17,6 +18,7 @@ public class OrderVo {
         this.discount = discount;
         this.phone = phone;
         this.coupon = coupon;
+        this.begindate = begindate;
     }
 
     public OrderVo(){}
@@ -75,5 +77,13 @@ public class OrderVo {
 
     public void setCoupon(int coupon) {
         this.coupon = coupon;
+    }
+
+    public String getBegindate() {
+        return begindate;
+    }
+
+    public void setBegindate(String begindate) {
+        this.begindate = begindate;
     }
 }

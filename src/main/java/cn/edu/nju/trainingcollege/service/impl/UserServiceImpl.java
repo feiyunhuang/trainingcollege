@@ -132,7 +132,7 @@ public class UserServiceImpl implements UserService {
         order.setDiscount(helper.getDiscount(memberEntity.getAccumulate()));
         order.setPhone(userInfoEntity.getPhonenum());
         order.setCoupon(memberEntity.getCoupon());
-
+        order.setBegindate(helper.timeToDateString(classEntity.getBegindate()));
         return order;
     }
 
