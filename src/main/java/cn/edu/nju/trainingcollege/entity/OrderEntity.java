@@ -6,41 +6,41 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "order", schema = "trainingcollege", catalog = "")
+@Table(name = "trainingorder", schema = "trainingcollege", catalog = "")
 public class OrderEntity {
     private int id;
     private int userid;
     private String schoolid;
     private int teacherid;
     private double price;
-    private int num;
+    private int peoplenum;
     private double totalprice;
     private Timestamp createtime = new Timestamp(System.currentTimeMillis());
     private Timestamp topaytime = new Timestamp(System.currentTimeMillis());
     private Timestamp classbegintime=new Timestamp(System.currentTimeMillis());
     private String bankaccount;
     private int usecoupon;
-    private OrderState state;
+    private OrderState orderstate=OrderState.TOPAY;
     private int chooseclass;
     private int firstclass;
     private int secondclass;
     private int thirdclass;
 
 
-    public OrderEntity(int id, int userid, String schoolid, int teacherid, double price, int num, double totalprice, Timestamp createtime, Timestamp topaytime, Timestamp classbegintime, String bankaccount, int usecoupon, OrderState state, int chooseclass, int firstclass, int secondclass, int thirdclass) {
+    public OrderEntity(int id, int userid, String schoolid, int teacherid, double price, int peoplenum, double totalprice, Timestamp createtime, Timestamp topaytime, Timestamp classbegintime, String bankaccount, int usecoupon, OrderState orderstate, int chooseclass, int firstclass, int secondclass, int thirdclass) {
         this.id = id;
         this.userid = userid;
         this.schoolid = schoolid;
         this.teacherid = teacherid;
         this.price = price;
-        this.num = num;
+        this.peoplenum = peoplenum;
         this.totalprice = totalprice;
         this.createtime = createtime;
         this.topaytime = topaytime;
         this.classbegintime = classbegintime;
         this.bankaccount = bankaccount;
         this.usecoupon = usecoupon;
-        this.state = state;
+        this.orderstate = orderstate;
         this.chooseclass = chooseclass;
         this.firstclass = firstclass;
         this.secondclass = secondclass;
@@ -101,13 +101,13 @@ public class OrderEntity {
     }
 
     @Basic
-    @Column(name = "num",nullable = false)
-    public int getNum() {
-        return num;
+    @Column(name = "peoplenum",nullable = false)
+    public int getPeoplenum() {
+        return peoplenum;
     }
 
-    public void setNum(int num) {
-        this.num = num;
+    public void setPeoplenum(int peoplenum) {
+        this.peoplenum = peoplenum;
     }
 
     @Basic
@@ -170,13 +170,13 @@ public class OrderEntity {
     }
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "state", nullable = false, length = 10)
-    public OrderState getState() {
-        return state;
+    @Column(name = "orderstate", nullable = false, length = 10)
+    public OrderState getOrderstate() {
+        return orderstate;
     }
 
-    public void setState(OrderState state) {
-        this.state = state;
+    public void setOrderstate(OrderState orderstate) {
+        this.orderstate = orderstate;
     }
 
     @Basic

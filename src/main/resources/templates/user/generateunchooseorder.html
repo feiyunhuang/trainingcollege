@@ -129,12 +129,12 @@
             </table>
         </div>
 
-        <form class="form-horizontal" method="post" role="form" action="register.html" th:action="@{/school/addclass}">
+        <form class="form-horizontal" method="post" role="form" action="register.html" th:action="@{/user/topay}">
 
 
                 <label  class="col-sm-2 control-label">选择数量</label>
                 <div class="col-sm-1">
-                    <select class="form-control" name="classnum">
+                    <select class="form-control" name="people">
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -151,7 +151,7 @@
             <label class="col-sm-2 control-label">使用抵用券</label>
             <div class="col-sm-2">
                 <input type="text" class="form-control" id="price"
-                       name="price">
+                       name="coupon">
             </div>
 
 
@@ -160,13 +160,10 @@
             <label  class="col-sm-2 control-label"></label>
             <div class="col-sm-4">
                 <button class="btn btn-lg btn-success btn-block" type="submit">前往支付</button>
+
             </div>
         </form>
 
-        <label  class="col-sm-2 control-label"></label>
-        <div class="col-sm-4">
-            <a th:href="@{/index}"><button class="btn btn-lg btn-primary btn-block">生成订单，等等再付</button></a>
-        </div>
 
     </div>
 </div>

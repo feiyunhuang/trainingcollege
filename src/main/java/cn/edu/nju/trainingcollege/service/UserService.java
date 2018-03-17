@@ -22,5 +22,7 @@ public interface UserService {
 
     ClassInfoVo getClassInfo(int id);
 
-    OrderVo generateorder(int classid,int userid);
+    OrderVo generateordervo(int classid, int userid);
+
+    void createorder(int classid,int userid,int people,int coupon);
 }

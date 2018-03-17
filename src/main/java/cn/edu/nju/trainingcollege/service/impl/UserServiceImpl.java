@@ -12,6 +12,9 @@ import cn.edu.nju.trainingcollege.vo.OrderVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.text.ParseException;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -22,9 +25,10 @@ public class UserServiceImpl implements UserService {
     private final ClassRepository classRepository;
     private final TeacherRepository teacherRepository;
     private final SchoolRepository schoolRepository;
+    private final OrderRepository orderRepository;
 
     @Autowired
-    public UserServiceImpl(UserInfoRepository userInfoRepository, UserRepository userRepository, MemberRepository memberRepository, MailService mailService, ClassRepository classRepository, TeacherRepository teacherRepository, SchoolRepository schoolRepository) {
+    public UserServiceImpl(UserInfoRepository userInfoRepository, UserRepository userRepository, MemberRepository memberRepository, MailService mailService, ClassRepository classRepository, TeacherRepository teacherRepository, SchoolRepository schoolRepository, OrderRepository orderRepository) {
         this.userInfoRepository = userInfoRepository;
         this.userRepository = userRepository;
         this.memberRepository = memberRepository;
@@ -32,6 +36,7 @@ public class UserServiceImpl implements UserService {
         this.classRepository = classRepository;
         this.teacherRepository = teacherRepository;
         this.schoolRepository = schoolRepository;
+        this.orderRepository = orderRepository;
     }
 
     public void register(String mail, String password, String name,String phone,String sex) {
@@ -118,7 +123,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public OrderVo generateorder(int classid, int userid) {
+    public OrderVo generateordervo(int classid, int userid) {
         ClassEntity classEntity= classRepository.getOne(classid);
         MemberEntity memberEntity=memberRepository.getOne(userid);
         UserInfoEntity userInfoEntity=userInfoRepository.getOne(userid);
@@ -134,6 +139,45 @@ public class UserServiceImpl implements UserService {
         order.setCoupon(memberEntity.getCoupon());
         order.setBegindate(helper.timeToDateString(classEntity.getBegindate()));
         return order;
+    }
+
+    @Override
+    public void createorder(int classid, int userid, int people, int coupon) {
+
+        ClassEntity classEntity= classRepository.getOne(classid);
+        MemberEntity memberEntity=memberRepository.getOne(userid);
+        UserInfoEntity userInfoEntity=userInfoRepository.getOne(userid);
+
+        Helper helper=new Helper();
+        int discount=helper.getDiscount(memberEntity.getAccumulate());
+        double price=classEntity.getPrice();
+        double totalprice=(price*people)*discount/100-coupon;
+
+
+        OrderEntity order =new OrderEntity();
+        order.setUserid(userid);
+        order.setSchoolid(classEntity.getSchoolid());
+        order.setTeacherid(classEntity.getTeacherid());
+        order.setPrice(price);
+        order.setPeoplenum(people);
+        order.setTotalprice(totalprice);
+        Timestamp nowtime=new Timestamp(System.currentTimeMillis());
+        try {
+            order.setTopaytime(helper.addfifteenmin(nowtime));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        order.setClassbegintime(classEntity.getBegindate());
+        order.setBankaccount(userInfoEntity.getPhonenum());
+        order.setUsecoupon(coupon);
+        order.setChooseclass(0);
+        order.setFirstclass(0);
+        order.setSecondclass(0);
+        order.setThirdclass(0);
+
+        orderRepository.save(order);
+
+
     }
 
 

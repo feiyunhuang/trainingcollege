@@ -1,7 +1,6 @@
 package cn.edu.nju.trainingcollege.controller;
 
 
-import cn.edu.nju.trainingcollege.entity.ClassEntity;
 import cn.edu.nju.trainingcollege.entity.UserEntity;
 import cn.edu.nju.trainingcollege.entity.UserInfoEntity;
 import cn.edu.nju.trainingcollege.service.UserService;
@@ -10,7 +9,6 @@ import cn.edu.nju.trainingcollege.vo.ClassInfoVo;
 import cn.edu.nju.trainingcollege.vo.MemberInfoVo;
 import cn.edu.nju.trainingcollege.vo.OrderVo;
 import cn.edu.nju.trainingcollege.vo.PersonInfoVo;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -99,15 +97,30 @@ public class UserController {
     @RequestMapping("/generateunchooseorder")
     public  String generateunchooseorder(int id, Model model,HttpSession session){
         if(session.getAttribute("userid")==null)
-        {return "index";}
+        {return "user/login";}
         else {
             int userid = (int) session.getAttribute("userid");
 
-            OrderVo order = userService.generateorder(id, userid);
+            OrderVo order = userService.generateordervo(id, userid);
             session.setAttribute("classid",id);
             model.addAttribute("order", order);
             return "user/generateunchooseorder";
         }
+
+    }
+
+    @RequestMapping(value = "/topay", method = RequestMethod.POST)
+    public String login(Model model,HttpSession session, @RequestParam("people") int people, @RequestParam("coupon") int coupon) {
+
+        if(session.getAttribute("userid")==null||session.getAttribute("classid")==null)
+        {return "user/login";}
+        else{
+
+            int userid = (int) session.getAttribute("userid");
+            int classid=(int)session.getAttribute("classid");
+            userService.createorder(classid,userid,people,coupon);
+        }
+        return "/index";
 
     }
 

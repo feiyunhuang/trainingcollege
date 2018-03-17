@@ -94,7 +94,7 @@ public class SchoolController {
 
     @RequestMapping("/register")
     public String register(SessionStatus sessionStatus) {
-        sessionStatus.setComplete();
+//        sessionStatus.setComplete();
         return "school/register";
     }
 
