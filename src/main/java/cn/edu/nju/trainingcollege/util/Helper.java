@@ -125,6 +125,15 @@ public class Helper {
 
     }
 
+    public static Timestamp minusfourteenday(Timestamp time) throws ParseException {
+
+        time.setTime(time.getTime() - 14*24*60*60*1000);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        return Timestamp.valueOf(sdf.format(time));
+
+    }
+
 
     public static int compare_date(Timestamp dt1, Timestamp dt2) {
 
@@ -151,8 +160,11 @@ public class Helper {
     public static void main(String[] args) throws ParseException {
 
         Timestamp d1=new Timestamp(System.currentTimeMillis());
-        Timestamp d2=new Timestamp(System.currentTimeMillis());
-        System.out.println(compare_date(d1,d2));
+//        Timestamp d2=new Timestamp(System.currentTimeMillis());
+//        System.out.println(compare_date(d1,d2));
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        System.out.println(sdf.format(minusfourteenday(d1)));
 
     }
 }
