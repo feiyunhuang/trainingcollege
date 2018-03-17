@@ -24,5 +24,7 @@ public interface UserService {
 
     OrderVo generateordervo(int classid, int userid);
 
-    void createorder(int classid,int userid,int people,int coupon);
+    void createunchooseorder(int classid, int userid, int people, int coupon);
+
+    void createchooseorder(int classid,int userid,int classnum,int people,int coupon);
 }

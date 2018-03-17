@@ -142,7 +142,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void createorder(int classid, int userid, int people, int coupon) {
+    public void createunchooseorder(int classid, int userid, int people, int coupon) {
 
         ClassEntity classEntity= classRepository.getOne(classid);
         MemberEntity memberEntity=memberRepository.getOne(userid);
@@ -178,6 +178,52 @@ public class UserServiceImpl implements UserService {
         orderRepository.save(order);
 
 
+    }
+
+    @Override
+    public void createchooseorder(int classid, int userid, int classnum, int people, int coupon) {
+
+        ClassEntity classEntity= classRepository.getOne(classid);
+        MemberEntity memberEntity=memberRepository.getOne(userid);
+        UserInfoEntity userInfoEntity=userInfoRepository.getOne(userid);
+
+        Helper helper=new Helper();
+        int discount=helper.getDiscount(memberEntity.getAccumulate());
+        double price=classEntity.getPrice();
+        double totalprice=(price*people)*discount/100-coupon;
+
+
+        OrderEntity order =new OrderEntity();
+        order.setUserid(userid);
+        order.setSchoolid(classEntity.getSchoolid());
+        order.setTeacherid(classEntity.getTeacherid());
+        order.setPrice(price);
+        order.setPeoplenum(people);
+        order.setTotalprice(totalprice);
+        Timestamp nowtime=new Timestamp(System.currentTimeMillis());
+        try {
+            order.setTopaytime(helper.addfifteenmin(nowtime));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        order.setClassbegintime(classEntity.getBegindate());
+        order.setBankaccount(userInfoEntity.getPhonenum());
+        order.setUsecoupon(coupon);
+        order.setChooseclass(1);
+        order.setFirstclass(0);
+        order.setSecondclass(0);
+        order.setThirdclass(0);
+        if(classnum==1){
+            order.setFirstclass(1);
+        }
+        if(classnum==2){
+            order.setSecondclass(1);
+        }
+        if(classnum==3){
+            order.setThirdclass(1);
+        }
+
+        orderRepository.save(order);
     }
 
 

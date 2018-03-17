@@ -85,7 +85,7 @@
 
         <div class="row placeholders">
         </div>
-        <h2 class="sub-header">生成订单（不选班级）</h2>
+        <h2 class="sub-header">生成订单（选班级）</h2>
 
         <div class="person_info">
             <h3>订单信息：</h3>
@@ -129,24 +129,26 @@
             </table>
         </div>
 
-        <form class="form-horizontal" method="post" role="form" action="register.html" th:action="@{/user/topayunchoose}">
+        <form class="form-horizontal" method="post" role="form" action="register.html" th:action="@{/user/topaychoose}">
 
 
-                <label  class="col-sm-2 control-label">选择数量</label>
-                <div class="col-sm-1">
-                    <select class="form-control" name="people">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                        <option>9</option>
-                    </select>
-                </div>
+            <label  class="col-sm-2 control-label">选择班级</label>
+            <div class="col-sm-1">
+                <select class="form-control" name="class">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+            </div>
 
+            <label  class="col-sm-2 control-label">选择人数</label>
+            <div class="col-sm-1">
+                <select class="form-control" name="people">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+            </div>
 
             <label class="col-sm-2 control-label">使用抵用券</label>
             <div class="col-sm-2">

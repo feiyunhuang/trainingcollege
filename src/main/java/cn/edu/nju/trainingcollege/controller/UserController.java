@@ -109,8 +109,26 @@ public class UserController {
 
     }
 
-    @RequestMapping(value = "/topay", method = RequestMethod.POST)
-    public String login(Model model,HttpSession session, @RequestParam("people") int people, @RequestParam("coupon") int coupon) {
+
+    @RequestMapping("/generatechooseorder")
+    public  String generatechooseorder(int id, Model model,HttpSession session){
+        if(session.getAttribute("userid")==null)
+        {return "user/login";}
+        else {
+            int userid = (int) session.getAttribute("userid");
+
+            OrderVo order = userService.generateordervo(id, userid);
+            session.setAttribute("classid",id);
+            model.addAttribute("order", order);
+            return "user/generatechooseorder";
+        }
+
+    }
+
+
+
+    @RequestMapping(value = "/topayunchoose", method = RequestMethod.POST)
+    public String topayunchoose(Model model,HttpSession session, @RequestParam("people") int people, @RequestParam("coupon") int coupon) {
 
         if(session.getAttribute("userid")==null||session.getAttribute("classid")==null)
         {return "user/login";}
@@ -118,11 +136,27 @@ public class UserController {
 
             int userid = (int) session.getAttribute("userid");
             int classid=(int)session.getAttribute("classid");
-            userService.createorder(classid,userid,people,coupon);
+            userService.createunchooseorder(classid,userid,people,coupon);
         }
         return "/index";
 
     }
+
+    @RequestMapping(value = "/topaychoose", method = RequestMethod.POST)
+    public String topaychoose(Model model,HttpSession session, @RequestParam("people") int people, @RequestParam("coupon") int coupon,@RequestParam("class") int classnum) {
+
+        if(session.getAttribute("userid")==null||session.getAttribute("classid")==null)
+        {return "user/login";}
+        else{
+
+            int userid = (int) session.getAttribute("userid");
+            int classid=(int)session.getAttribute("classid");
+            userService.createchooseorder(classid,userid,classnum,people,coupon);
+        }
+        return "/index";
+
+    }
+
 
 
     @RequestMapping({"/", "/login" , "/index"})
