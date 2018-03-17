@@ -125,12 +125,34 @@ public class Helper {
 
     }
 
+
+    public static int compare_date(Timestamp dt1, Timestamp dt2) {
+
+
+
+        try {
+            if (dt1.getTime() > dt2.getTime()) {
+//                System.out.println("dt1 在dt2前");
+                return 1;
+            } else if (dt1.getTime() < dt2.getTime()) {
+//                System.out.println("dt1在dt2后");
+                return -1;
+            } else {
+                return 0;
+            }
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        return 0;
+    }
+
+
+
     public static void main(String[] args) throws ParseException {
 
-        Timestamp timestamp=new Timestamp(System.currentTimeMillis());
-        timestamp=addfifteenmin(timestamp);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        System.out.println(sdf.format(timestamp));
+        Timestamp d1=new Timestamp(System.currentTimeMillis());
+        Timestamp d2=new Timestamp(System.currentTimeMillis());
+        System.out.println(compare_date(d1,d2));
 
     }
 }
