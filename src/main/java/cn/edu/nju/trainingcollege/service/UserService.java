@@ -2,6 +2,7 @@ package cn.edu.nju.trainingcollege.service;
 
 
 import cn.edu.nju.trainingcollege.entity.ClassEntity;
+import cn.edu.nju.trainingcollege.entity.OrderEntity;
 import cn.edu.nju.trainingcollege.entity.UserEntity;
 import cn.edu.nju.trainingcollege.entity.UserInfoEntity;
 import cn.edu.nju.trainingcollege.vo.ClassInfoVo;
@@ -24,7 +25,9 @@ public interface UserService {
 
     OrderVo generateordervo(int classid, int userid);
 
-    void createunchooseorder(int classid, int userid, int people, int coupon);
+    String createunchooseorder(int classid, int userid, int people, int coupon);
 
-    void createchooseorder(int classid,int userid,int classnum,int people,int coupon);
+    String createchooseorder(int classid,int userid,int classnum,int people,int coupon);
+
+    OrderEntity getorderByid(String id);
 }

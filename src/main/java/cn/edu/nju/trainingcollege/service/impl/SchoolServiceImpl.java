@@ -10,12 +10,10 @@ import cn.edu.nju.trainingcollege.entity.TeacherEntity;
 import cn.edu.nju.trainingcollege.service.MailService;
 import cn.edu.nju.trainingcollege.service.SchoolService;
 import cn.edu.nju.trainingcollege.util.Helper;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -44,7 +42,7 @@ public class SchoolServiceImpl implements SchoolService {
         Helper helper = new Helper();
         String id;
         do {
-            id = helper.GenerateId();
+            id = helper.generateSchoolid();
 
         } while (schoolRepository.getOne(id) == null && registerApprovalRepository.getOne(id) == null);
         RegisterApprovalEntity registerApprovalEntity=new RegisterApprovalEntity();

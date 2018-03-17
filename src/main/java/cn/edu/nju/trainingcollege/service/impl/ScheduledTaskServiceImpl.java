@@ -23,7 +23,7 @@ public class ScheduledTaskServiceImpl implements ScheduledTaskService {
     }
 
     @Override
-    @Scheduled(fixedRate = 3000)
+    @Scheduled(fixedRate = 1000*60)
     public void process() {
 //        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 //        System.out.println("现在时间：" + dateFormat.format(new Date()));

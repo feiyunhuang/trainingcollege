@@ -8,7 +8,7 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "trainingorder", schema = "trainingcollege", catalog = "")
 public class OrderEntity {
-    private int id;
+    private String id;
     private int userid;
     private String schoolid;
     private int teacherid;
@@ -27,7 +27,7 @@ public class OrderEntity {
     private int thirdclass;
 
 
-    public OrderEntity(int id, int userid, String schoolid, int teacherid, double price, int peoplenum, double totalprice, Timestamp createtime, Timestamp topaytime, Timestamp classbegintime, String bankaccount, int usecoupon, OrderState orderstate, int chooseclass, int firstclass, int secondclass, int thirdclass) {
+    public OrderEntity(String id, int userid, String schoolid, int teacherid, double price, int peoplenum, double totalprice, Timestamp createtime, Timestamp topaytime, Timestamp classbegintime, String bankaccount, int usecoupon, OrderState orderstate, int chooseclass, int firstclass, int secondclass, int thirdclass) {
         this.id = id;
         this.userid = userid;
         this.schoolid = schoolid;
@@ -49,14 +49,13 @@ public class OrderEntity {
 
     public OrderEntity(){}
 
-    @GeneratedValue
     @Id
-    @Column(name = "id", nullable = false)
-    public int getId() {
+    @Column(name = "id", nullable = false,length = 10)
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

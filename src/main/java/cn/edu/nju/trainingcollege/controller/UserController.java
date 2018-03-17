@@ -1,6 +1,7 @@
 package cn.edu.nju.trainingcollege.controller;
 
 
+import cn.edu.nju.trainingcollege.entity.OrderEntity;
 import cn.edu.nju.trainingcollege.entity.UserEntity;
 import cn.edu.nju.trainingcollege.entity.UserInfoEntity;
 import cn.edu.nju.trainingcollege.service.UserService;
@@ -136,9 +137,13 @@ public class UserController {
 
             int userid = (int) session.getAttribute("userid");
             int classid=(int)session.getAttribute("classid");
-            userService.createunchooseorder(classid,userid,people,coupon);
+            String orderid=userService.createunchooseorder(classid,userid,people,coupon);
+
+            OrderEntity orderEntity=userService.getorderByid(orderid);
+            model.addAttribute("order",orderEntity);
+            return "user/topay";
         }
-        return "/index";
+
 
     }
 
@@ -151,9 +156,13 @@ public class UserController {
 
             int userid = (int) session.getAttribute("userid");
             int classid=(int)session.getAttribute("classid");
-            userService.createchooseorder(classid,userid,classnum,people,coupon);
+            String orderid=userService.createchooseorder(classid,userid,classnum,people,coupon);
+
+            OrderEntity orderEntity=userService.getorderByid(orderid);
+            model.addAttribute("order",orderEntity);
+            return "user/topay";
         }
-        return "/index";
+
 
     }
 

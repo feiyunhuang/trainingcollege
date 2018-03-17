@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -142,7 +144,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void createunchooseorder(int classid, int userid, int people, int coupon) {
+    public String createunchooseorder(int classid, int userid, int people, int coupon) {
 
         ClassEntity classEntity= classRepository.getOne(classid);
         MemberEntity memberEntity=memberRepository.getOne(userid);
@@ -153,8 +155,11 @@ public class UserServiceImpl implements UserService {
         double price=classEntity.getPrice();
         double totalprice=(price*people)*discount/100-coupon;
 
+        String id=helper.generateOrderid();
+
 
         OrderEntity order =new OrderEntity();
+        order.setId(id);
         order.setUserid(userid);
         order.setSchoolid(classEntity.getSchoolid());
         order.setTeacherid(classEntity.getTeacherid());
@@ -174,14 +179,13 @@ public class UserServiceImpl implements UserService {
         order.setFirstclass(0);
         order.setSecondclass(0);
         order.setThirdclass(0);
-
         orderRepository.save(order);
 
-
+        return id;
     }
 
     @Override
-    public void createchooseorder(int classid, int userid, int classnum, int people, int coupon) {
+    public String createchooseorder(int classid, int userid, int classnum, int people, int coupon) {
 
         ClassEntity classEntity= classRepository.getOne(classid);
         MemberEntity memberEntity=memberRepository.getOne(userid);
@@ -193,7 +197,11 @@ public class UserServiceImpl implements UserService {
         double totalprice=(price*people)*discount/100-coupon;
 
 
+        String id=helper.generateOrderid();
+
+
         OrderEntity order =new OrderEntity();
+        order.setId(id);
         order.setUserid(userid);
         order.setSchoolid(classEntity.getSchoolid());
         order.setTeacherid(classEntity.getTeacherid());
@@ -224,6 +232,15 @@ public class UserServiceImpl implements UserService {
         }
 
         orderRepository.save(order);
+
+
+
+        return id;
+    }
+
+    @Override
+    public OrderEntity getorderByid(String id) {
+        return orderRepository.getOne(id);
     }
 
 
