@@ -31,5 +31,5 @@ public interface UserService {
 
     OrderEntity getorderByid(String id);
 
-    boolean pay(String banksccount,String password,double price);
+    boolean pay(String banksccount,String password,double price,String orderid);
 }

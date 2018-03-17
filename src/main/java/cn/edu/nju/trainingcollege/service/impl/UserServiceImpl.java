@@ -2,6 +2,7 @@ package cn.edu.nju.trainingcollege.service.impl;
 
 import cn.edu.nju.trainingcollege.dao.*;
 import cn.edu.nju.trainingcollege.entity.*;
+import cn.edu.nju.trainingcollege.entity.constant.OrderState;
 import cn.edu.nju.trainingcollege.service.MailService;
 import cn.edu.nju.trainingcollege.service.UserService;
 import cn.edu.nju.trainingcollege.util.Helper;
@@ -244,12 +245,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean pay(String banksccount, String password, double price) {
+    public boolean pay(String banksccount, String password, double price,String orderid) {
 
         if(bankRepository.getOne(banksccount).getPassword().equals(password)){
             BankEntity bankEntity=bankRepository.getOne(banksccount);
             double balance=bankEntity.getBalance()-price;
             bankEntity.setBalance(balance);
+            OrderEntity orderEntity=orderRepository.getOne(orderid);
+
+            orderEntity.setOrderstate(OrderState.PAYED);
+            orderRepository.save(orderEntity);
             bankRepository.save(bankEntity);
             return true;
         }

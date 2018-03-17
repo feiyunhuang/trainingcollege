@@ -160,6 +160,7 @@ public class UserController {
             int classid=(int)session.getAttribute("classid");
             String orderid=userService.createchooseorder(classid,userid,classnum,people,coupon);
 
+            session.setAttribute("orderid",orderid);
             OrderEntity orderEntity=userService.getorderByid(orderid);
             session.setAttribute("totalprice",orderEntity.getTotalprice());
             model.addAttribute("order",orderEntity);
@@ -174,7 +175,8 @@ public class UserController {
 
         double totalprice= (double) session.getAttribute("totalprice");
         String bankaccount= (String) session.getAttribute("bankaccount");
-        if(userService.pay(bankaccount,password,totalprice)==true){
+        String orderid=(String)session.getAttribute("orderid");
+        if(userService.pay(bankaccount,password,totalprice,orderid)==true){
             return "user/paysuccessfully";
         }
 
