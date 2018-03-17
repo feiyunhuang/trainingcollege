@@ -14,8 +14,6 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -28,9 +26,10 @@ public class UserServiceImpl implements UserService {
     private final TeacherRepository teacherRepository;
     private final SchoolRepository schoolRepository;
     private final OrderRepository orderRepository;
+    private final BankRepository bankRepository;
 
     @Autowired
-    public UserServiceImpl(UserInfoRepository userInfoRepository, UserRepository userRepository, MemberRepository memberRepository, MailService mailService, ClassRepository classRepository, TeacherRepository teacherRepository, SchoolRepository schoolRepository, OrderRepository orderRepository) {
+    public UserServiceImpl(UserInfoRepository userInfoRepository, UserRepository userRepository, MemberRepository memberRepository, MailService mailService, ClassRepository classRepository, TeacherRepository teacherRepository, SchoolRepository schoolRepository, OrderRepository orderRepository, BankRepository bankRepository) {
         this.userInfoRepository = userInfoRepository;
         this.userRepository = userRepository;
         this.memberRepository = memberRepository;
@@ -39,6 +38,7 @@ public class UserServiceImpl implements UserService {
         this.teacherRepository = teacherRepository;
         this.schoolRepository = schoolRepository;
         this.orderRepository = orderRepository;
+        this.bankRepository = bankRepository;
     }
 
     public void register(String mail, String password, String name,String phone,String sex) {
@@ -241,6 +241,19 @@ public class UserServiceImpl implements UserService {
     @Override
     public OrderEntity getorderByid(String id) {
         return orderRepository.getOne(id);
+    }
+
+    @Override
+    public boolean pay(String banksccount, String password, double price) {
+
+        if(bankRepository.getOne(banksccount).getPassword().equals(password)){
+            BankEntity bankEntity=bankRepository.getOne(banksccount);
+            double balance=bankEntity.getBalance()-price;
+            bankEntity.setBalance(balance);
+            bankRepository.save(bankEntity);
+            return true;
+        }
+        return false;
     }
 
 

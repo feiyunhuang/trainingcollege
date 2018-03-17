@@ -1,9 +1,9 @@
 package cn.edu.nju.trainingcollege.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "bank", schema = "trainingcollege", catalog = "")
 public class BankEntity {
     private String account;
     private String password;

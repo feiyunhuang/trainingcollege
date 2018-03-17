@@ -27,44 +27,10 @@
 
         <div class="row placeholders">
         </div>
-        <h2 class="sub-header">TrainingCollege   Bank</h2>
-
-        <div class="person_info">
-            <h3>支付订单</h3>
-            <table class="table table-bordered table-striped">
-                <tr>
-
-                <tr>
-                    <th>总价格</th>
-                    <td th:text="${order.totalprice}">高等数学</td>
-                </tr>
-
-                <tr>
-                    <th>银行账号</th>
-                    <td th:text="${order.bankaccount}">高等数学</td>
-                </tr>
+        <h2 class="sub-header">支付成功</h2>
 
 
-                </tr>
-            </table>
-        </div>
-
-        <form class="form-horizontal" method="post" role="form" action="register.html" th:action="@{/user/pay}">
-
-
-
-            <label class="col-sm-2 control-label">银行密码</label>
-            <div class="col-sm-3">
-                <input type="password" class="form-control" id="password"
-                       name="password">
-            </div>
-
-
-            <label class="col-sm-2 control-label"></label>
-
-            <label  class="col-sm-2 control-label"></label>
-            <div class="col-sm-4">
-                <button class="btn btn-lg btn-success btn-block" type="submit">确认</button>
+                <a th:href="@{/index}"><button class="btn btn-lg btn-success btn-block" type="button">返回首页</button></a>
 
             </div>
         </form>

@@ -30,4 +30,6 @@ public interface UserService {
     String createchooseorder(int classid,int userid,int classnum,int people,int coupon);
 
     OrderEntity getorderByid(String id);
+
+    boolean pay(String banksccount,String password,double price);
 }

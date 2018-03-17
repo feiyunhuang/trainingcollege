@@ -39,6 +39,7 @@ public class UserController {
 
            UserEntity userEntity = userService.findByMail(mail);
             UserInfoEntity userInfoEntity=userService.getUserInfoById(userEntity.getId());
+            session.setAttribute("bankaccount",userInfoEntity.getPhonenum());
             session.setAttribute("userid", userEntity.getId());
             session.setAttribute("mail",mail);
 
@@ -140,6 +141,7 @@ public class UserController {
             String orderid=userService.createunchooseorder(classid,userid,people,coupon);
 
             OrderEntity orderEntity=userService.getorderByid(orderid);
+            session.setAttribute("totalprice",orderEntity.getTotalprice());
             model.addAttribute("order",orderEntity);
             return "user/topay";
         }
@@ -159,12 +161,27 @@ public class UserController {
             String orderid=userService.createchooseorder(classid,userid,classnum,people,coupon);
 
             OrderEntity orderEntity=userService.getorderByid(orderid);
+            session.setAttribute("totalprice",orderEntity.getTotalprice());
             model.addAttribute("order",orderEntity);
             return "user/topay";
         }
 
 
     }
+
+    @RequestMapping(value = "/pay", method = RequestMethod.POST)
+    public String topay(HttpSession session,@RequestParam("password") String password){
+
+        double totalprice= (double) session.getAttribute("totalprice");
+        String bankaccount= (String) session.getAttribute("bankaccount");
+        if(userService.pay(bankaccount,password,totalprice)==true){
+            return "user/paysuccessfully";
+        }
+
+        return "redirect:/index";
+    }
+
+
 
 
 
