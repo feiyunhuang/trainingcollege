@@ -1,6 +1,9 @@
 package cn.edu.nju.trainingcollege.service.impl;
 
+import cn.edu.nju.trainingcollege.dao.ClassAndLabelRepository;
 import cn.edu.nju.trainingcollege.dao.OrderRepository;
+import cn.edu.nju.trainingcollege.entity.ClassAndLabelEntity;
+import cn.edu.nju.trainingcollege.entity.ClassEntity;
 import cn.edu.nju.trainingcollege.entity.OrderEntity;
 import cn.edu.nju.trainingcollege.entity.constant.OrderState;
 import cn.edu.nju.trainingcollege.service.ScheduledTaskService;
@@ -10,13 +13,13 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class ScheduledTaskServiceImpl implements ScheduledTaskService {
 
-    private  final OrderRepository orderRepository;
+    private final OrderRepository orderRepository;
 
     public ScheduledTaskServiceImpl(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
@@ -42,4 +45,5 @@ public class ScheduledTaskServiceImpl implements ScheduledTaskService {
 
         System.out.println(unpayedlist.size());
     }
+
 }

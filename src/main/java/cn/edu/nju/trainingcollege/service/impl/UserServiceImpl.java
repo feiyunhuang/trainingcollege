@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -29,9 +30,10 @@ public class UserServiceImpl implements UserService {
     private final SchoolRepository schoolRepository;
     private final OrderRepository orderRepository;
     private final BankRepository bankRepository;
+    private final ClassAndLabelRepository classAndLabelRepository;
 
     @Autowired
-    public UserServiceImpl(UserInfoRepository userInfoRepository, UserRepository userRepository, MemberRepository memberRepository, MailService mailService, ClassRepository classRepository, TeacherRepository teacherRepository, SchoolRepository schoolRepository, OrderRepository orderRepository, BankRepository bankRepository) {
+    public UserServiceImpl(UserInfoRepository userInfoRepository, UserRepository userRepository, MemberRepository memberRepository, MailService mailService, ClassRepository classRepository, TeacherRepository teacherRepository, SchoolRepository schoolRepository, OrderRepository orderRepository, BankRepository bankRepository, ClassAndLabelRepository classAndLabelRepository) {
         this.userInfoRepository = userInfoRepository;
         this.userRepository = userRepository;
         this.memberRepository = memberRepository;
@@ -41,6 +43,7 @@ public class UserServiceImpl implements UserService {
         this.schoolRepository = schoolRepository;
         this.orderRepository = orderRepository;
         this.bankRepository = bankRepository;
+        this.classAndLabelRepository = classAndLabelRepository;
     }
 
     public void register(String mail, String password, String name,String phone,String sex) {
@@ -264,7 +267,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<ClassEntity> searchclass(String label) {
-        return null;
+
+        List<ClassAndLabelEntity> classAndLabelEntities=classAndLabelRepository.findAllByLabel(label);
+        List<ClassEntity> classlist=new ArrayList<>();
+        for(ClassAndLabelEntity c: classAndLabelEntities){
+            int id=c.getClassid();
+            classlist.add(classRepository.getOne(id));
+        }
+        return classlist;
     }
 
 
