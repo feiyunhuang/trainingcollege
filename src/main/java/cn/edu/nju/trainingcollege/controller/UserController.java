@@ -1,6 +1,7 @@
 package cn.edu.nju.trainingcollege.controller;
 
 
+import cn.edu.nju.trainingcollege.entity.ClassEntity;
 import cn.edu.nju.trainingcollege.entity.OrderEntity;
 import cn.edu.nju.trainingcollege.entity.UserEntity;
 import cn.edu.nju.trainingcollege.entity.UserInfoEntity;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @RequestMapping(value = "/user")
 @Controller
@@ -183,6 +185,25 @@ public class UserController {
         return "redirect:/index";
     }
 
+    @RequestMapping(value="/searchclass",method = RequestMethod.POST)
+    public String searchclass(Model model,HttpSession session,@RequestParam("label") String label){
+
+        List<ClassEntity> classlist=userService.searchclass(label);
+        model.addAttribute("classes",classlist);
+        model.addAttribute("label",label);
+        return "user/classlist";
+
+    }
+
+
+    @RequestMapping("/searchclass")
+    public String searchclass(String label,Model model,HttpSession session) {
+
+        List<ClassEntity> classlist=userService.searchclass(label);
+        model.addAttribute("classes",classlist);
+        model.addAttribute("label",label);
+        return "user/classlist";
+    }
 
 
 

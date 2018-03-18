@@ -16,11 +16,11 @@
         <div class="hover-topnav fl m-l-45">
             <div class="dh_nav fl fs-12 ftc-000000 line-h45"><span class="dsblock hg-45"><i class="p-l-15 ql_icon dh_topnav hg-45 fl"></i>导航</span>
                 <ul class="dh_nav_sub bg-c-ffffff bd-sd-b">
-                    <li> <a href="课程列表页面.html"><i class="ql_icon"></i>小学</a> </li>
-                    <li> <a href="课程列表页面.html"><i class="ql_icon"></i>初中</a> </li>
-                    <li> <a href="课程列表页面.html"><i class="ql_icon"></i>高中</a> </li>
-                    <li> <a href="课程列表页面.html"><i class="ql_icon"></i>考研</a> </li>
-                    <li> <a href="课程列表页面.html"><i class="ql_icon"></i>名师</a> </li>
+                    <li> <a th:href="@{/user//searchclass(label=${'小学'})}"><i class="ql_icon"></i>小学</a> </li>
+                    <li> <a th:href="@{/user//searchclass(label=${'初中'})}"><i class="ql_icon"></i>初中</a> </li>
+                    <li> <a th:href="@{/user//searchclass(label=${'高中'})}"></i>高中</a> </li>
+                    <li> <a th:href="@{/user//searchclass(label=${'考研'})}"><i class="ql_icon"></i>考研</a> </li>
+                    <li> <a th:href="@{/user//searchclass(label=${'名师'})}"><i class="ql_icon"></i>名师</a> </li>
                     <div class="clear"></div>
                 </ul>
             </div>
@@ -64,16 +64,15 @@
 <!--web logo and search start-->
 <div class="w-main m-auto m-t-37 m-b-25 ovhidden">
     <!--web logo start-->
-    <a href="index.html" class="logo fl"><h1>trainingcollege</h1></a>
+    <a th:href="@{/index}" class="logo fl"><h1>trainingcollege</h1></a>
     <!--web logo end-->
     <!--web search start-->
     <div class="search w-540 m-l-115 m-t-15 fl">
-        <form action="#" method="get" id="searchform" name="searchform" onSubmit="return checkSearchForm()" class="w-540 search-form">
-            <input class="p-l-15 bd-2s-e9511b w-435 line-h35 hg-35 fs-12 ftc-a9a9a9 fl" type="text" name="keywords" id="keyword" value="搜索：初中物理" onfocus="if(this.value == '搜索：初中物理')this.value = ''" onblur="if(this.value == '')this.value='搜索：初中物理'" autocomplete="off">
-            <input type="hidden" value="k1" name="dataBi">
+        <form th:action="@{/user/searchclass}" method="post" id="searchform" name="searchform"  class="w-540 search-form">
+            <input class="p-l-15 bd-2s-e9511b w-435 line-h35 hg-35 fs-12 ftc-a9a9a9 fl" type="text" name="label" id="label" placeholder="大学" >
             <button type="submit" class="w-85 line-h39 hg-39 fs-16 ftc-ffffff bg-c-e9511b fl">提交</button>
         </form>
-        <div class="w-540 fl" id="hotkeywords"> <a href="#" class="dsblock fs-12 ftc-8b8b8b line-h30 fl m-r-20">一年级</a> <a href="#" class="dsblock fs-12 ftc-8b8b8b line-h30 fl m-r-20">二年级</a> <a href="#" class="dsblock fs-12 ftc-8b8b8b line-h30 fl m-r-20">三年级</a> <a href="#" class="dsblock fs-12 ftc-8b8b8b line-h30 fl m-r-20">语文</a> <a href="#" class="dsblock fs-12 ftc-8b8b8b line-h30 fl m-r-20">数学</a>
+        <div class="w-540 fl" id="hotkeywords"> <a th:href="@{/user/searchclass(label=${'大学'})}" class="dsblock fs-12 ftc-8b8b8b line-h30 fl m-r-20">大学</a>  <a th:href="@{/user/searchclass(label=${'数学'})}" class="dsblock fs-12 ftc-8b8b8b line-h30 fl m-r-20">数学</a>
             <div class="clear"></div>
         </div>
     </div>
@@ -86,46 +85,46 @@
         <!--全部商品分类-->
         <div class="hc_lnav jslist">
             <div class="allbtn">
-                <h2><a href="#">全部课程分类</a></h2>
+                <h2><a th:href="@{/index}">全部课程分类</a></h2>
                 <ul style="width:250px" class="jspop box">
                     <!--导航-->
                     <li class="a1">
-                        <div class="tx"><a href="#">小学</a> </div>
+                        <div class="tx"><a th:href="@{/user/searchclass(label=${'小学'})}">小学</a> </div>
                         <dl>
-                            <dd> <a href="#">一年级</a><span>/</span> <a href="#">二年级</a><span>/</span> <a href="#">三年级</a> <a href="#">四年级</a><span>/</span> <a href="#">五年级</a><span>/</span> <a href="#">六年级</a>  <a href="#">特色课程</a> </dd>
+                            <dd> <a th:href="@{/user/searchclass(label=${'小学一年级'})}">一年级</a><span>/</span> <a th:href="@{/user/searchclass(label=${'小学二年级'})}">二年级</a><span>/</span> <a th:href="@{/user/searchclass(label=${'小学三年级'})}">三年级</a> <a th:href="@{/user/searchclass(label=${'小学四年级'})}">四年级</a><span>/</span> <a th:href="@{/user/searchclass(label=${'小学五年级'})}">五年级</a><span>/</span> <a th:href="@{/user/searchclass(label=${'小学六年级'})}">六年级</a>  <a th:href="@{/user/searchclass(label=${'小学特色课程'})}">特色课程</a> </dd>
                         </dl>
                         <div class="pop">
                             <dl>
-                                <dt><a href="#">一年级 ></a></dt>
-                                <dd> <a class="ui-link" href="#">数学</a><span>|</span> <a class="ui-link" href="#">语文</a><span>|</span> <a class="ui-link" href="#">英语</a></dd>
+                                <dt><a th:href="@{/user/searchclass(label=${'小学一年级'})}">一年级 ></a></dt>
+                                <dd> <a class="ui-link" th:href="@{/user/searchclass(label=${'一年级数学'})}">数学</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'一年级语文'})}">语文</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'一年级英语'})}">英语</a></dd>
                             </dl>
                             <dl>
-                                <dt><a href="#">二年级 ></a></dt>
-                                <dd> <a class="ui-link" href="#">数学</a><span>|</span> <a class="ui-link" href="#">语文</a><span>|</span> <a class="ui-link" href="#">英语</a></dd>
+                                <dt><a th:href="@{/user/searchclass(label=${'小学二年级'})}">二年级 ></a></dt>
+                                <dd> <a class="ui-link" th:href="@{/user/searchclass(label=${'二年级数学'})}">数学</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'二年级语文'})}">语文</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'二年级英语'})}">英语</a></dd>
                             </dl>
                             <dl>
-                                <dt><a href="#">三年级 ></a></dt>
-                                <dd> <a class="ui-link" href="#">数学</a><span>|</span> <a class="ui-link" href="#">语文</a><span>|</span> <a class="ui-link" href="#">英语</a></dd>
-                            </dl>
-
-                            <dl>
-                                <dt><a href="#">四年级 ></a></dt>
-                                <dd> <a class="ui-link" href="#">数学</a><span>|</span> <a class="ui-link" href="#">语文</a><span>|</span> <a class="ui-link" href="#">英语</a></dd>
+                                <dt><a th:href="@{/user/searchclass(label=${'小学三年级'})}">三年级 ></a></dt>
+                                <dd> <a class="ui-link" th:href="@{/user/searchclass(label=${'三年级数学'})}">数学</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'三年级语文'})}">语文</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'三年级英语'})}">英语</a></dd>
                             </dl>
 
                             <dl>
-                                <dt><a href="#">五年级 ></a></dt>
-                                <dd> <a class="ui-link" href="#">数学</a><span>|</span> <a class="ui-link" href="#">语文</a><span>|</span> <a class="ui-link" href="#">英语</a></dd>
+                                <dt><a th:href="@{/user/searchclass(label=${'小学四年级'})}">四年级 ></a></dt>
+                                <dd> <a class="ui-link" th:href="@{/user/searchclass(label=${'四年级数学'})}">数学</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'四年级语文'})}">语文</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'四年级英语'})}">英语</a></dd>
                             </dl>
 
                             <dl>
-                                <dt><a href="#">六年级 ></a></dt>
-                                <dd> <a class="ui-link" href="#">数学</a><span>|</span> <a class="ui-link" href="#">语文</a><span>|</span> <a class="ui-link" href="#">英语</a></dd>
+                                <dt><a th:href="@{/user/searchclass(label=${'小学五年级'})}">五年级 ></a></dt>
+                                <dd> <a class="ui-link" th:href="@{/user/searchclass(label=${'五年级数学'})}">数学</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'五年级语文'})}">语文</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'五年级英语'})}">英语</a></dd>
                             </dl>
 
                             <dl>
-                                <dt><a href="#">特色课程 ></a></dt>
-                                <dd> <a class="ui-link" href="#">小升初专题班</a><span>|</span> <a class="ui-link" href="#">小学作文班</a></dd>
+                                <dt><a th:href="@{/user/searchclass(label=${'小学六年级'})}">六年级 ></a></dt>
+                                <dd> <a class="ui-link" th:href="@{/user/searchclass(label=${'六年级数学'})}">数学</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'六年级语文'})}">语文</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'六年级英语'})}">英语</a></dd>
+                            </dl>
+
+                            <dl>
+                                <dt><a th:href="@{/user/searchclass(label=${'小学特色课程'})}">特色课程 ></a></dt>
+                                <dd> <a class="ui-link" th:href="@{/user/searchclass(label=${'小升初专题班'})}">小升初专题班</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'小学作文班'})}">小学作文班</a></dd>
                             </dl>
 
                             <div class="clr"></div>
@@ -134,26 +133,26 @@
                     <!--导航-->
                     <!--导航-->
                     <li class="a1">
-                        <div class="tx"><a href="#">初中</a> </div>
+                        <div class="tx"><a th:href="@{/user/searchclass(label=${'初中'})}">初中</a> </div>
                         <dl>
-                            <dd> <a href="#">一年级</a><span>/</span> <a href="#">二年级</a><span>/</span> <a href="#">三年级</a> <a href="#">特色课程</a> </dd>
+                            <dd> <a th:href="@{/user/searchclass(label=${'初一'})}">一年级</a><span>/</span> <a th:href="@{/user/searchclass(label=${'初二'})}">二年级</a><span>/</span> <a th:href="@{/user/searchclass(label=${'初三'})}">三年级</a> <a th:href="@{/user/searchclass(label=${'初中特色课程'})}">特色课程</a> </dd>
                         </dl>
                         <div class="pop">
                             <dl>
-                                <dt><a href="#">初一 ></a></dt>
-                                <dd> <a class="ui-link" href="#">数学</a><span>|</span> <a class="ui-link" href="#">语文</a><span>|</span> <a class="ui-link" href="#">英语</a><span>|</span> <a class="ui-link" href="#">地理</a><span>|</span> <a class="ui-link" href="#">政治</a> <a class="ui-link" href="#">生物</a><span>|</span> <a class="ui-link" href="#">历史</a> </dd>
+                                <dt><a th:href="@{/user/searchclass(label=${'初一'})}">初一 ></a></dt>
+                                <dd> <a class="ui-link" th:href="@{/user/searchclass(label=${'初一数学'})}">数学</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'初一语文'})}">语文</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'初一英语'})}">英语</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'初一地理'})}">地理</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'初一政治'})}">政治</a> <a class="ui-link" th:href="@{/user/searchclass(label=${'初一生物'})}">生物</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'初一历史'})}">历史</a> </dd>
                             </dl>
                             <dl>
-                                <dt><a href="#">初二 ></a></dt>
-                                <dd> <a class="ui-link" href="#">数学</a><span>|</span> <a class="ui-link" href="#">语文</a><span>|</span> <a class="ui-link" href="#">英语</a><span>|</span> <a class="ui-link" href="#">地理</a><span>|</span> <a class="ui-link" href="#">政治</a> <a class="ui-link" href="#">生物</a><span>|</span> <a class="ui-link" href="#">历史</a><span>|</span> <a class="ui-link" href="#">物理</a> </dd>
+                                <dt><a th:href="@{/user/searchclass(label=${'初二'})}">初二 ></a></dt>
+                                <dd> <a class="ui-link" th:href="@{/user/searchclass(label=${'初二数学'})}">数学</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'初二语文'})}">语文</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'初二英语'})}">英语</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'初二地理'})}">地理</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'初二政治'})}">政治</a> <a class="ui-link" th:href="@{/user/searchclass(label=${'初二生物'})}">生物</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'初二历史'})}">历史</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'初二物理'})}">物理</a> </dd>
                             </dl>
                             <dl>
-                                <dt><a href="#">初三 ></a></dt>
-                                <dd> <a class="ui-link" href="#">数学</a><span>|</span> <a class="ui-link" href="#">语文</a><span>|</span> <a class="ui-link" href="#">英语</a><span>|</span> <a class="ui-link" href="#">地理</a><span>|</span> <a class="ui-link" href="#">政治</a> <a class="ui-link" href="#">生物</a><span>|</span> <a class="ui-link" href="#">历史</a><span>|</span> <a class="ui-link" href="#">物理</a><span>|</span> <a class="ui-link" href="#">化学</a> </dd>
+                                <dt><a th:href="@{/user/searchclass(label=${'初三'})}">初三 ></a></dt>
+                                <dd> <a class="ui-link" th:href="@{/user/searchclass(label=${'初三数学'})}">数学</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'初三语文'})}">语文</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'初三英语'})}">英语</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'初三地理'})}">地理</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'初三政治'})}">政治</a> <a class="ui-link" th:href="@{/user/searchclass(label=${'初三生物'})}">生物</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'初三历史'})}">历史</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'初三物理'})}">物理</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'初三化学'})}">化学</a> </dd>
                             </dl>
                             <dl>
-                                <dt><a href="#">特色课程 ></a></dt>
-                                <dd> <a class="ui-link" href="#">中考冲刺班</a><span>|</span> <a class="ui-link" href="#">奥数培训班</a></dd>
+                                <dt><a th:href="@{/user/searchclass(label=${'初中特色课程'})}">特色课程 ></a></dt>
+                                <dd> <a class="ui-link" th:href="@{/user/searchclass(label=${'中考冲刺班'})}">中考冲刺班</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'奥数培训班'})}">奥数培训班</a></dd>
                             </dl>
                             <div class="clr"></div>
                         </div>
@@ -161,26 +160,26 @@
                     <!--导航-->
                     <!--导航-->
                     <li class="a1">
-                        <div class="tx"><a href="#">高中</a> </div>
+                        <div class="tx"><a th:href="@{/user/searchclass(label=${'高中'})}">高中</a> </div>
                         <dl>
-                            <dd> <a href="#">一年级</a><span>/</span> <a href="#">二年级</a><span>/</span> <a href="#">三年级</a> <a href="#">特色课程</a> </dd>
+                            <dd> <a th:href="@{/user/searchclass(label=${'高一'})}">一年级</a><span>/</span> <a th:href="@{/user/searchclass(label=${'高二'})}">二年级</a><span>/</span> <a th:href="@{/user/searchclass(label=${'高三'})}">三年级</a> <a th:href="@{/user/searchclass(label=${'高中特色课程'})}">特色课程</a> </dd>
                         </dl>
                         <div class="pop">
                             <dl>
-                                <dt><a href="#">初一 ></a></dt>
-                                <dd> <a class="ui-link" href="#">数学</a><span>|</span> <a class="ui-link" href="#">语文</a><span>|</span> <a class="ui-link" href="#">英语</a><span>|</span> <a class="ui-link" href="#">地理</a><span>|</span> <a class="ui-link" href="#">政治</a> <a class="ui-link" href="#">生物</a><span>|</span> <a class="ui-link" href="#">历史</a><span>|</span> <a class="ui-link" href="#">物理</a><span>|</span> <a class="ui-link" href="#">化学</a> </dd>
+                                <dt><a th:href="@{/user/searchclass(label=${'高一'})}">高一 ></a></dt>
+                                <dd> <a class="ui-link" th:href="@{/user/searchclass(label=${'高一数学'})}">数学</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'高一语文'})}">语文</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'高一英语'})}">英语</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'高一地理'})}">地理</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'高一政治'})}">政治</a> <a class="ui-link" th:href="@{/user/searchclass(label=${'高一生物'})}">生物</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'高一历史'})}">历史</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'高一物理'})}">物理</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'高一化学'})}">化学</a> </dd>
                             </dl>
                             <dl>
-                                <dt><a href="#">初二 ></a></dt>
-                                <dd> <a class="ui-link" href="#">数学</a><span>|</span> <a class="ui-link" href="#">语文</a><span>|</span> <a class="ui-link" href="#">英语</a><span>|</span> <a class="ui-link" href="#">地理</a><span>|</span> <a class="ui-link" href="#">政治</a> <a class="ui-link" href="#">生物</a><span>|</span> <a class="ui-link" href="#">历史</a><span>|</span> <a class="ui-link" href="#">物理</a><span>|</span> <a class="ui-link" href="#">化学</a></dd>
+                                <dt><a th:href="@{/user/searchclass(label=${'高二'})}">高二 ></a></dt>
+                                <dd> <a class="ui-link" th:href="@{/user/searchclass(label=${'高二数学'})}">数学</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'高二语文'})}">语文</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'高二英语'})}">英语</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'高二地理'})}">地理</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'高二政治'})}">政治</a> <a class="ui-link" th:href="@{/user/searchclass(label=${'高二生物'})}">生物</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'高二历史'})}">历史</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'高二物理'})}">物理</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'高二化学'})}">化学</a></dd>
                             </dl>
                             <dl>
-                                <dt><a href="#">初三 ></a></dt>
-                                <dd> <a class="ui-link" href="#">数学</a><span>|</span> <a class="ui-link" href="#">语文</a><span>|</span> <a class="ui-link" href="#">英语</a><span>|</span> <a class="ui-link" href="#">地理</a><span>|</span> <a class="ui-link" href="#">政治</a> <a class="ui-link" href="#">生物</a><span>|</span> <a class="ui-link" href="#">历史</a><span>|</span> <a class="ui-link" href="#">物理</a><span>|</span> <a class="ui-link" href="#">化学</a> </dd>
+                                <dt><a th:href="@{/user/searchclass(label=${'高三'})}">高三 ></a></dt>
+                                <dd> <a class="ui-link" th:href="@{/user/searchclass(label=${'高三数学'})}">数学</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'高三语文'})}">语文</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'高三英语'})}">英语</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'高三地理'})}">地理</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'高三政治'})}">政治</a> <a class="ui-link" th:href="@{/user/searchclass(label=${'高三生物'})}">生物</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'高三历史'})}">历史</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'高三物理'})}">物理</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'高三化学'})}">化学</a> </dd>
                             </dl>
                             <dl>
-                                <dt><a href="#">特色课程 ></a></dt>
-                                <dd> <a class="ui-link" href="#">高中数学竞赛班</a><span>|</span> <a class="ui-link" href="#">小高考冲A班</a><span>|</span> <a class="ui-link" href="#">高中作文竞赛班</a> </dd>
+                                <dt><a th:href="@{/user/searchclass(label=${'高中特色课程'})}">特色课程 ></a></dt>
+                                <dd> <a class="ui-link" th:href="@{/user/searchclass(label=${'高中数学竞赛班'})}">高中数学竞赛班</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'小高考冲A班'})}">小高考冲A班</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'高中作文竞赛班'})}">高中作文竞赛班</a> </dd>
                             </dl>
                             <div class="clr"></div>
                         </div>
@@ -188,22 +187,22 @@
                     <!--导航-->
                     <!--导航-->
                     <li class="a1">
-                        <div class="tx"><a href="#">考研</a> </div>
+                        <div class="tx"><a th:href="@{/user/searchclass(label=${'考研'})}">考研</a> </div>
                         <dl>
-                            <dd> <a href="#">数学</a><span>/</span> <a href="#">政治</a><span>/</span> <a href="#">英语</a>  </dd>
+                            <dd> <a th:href="@{/user/searchclass(label=${'考研数学'})}">数学</a><span>/</span> <a th:href="@{/user/searchclass(label=${'考研政治'})}">政治</a><span>/</span> <a th:href="@{/user/searchclass(label=${'考研英语'})}">英语</a>  </dd>
                         </dl>
                         <div class="pop">
                             <dl>
-                                <dt><a href="#">数学 ></a></dt>
-                                <dd> <a class="ui-link" href="#">数学一</a><span>|</span> <a class="ui-link" href="#">数学二</a><span>|</span> <a class="ui-link" href="#">数学三</a>" href="#">政治</a>  </dd>
+                                <dt><a th:href="@{/user/searchclass(label=${'考研数学'})}">数学 ></a></dt>
+                                <dd> <a class="ui-link" th:href="@{/user/searchclass(label=${'数学一'})}">数学一</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'数学二'})}">数学二</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'数学三'})}">数学三</a> </dd>
                             </dl>
                             <dl>
-                                <dt><a href="#">政治 ></a></dt>
-                                <dd> <a class="ui-link" href="#">肖秀荣专题</a></dd>
+                                <dt><a th:href="@{/user/searchclass(label=${'考研政治'})}">政治 ></a></dt>
+                                <dd> <a class="ui-link" th:href="@{/user/searchclass(label=${'肖秀荣'})}">肖秀荣专题</a></dd>
                             </dl>
                             <dl>
-                                <dt><a href="#">英语 ></a></dt>
-                                <dd> <a class="ui-link" href="#">英语一</a><span>|</span> <a class="ui-link" href="#">英语二</a><span>  </dd>
+                                <dt><a th:href="@{/user/searchclass(label=${'考研英语'})}">英语 ></a></dt>
+                                <dd> <a class="ui-link" th:href="@{/user/searchclass(label=${'英语一'})}">英语一</a><span>|</span> <a class="ui-link" th:href="@{/user/searchclass(label=${'英语二'})}">英语二</a>  </dd>
                             </dl>
                             <div class="clr"></div>
                         </div>
@@ -215,11 +214,11 @@
         <!--全部商品分类-->
         <ul class="w-950 hg-60 ql_nav">
             <li><a href="index.html" class="cur">首页</a></li>
-            <li><a href="课程列表页面.html">小学</a></li>
-            <li><a href="双师单页.html">初中</a></li>
-            <li><a href="考试日历.html">高中</a></li>
-            <li><a href="讲师.html">考研</a></li>
-            <li><a href="招商单页.html" class="ql_navhot">名师</a></li>
+            <li><a th:href="@{/user/searchclass(label=${'小学'})}">小学</a></li>
+            <li><a th:href="@{/user/searchclass(label=${'初中'})}">初中</a></li>
+            <li><a th:href="@{/user/searchclass(label=${'高中'})}">高中</a></li>
+            <li><a th:href="@{/user/searchclass(label=${'考研'})}">考研</a></li>
+            <!--<li><a th:href="@{/user/searchclass(label=${'小学'})}" class="ql_navhot">名师</a></li>-->
         </ul>
     </div>
 </div>
