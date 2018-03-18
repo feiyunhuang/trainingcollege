@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.text.ParseException;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -259,6 +260,11 @@ public class UserServiceImpl implements UserService {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public List<ClassEntity> searchclass(String label) {
+        return null;
     }
 
 

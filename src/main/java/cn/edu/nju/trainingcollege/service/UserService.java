@@ -9,6 +9,8 @@ import cn.edu.nju.trainingcollege.vo.ClassInfoVo;
 import cn.edu.nju.trainingcollege.vo.MemberInfoVo;
 import cn.edu.nju.trainingcollege.vo.OrderVo;
 
+import java.util.List;
+
 public interface UserService {
 
     void register(String mail, String password, String name,String phone,String sex);
@@ -32,4 +34,6 @@ public interface UserService {
     OrderEntity getorderByid(String id);
 
     boolean pay(String banksccount,String password,double price,String orderid);
+
+    List<ClassEntity> searchclass(String label);
 }
