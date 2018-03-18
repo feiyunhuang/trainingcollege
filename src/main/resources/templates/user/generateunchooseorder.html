@@ -38,11 +38,11 @@
         <div class="hover-topnav fl m-l-45">
             <div class="dh_nav fl fs-12 ftc-000000 line-h45"><span class="dsblock hg-45"><i class="p-l-15 ql_icon dh_topnav hg-45 fl"></i>导航</span>
                 <ul class="dh_nav_sub bg-c-ffffff bd-sd-b">
-                    <li> <a href="课程列表页面.html"><i class="ql_icon"></i>小学</a> </li>
-                    <li> <a href="课程列表页面.html"><i class="ql_icon"></i>初中</a> </li>
-                    <li> <a href="课程列表页面.html"><i class="ql_icon"></i>高中</a> </li>
-                    <li> <a href="课程列表页面.html"><i class="ql_icon"></i>考研</a> </li>
-                    <li> <a href="课程列表页面.html"><i class="ql_icon"></i>名师</a> </li>
+                    <li> <a th:href="@{/user//searchclass(label=${'小学'})}"><i class="ql_icon"></i>小学</a> </li>
+                    <li> <a th:href="@{/user//searchclass(label=${'初中'})}"><i class="ql_icon"></i>初中</a> </li>
+                    <li> <a th:href="@{/user//searchclass(label=${'高中'})}"></i>高中</a> </li>
+                    <li> <a th:href="@{/user//searchclass(label=${'考研'})}"><i class="ql_icon"></i>考研</a> </li>
+                    <li> <a th:href="@{/user//searchclass(label=${'名师'})}"><i class="ql_icon"></i>名师</a> </li>
                     <div class="clear"></div>
                 </ul>
             </div>

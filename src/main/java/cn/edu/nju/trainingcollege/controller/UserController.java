@@ -142,6 +142,7 @@ public class UserController {
             int classid=(int)session.getAttribute("classid");
             String orderid=userService.createunchooseorder(classid,userid,people,coupon);
 
+            session.setAttribute("orderid",orderid);
             OrderEntity orderEntity=userService.getorderByid(orderid);
             session.setAttribute("totalprice",orderEntity.getTotalprice());
             model.addAttribute("order",orderEntity);
