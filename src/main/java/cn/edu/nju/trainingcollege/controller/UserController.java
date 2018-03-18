@@ -88,6 +88,15 @@ public class UserController {
         return "user/memberinfo";
     }
 
+    @RequestMapping({"/cancelmember"})
+    public String cancelmember(HttpSession session){
+
+       int id= (int) session.getAttribute("userid");
+       userService.cancelmember(id);
+
+
+        return "redirect:/user/userinfo";
+    }
 
     @RequestMapping("/classinfo")
     public String classinfo(int id,Model model,HttpSession session) {

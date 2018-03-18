@@ -36,4 +36,6 @@ public interface UserService {
     boolean pay(String banksccount,String password,double price,String orderid);
 
     List<ClassEntity> searchclass(String label);
+
+    void cancelmember(int userid);
 }

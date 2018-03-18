@@ -64,7 +64,8 @@
                     </tr>
                     <tr>
                         <th>会员状态</th>
-                        <td th:text="${(personinfo.memberState)}">Valid</td>
+                        <td th:text="${(personinfo.memberState)}+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'"></td>
+                        <a th:href="@{/user/cancelmember}"><button class="btn btn-large btn-success" type="button">取消会员资格</button></a>
                     </tr>
                     <tr>
                         <th>性别</th>

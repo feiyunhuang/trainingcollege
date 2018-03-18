@@ -2,6 +2,7 @@ package cn.edu.nju.trainingcollege.service.impl;
 
 import cn.edu.nju.trainingcollege.dao.*;
 import cn.edu.nju.trainingcollege.entity.*;
+import cn.edu.nju.trainingcollege.entity.constant.MemberState;
 import cn.edu.nju.trainingcollege.entity.constant.OrderState;
 import cn.edu.nju.trainingcollege.service.MailService;
 import cn.edu.nju.trainingcollege.service.UserService;
@@ -275,6 +276,14 @@ public class UserServiceImpl implements UserService {
             classlist.add(classRepository.getOne(id));
         }
         return classlist;
+    }
+
+    @Override
+    public void cancelmember(int userid) {
+        UserInfoEntity userInfoEntity=userInfoRepository.getOne(userid);
+        userInfoEntity.setMemberState(MemberState.INVALID);
+        userInfoRepository.save(userInfoEntity);
+
     }
 
 
