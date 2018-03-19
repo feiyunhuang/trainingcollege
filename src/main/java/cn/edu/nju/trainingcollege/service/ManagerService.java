@@ -18,4 +18,10 @@ public interface ManagerService {
     List<ClassEntity> getEightHotClass();
 
     List<TeacherEntity> getThreeHotTeacher();
+
+    List<ChangeApprovalEntity> getchangeschoolinfo();
+
+    void yeschange(String id);
+
+    void nochange (String id);
 }

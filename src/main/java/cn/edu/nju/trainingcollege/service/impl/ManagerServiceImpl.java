@@ -1,10 +1,7 @@
 package cn.edu.nju.trainingcollege.service.impl;
 
 import cn.edu.nju.trainingcollege.dao.*;
-import cn.edu.nju.trainingcollege.entity.ClassEntity;
-import cn.edu.nju.trainingcollege.entity.RegisterApprovalEntity;
-import cn.edu.nju.trainingcollege.entity.SchoolEntity;
-import cn.edu.nju.trainingcollege.entity.TeacherEntity;
+import cn.edu.nju.trainingcollege.entity.*;
 import cn.edu.nju.trainingcollege.service.MailService;
 import cn.edu.nju.trainingcollege.service.ManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,15 +19,17 @@ public class ManagerServiceImpl implements ManagerService {
     private final MailService mailService;
     private final ClassRepository classRepository;
     private final TeacherRepository teacherRepository;
+    private final ChangeApprovalRepository changeApprovalRepository;
 
     @Autowired
-    public ManagerServiceImpl(ManagerRepository managerRepository, RegisterApprovalRepository registerApprovalRepository, SchoolRepository schoolRepository, MailService mailService, ClassRepository classRepository, TeacherRepository teacherRepository) {
+    public ManagerServiceImpl(ManagerRepository managerRepository, RegisterApprovalRepository registerApprovalRepository, SchoolRepository schoolRepository, MailService mailService, ClassRepository classRepository, TeacherRepository teacherRepository, ChangeApprovalRepository changeApprovalRepository) {
         this.managerRepository = managerRepository;
         this.registerApprovalRepository = registerApprovalRepository;
         this.schoolRepository = schoolRepository;
         this.mailService = mailService;
         this.classRepository = classRepository;
         this.teacherRepository = teacherRepository;
+        this.changeApprovalRepository = changeApprovalRepository;
     }
 
     @Override
@@ -95,6 +94,32 @@ public class ManagerServiceImpl implements ManagerService {
             res.add(teachers.get(i));
         }
         return res;
+    }
+
+    @Override
+    public List<ChangeApprovalEntity> getchangeschoolinfo() {
+        return changeApprovalRepository.findAll();
+    }
+
+    @Override
+    public void yeschange(String id) {
+
+        SchoolEntity schoolEntity=schoolRepository.getOne(id);
+        ChangeApprovalEntity changeApprovalEntity=changeApprovalRepository.getOne(id);
+
+        schoolEntity.setName(changeApprovalEntity.getName());
+        schoolEntity.setPassword(changeApprovalEntity.getPassword());
+        schoolEntity.setMail(changeApprovalEntity.getMail());
+        schoolEntity.setAddress(changeApprovalEntity.getAddress());
+        schoolRepository.save(schoolEntity);
+        changeApprovalRepository.delete(changeApprovalEntity);
+    }
+
+    @Override
+    public void nochange(String id) {
+        ChangeApprovalEntity changeApprovalEntity=changeApprovalRepository.getOne(id);
+        changeApprovalRepository.delete(changeApprovalEntity);
+
     }
 
 

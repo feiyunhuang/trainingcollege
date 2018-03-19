@@ -2,6 +2,7 @@ package cn.edu.nju.trainingcollege.controller;
 
 
 import cn.edu.nju.trainingcollege.dao.RegisterApprovalRepository;
+import cn.edu.nju.trainingcollege.entity.ChangeApprovalEntity;
 import cn.edu.nju.trainingcollege.entity.RegisterApprovalEntity;
 import cn.edu.nju.trainingcollege.entity.SchoolEntity;
 import cn.edu.nju.trainingcollege.service.ManagerService;
@@ -50,6 +51,20 @@ public class ManagerController {
         return "redirect:/manager/allschools";
     }
 
+
+    @RequestMapping("/yeschange")
+    public String yeschange(String id) {
+        managerService.yeschange(id);
+        return "redirect:/manager/changeapproval";
+    }
+
+    @RequestMapping("/nochange")
+    public String nochange(String id) {
+        managerService.nochange(id);
+        return "redirect:/manager/changeapproval";
+    }
+
+
     @RequestMapping({"/", "/login" , "/index"})
     public String login() {
         return "manager/login";
@@ -70,4 +85,10 @@ public class ManagerController {
     }
 
 
+    @RequestMapping({"/changeapproval"})
+    public String showchangeapproval(Model model){
+        List<ChangeApprovalEntity> changeApprovalEntities=managerService.getchangeschoolinfo();
+        model.addAttribute("changeapprovals",changeApprovalEntities);
+        return "manager/changeapproval";
+    }
 }

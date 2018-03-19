@@ -39,38 +39,36 @@
 
             </div>
 
-            <h2 class="sub-header">机构注册申请</h2>
+            <h2 class="sub-header">机构信息修改申请</h2>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
                     <tr>
                         <th>机构ID</th>
-                        <th>机构名</th>
-                        <th>登录密码</th>
-                        <th>联系方式</th>
-                        <th>注册时间</th>
-                        <th>地址</th>
+                        <th>修改的机构名</th>
+                        <th>修改的登录密码</th>
+                        <th>修改的联系方式</th>
+                        <th>修改的地址</th>
                         <th>操作</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="registerApproval : ${registerApprovals}">
+                    <tr th:each="changeapproval : ${changeapprovals}">
 
-                        <td th:text="${registerApproval.id}">1234567</td>
+                        <td th:text="${changeapproval.id}">1234567</td>
 
-                        <td th:text="${registerApproval.name}"></td>
+                        <td th:text="${changeapproval.name}"></td>
 
-                        <td th:text="${registerApproval.password}"></td>
+                        <td th:text="${changeapproval.password}"></td>
 
-                        <td th:text="${registerApproval.mail}"></td>
-
-                        <td th:text="${registerApproval.registdate}"></td>
-
-                        <td th:text="${registerApproval.address}"></td>
+                        <td th:text="${changeapproval.mail}"></td>
 
 
-                        <td><a th:href="@{/manager/add(id=${registerApproval.id})}"><button class="btn btn-large btn-success" type="button">同意</button></a>
-                            <a th:href="@{/manager/delete(id=${registerApproval.id})}"><button class="btn btn-large btn-danger" type="button">拒绝</button></a>
+                        <td th:text="${changeapproval.address}"></td>
+
+
+                        <td><a th:href="@{/manager/yeschange(id=${changeapproval.id})}"><button class="btn btn-large btn-success" type="button">同意</button></a>
+                            <a th:href="@{/manager/nochange(id=${changeapproval.id})}"><button class="btn btn-large btn-danger" type="button">拒绝</button></a>
                         </td>
                     </tr>
 
