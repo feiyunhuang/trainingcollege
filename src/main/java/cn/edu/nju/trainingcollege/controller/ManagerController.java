@@ -68,4 +68,6 @@ public class ManagerController {
         model.addAttribute("schools",schools);
         return "manager/allschools";
     }
+
+
 }

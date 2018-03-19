@@ -18,4 +18,6 @@ public interface SchoolService {
     void addclass(String classname,String schoolid,String timeaweek,int week,int classnum,int studentaclass,double price,int teacherid,String daytime,String begindate,String description);
 
     SchoolEntity getschoolinfo(String schoolid);
+
+    void modifyschoolinfo(String schoolid,String schoolname,String password,String mail,String address);
 }

@@ -36,7 +36,7 @@ public class SchoolController {
 
             session.setAttribute("schoolid",schoolid);
 
-            return "redirect:/school/loginsuccess";
+            return "redirect:/school/schoolinfo";
         }
         return "school/login";
 
@@ -56,7 +56,7 @@ public class SchoolController {
         return "school/login";
     }
 
-    @RequestMapping({"/loginsuccess"})
+    @RequestMapping({"/schoolinfo"})
     public String approval(Model model,HttpSession session) {
         String schoolid= (String) session.getAttribute("schoolid");
 
@@ -100,7 +100,22 @@ public class SchoolController {
         String daytime=begintime+"-"+endtime;
         schoolService.addclass(classname,(String) session.getAttribute("schoolid"),helper.dayaweek(timeaweek),week,classnum,studentaclass,price,
                 teacherid,daytime,begindate,description);
-        return "redirect:/school/loginsuccess";
+        return "redirect:/school/schoolclass";
+    }
+
+    @RequestMapping({"/modifyinfo"})
+    public String showmodify(){
+        return "school/modifyinfo";
+    }
+
+    @RequestMapping(value="/modifyinfo",method=RequestMethod.POST)
+    public String modifyinfo(HttpSession session,@RequestParam("name")String name,@RequestParam ("password") String password,
+                             @RequestParam("mail") String mail,@RequestParam("address") String address){
+
+        String schoolid= (String) session.getAttribute("schoolid");
+
+        schoolService.modifyschoolinfo(schoolid,name,password,mail,address);
+        return "redirect:/school/schoolinfo";
     }
 
 

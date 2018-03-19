@@ -1,13 +1,7 @@
 package cn.edu.nju.trainingcollege.service.impl;
 
-import cn.edu.nju.trainingcollege.dao.ClassRepository;
-import cn.edu.nju.trainingcollege.dao.RegisterApprovalRepository;
-import cn.edu.nju.trainingcollege.dao.SchoolRepository;
-import cn.edu.nju.trainingcollege.dao.TeacherRepository;
-import cn.edu.nju.trainingcollege.entity.ClassEntity;
-import cn.edu.nju.trainingcollege.entity.RegisterApprovalEntity;
-import cn.edu.nju.trainingcollege.entity.SchoolEntity;
-import cn.edu.nju.trainingcollege.entity.TeacherEntity;
+import cn.edu.nju.trainingcollege.dao.*;
+import cn.edu.nju.trainingcollege.entity.*;
 import cn.edu.nju.trainingcollege.service.MailService;
 import cn.edu.nju.trainingcollege.service.SchoolService;
 import cn.edu.nju.trainingcollege.util.Helper;
@@ -26,15 +20,17 @@ public class SchoolServiceImpl implements SchoolService {
     private final MailService mailService;
     private final ClassRepository classRepository;
     private final TeacherRepository teacherRepository;
+    private final ChangeApprovalRepository changeApprovalRepository;
 
 
     @Autowired
-    public SchoolServiceImpl(RegisterApprovalRepository registerApprovalRepository, SchoolRepository schoolRepository, MailService mailService, ClassRepository classRepository, TeacherRepository teacherRepository) {
+    public SchoolServiceImpl(RegisterApprovalRepository registerApprovalRepository, SchoolRepository schoolRepository, MailService mailService, ClassRepository classRepository, TeacherRepository teacherRepository, ChangeApprovalRepository changeApprovalRepository) {
         this.registerApprovalRepository = registerApprovalRepository;
         this.schoolRepository = schoolRepository;
         this.mailService = mailService;
         this.classRepository = classRepository;
         this.teacherRepository = teacherRepository;
+        this.changeApprovalRepository = changeApprovalRepository;
     }
 
     @Override
@@ -106,5 +102,18 @@ public class SchoolServiceImpl implements SchoolService {
     @Override
     public SchoolEntity getschoolinfo(String schoolid) {
         return schoolRepository.getOne(schoolid);
+    }
+
+    @Override
+    public void modifyschoolinfo(String schoolid, String schoolname, String password, String mail, String address) {
+
+        ChangeApprovalEntity changeApprovalEntity=new ChangeApprovalEntity();
+        changeApprovalEntity.setId(schoolid);
+        changeApprovalEntity.setName(schoolname);
+        changeApprovalEntity.setPassword(password);
+        changeApprovalEntity.setMail(mail);
+        changeApprovalEntity.setAddress(address);
+        changeApprovalRepository.save(changeApprovalEntity);
+
     }
 }

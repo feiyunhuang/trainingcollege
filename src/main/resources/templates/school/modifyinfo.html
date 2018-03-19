@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>会员信息</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="../../static/css/dashboard.css" th:href="@{/css/dashboard.css}" >
+
+</head>
+
+<body>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+
+            </ul>
+        </div>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+        <div class="row placeholders">
+        </div>
+        <h2 class="sub-header">修改机构信息</h2>
+
+        <form class="form-horizontal" method="post" role="form" action="register.html" th:action="@{/school/modifyinfo}">
+
+            <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">修改机构名</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="name"
+                           name="name">
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="password" class="col-sm-2 control-label">修改密码</label>
+                <div class="col-sm-2">
+                    <input type="password" class="form-control" id="password"
+                           name="password">
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="passwordagain" class="col-sm-2 control-label">再输一次密码</label>
+                <div class="col-sm-2">
+                    <input type="password" class="form-control" id="passwordagain"
+                           name="passwordagain">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="mail" class="col-sm-2 control-label">修改联系方式</label>
+                <div class="col-sm-2">
+                    <input type="email" class="form-control" id="mail"
+                           name="mail">
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="address" class="col-sm-2 control-label">修改地址</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="address"
+                           name="address">
+                </div>
+            </div>
+
+            <label for="name" class="col-sm-2 control-label"></label>
+            <div class="col-sm-4">
+                <button class="btn btn-lg btn-primary btn-block" type="submit">提交管理员审批</button>
+            </div>
+
+
+
+
+
+        </form>
+
+    </div>
+</div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="../../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+<script>window.jQuery || document.write('<script src="../js/jquery.min.js"><\/script>')</script>
+<script src="../../static/js/bootstrap.min.js" th:src="@{/js/jquery.min.js}"></script>
+<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+<script src="../../static/js/holder.min.js" th:src="@{/js/jquery.min.js}"></script>
+</body>
+</html>
+
