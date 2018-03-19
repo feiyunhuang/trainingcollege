@@ -286,5 +286,13 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    @Override
+    public void exchangecoupon(int userid, int point) {
+        MemberEntity memberEntity=memberRepository.getOne(userid);
+        memberEntity.setPoint(memberEntity.getPoint()-point);
+        memberEntity.setCoupon(memberEntity.getCoupon()+point/100);
+        memberRepository.save(memberEntity);
+    }
+
 
 }

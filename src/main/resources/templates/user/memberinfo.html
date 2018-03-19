@@ -78,6 +78,19 @@
                     </tr>
                     </tr>
                 </table>
+
+                <h4>积分兑换优惠券(100积分可兑换1元优惠券）</h4>
+                <form class="form-horizontal" method="post" role="form" action="register.html" th:action="@{/user/exchangecoupon}">
+                    <label for="point" class="col-sm-2 control-label">输入积分数</label>
+                    <div class="col-sm-2">
+                    <input type="text" class="form-control" id="point"
+                           name="point">
+                </div>
+
+                    <div class="col-sm-4">
+                        <button class="btn btn-small btn-primary" type="submit">兑换</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

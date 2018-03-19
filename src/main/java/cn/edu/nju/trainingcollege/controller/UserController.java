@@ -195,6 +195,16 @@ public class UserController {
         return "redirect:/index";
     }
 
+    @RequestMapping(value = "/exchangecoupon", method = RequestMethod.POST)
+    public String exchangecoupon(HttpSession session,@RequestParam("point") int point){
+
+        int userid= (int) session.getAttribute("userid");
+        userService.exchangecoupon(userid,point);
+
+        return "redirect:/user/memberinfo";
+    }
+
+
     @RequestMapping(value="/searchclass",method = RequestMethod.POST)
     public String searchclass(Model model,HttpSession session,@RequestParam("label") String label){
 

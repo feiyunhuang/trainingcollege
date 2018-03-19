@@ -38,4 +38,6 @@ public interface UserService {
     List<ClassEntity> searchclass(String label);
 
     void cancelmember(int userid);
+
+    void exchangecoupon(int userid,int point);
 }
