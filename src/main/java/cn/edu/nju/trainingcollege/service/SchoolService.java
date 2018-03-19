@@ -1,6 +1,7 @@
 package cn.edu.nju.trainingcollege.service;
 
 import cn.edu.nju.trainingcollege.entity.ClassEntity;
+import cn.edu.nju.trainingcollege.entity.SchoolEntity;
 import cn.edu.nju.trainingcollege.entity.TeacherEntity;
 
 import java.util.List;
@@ -16,4 +17,5 @@ public interface SchoolService {
 
     void addclass(String classname,String schoolid,String timeaweek,int week,int classnum,int studentaclass,double price,int teacherid,String daytime,String begindate,String description);
 
+    SchoolEntity getschoolinfo(String schoolid);
 }

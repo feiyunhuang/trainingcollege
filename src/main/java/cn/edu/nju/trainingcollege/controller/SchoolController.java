@@ -2,6 +2,7 @@ package cn.edu.nju.trainingcollege.controller;
 
 
 import cn.edu.nju.trainingcollege.entity.ClassEntity;
+import cn.edu.nju.trainingcollege.entity.SchoolEntity;
 import cn.edu.nju.trainingcollege.entity.TeacherEntity;
 import cn.edu.nju.trainingcollege.service.SchoolService;
 import cn.edu.nju.trainingcollege.util.Helper;
@@ -60,10 +61,21 @@ public class SchoolController {
         String schoolid= (String) session.getAttribute("schoolid");
 
 
+        SchoolEntity school=schoolService.getschoolinfo(schoolid);
+        model.addAttribute("school",school);
+
+        return "school/schoolinfo";
+    }
+
+    @RequestMapping({"/schoolclass"})
+    public String schoolclass(Model model,HttpSession session) {
+        String schoolid= (String) session.getAttribute("schoolid");
+
+
         List<ClassEntity> classes=schoolService.findMyClass(schoolid);
         model.addAttribute("classes",classes);
 
-        return "school/schoolinfo";
+        return "school/schoolclass";
     }
 
 

@@ -6,6 +6,7 @@ import cn.edu.nju.trainingcollege.dao.SchoolRepository;
 import cn.edu.nju.trainingcollege.dao.TeacherRepository;
 import cn.edu.nju.trainingcollege.entity.ClassEntity;
 import cn.edu.nju.trainingcollege.entity.RegisterApprovalEntity;
+import cn.edu.nju.trainingcollege.entity.SchoolEntity;
 import cn.edu.nju.trainingcollege.entity.TeacherEntity;
 import cn.edu.nju.trainingcollege.service.MailService;
 import cn.edu.nju.trainingcollege.service.SchoolService;
@@ -100,5 +101,10 @@ public class SchoolServiceImpl implements SchoolService {
         classEntity.setDescription(description);
 
         classRepository.save(classEntity);
+    }
+
+    @Override
+    public SchoolEntity getschoolinfo(String schoolid) {
+        return schoolRepository.getOne(schoolid);
     }
 }
