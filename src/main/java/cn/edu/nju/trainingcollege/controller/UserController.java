@@ -182,6 +182,17 @@ public class UserController {
 
     }
 
+
+    @RequestMapping("/topay")
+    public String topay(String orderid,Model model,HttpSession session) {
+
+        session.setAttribute("orderid",orderid);
+        OrderEntity orderEntity=userService.getorderByid(orderid);
+        session.setAttribute("totalprice",orderEntity.getTotalprice());
+        model.addAttribute("order",orderEntity);
+        return "user/topay";
+    }
+
     @RequestMapping(value = "/pay", method = RequestMethod.POST)
     public String topay(HttpSession session,@RequestParam("password") String password){
 
@@ -194,6 +205,7 @@ public class UserController {
 
         return "redirect:/index";
     }
+
 
     @RequestMapping(value = "/exchangecoupon", method = RequestMethod.POST)
     public String exchangecoupon(HttpSession session,@RequestParam("point") int point){
@@ -208,8 +220,61 @@ public class UserController {
     @RequestMapping(value = "/modifyinfo")
     public String showmodifyinfo(HttpSession session){
 
-        return "/user/modifyinfo";
+        return "user/modifyinfo";
     }
+
+
+    @RequestMapping(value = "/showunpayorder")
+    public String showunpayorder(HttpSession session,Model model){
+
+        int userid= (int) session.getAttribute("userid");
+        List<OrderEntity> unpayorders=userService.getunpayorder(userid);
+        model.addAttribute("unpayorders",unpayorders);
+
+        return "user/unpayorder";
+    }
+
+    @RequestMapping(value = "/showcancelorder")
+    public String showcancelorder(HttpSession session,Model model){
+
+        int userid= (int) session.getAttribute("userid");
+        List<OrderEntity> cancelorders=userService.getcancelorder(userid);
+        model.addAttribute("cancelorders",cancelorders);
+
+        return "user/showcancelorder";
+    }
+
+    @RequestMapping(value = "/showpayedorder")
+    public String showpayedorder(HttpSession session,Model model){
+
+        int userid= (int) session.getAttribute("userid");
+        List<OrderEntity> payedorders=userService.getpayedorder(userid);
+        model.addAttribute("payedorders",payedorders);
+
+        return "user/showpayedorder";
+    }
+
+    @RequestMapping(value = "/showsuccessorder")
+    public String showsuccessorder(HttpSession session,Model model){
+
+        int userid= (int) session.getAttribute("userid");
+        List<OrderEntity> successorders=userService.getsuccessorder(userid);
+        model.addAttribute("successorders",successorders);
+
+        return "user/showsuccessorder";
+    }
+
+
+    @RequestMapping(value = "/showdrawbackorder")
+    public String showdrawbackorder(HttpSession session,Model model){
+
+        int userid= (int) session.getAttribute("userid");
+        List<OrderEntity> drawbackorders=userService.getdrawbackorder(userid);
+        model.addAttribute("drawbackorders",drawbackorders);
+
+        return "user/showdrawbackorder";
+    }
+
 
     @RequestMapping(value = "/modifyinfo", method = RequestMethod.POST)
     public String modifyinfo(HttpSession session,@RequestParam("name") String name,@RequestParam ("password") String password,@RequestParam("phone") String phone){

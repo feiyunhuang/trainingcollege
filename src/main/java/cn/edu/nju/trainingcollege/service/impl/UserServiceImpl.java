@@ -307,5 +307,32 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    @Override
+    public List<OrderEntity> getunpayorder(int userid) {
+
+        return orderRepository.findByUseridAndOrderstate(userid,OrderState.TOPAY);
+
+    }
+
+    @Override
+    public List<OrderEntity> getcancelorder(int userid) {
+        return orderRepository.findByUseridAndOrderstate(userid,OrderState.CANCEL);
+    }
+
+    @Override
+    public List<OrderEntity> getpayedorder(int userid) {
+        return orderRepository.findByUseridAndOrderstate(userid,OrderState.PAYED);
+    }
+
+    @Override
+    public List<OrderEntity> getsuccessorder(int userid) {
+        return orderRepository.findByUseridAndOrderstate(userid,OrderState.SUCCESS);
+    }
+
+    @Override
+    public List<OrderEntity> getdrawbackorder(int userid) {
+        return orderRepository.findByUseridAndOrderstate(userid,OrderState.DRAWBACK);
+    }
+
 
 }

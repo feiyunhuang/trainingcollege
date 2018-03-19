@@ -42,4 +42,14 @@ public interface UserService {
     void exchangecoupon(int userid,int point);
 
     void modifyinfo(int userid,String name,String password,String phone);
+
+    List<OrderEntity> getunpayorder(int userid);
+
+    List<OrderEntity> getcancelorder(int userid);
+
+    List<OrderEntity> getpayedorder(int userid);
+
+    List<OrderEntity> getsuccessorder(int userid);
+
+    List<OrderEntity> getdrawbackorder(int userid);
 }
