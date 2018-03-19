@@ -205,6 +205,23 @@ public class UserController {
     }
 
 
+    @RequestMapping(value = "/modifyinfo")
+    public String showmodifyinfo(HttpSession session){
+
+        return "/user/modifyinfo";
+    }
+
+    @RequestMapping(value = "/modifyinfo", method = RequestMethod.POST)
+    public String modifyinfo(HttpSession session,@RequestParam("name") String name,@RequestParam ("password") String password,@RequestParam("phone") String phone){
+
+        int userid= (int) session.getAttribute("userid");
+        userService.modifyinfo(userid,name,password,phone);
+
+        return "redirect:/user/login";
+    }
+
+
+
     @RequestMapping(value="/searchclass",method = RequestMethod.POST)
     public String searchclass(Model model,HttpSession session,@RequestParam("label") String label){
 

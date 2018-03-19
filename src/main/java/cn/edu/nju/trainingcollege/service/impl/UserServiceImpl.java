@@ -294,5 +294,18 @@ public class UserServiceImpl implements UserService {
         memberRepository.save(memberEntity);
     }
 
+    @Override
+    public void modifyinfo(int userid, String name, String password, String phone) {
+
+        UserInfoEntity userInfoEntity=userInfoRepository.getOne(userid);
+        UserEntity userEntity=userRepository.getOne(userid);
+        userInfoEntity.setName(name);
+        userEntity.setPassword(MD5Util.encode(password));
+        userInfoEntity.setPhonenum(phone);
+        userInfoRepository.save(userInfoEntity);
+        userRepository.save(userEntity);
+
+    }
+
 
 }

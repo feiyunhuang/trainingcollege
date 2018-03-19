@@ -40,4 +40,6 @@ public interface UserService {
     void cancelmember(int userid);
 
     void exchangecoupon(int userid,int point);
+
+    void modifyinfo(int userid,String name,String password,String phone);
 }
