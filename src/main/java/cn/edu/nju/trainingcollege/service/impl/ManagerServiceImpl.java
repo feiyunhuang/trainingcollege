@@ -4,6 +4,8 @@ import cn.edu.nju.trainingcollege.dao.*;
 import cn.edu.nju.trainingcollege.entity.*;
 import cn.edu.nju.trainingcollege.service.MailService;
 import cn.edu.nju.trainingcollege.service.ManagerService;
+import cn.edu.nju.trainingcollege.util.Helper;
+import cn.edu.nju.trainingcollege.vo.MemberInfoVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,9 +22,11 @@ public class ManagerServiceImpl implements ManagerService {
     private final ClassRepository classRepository;
     private final TeacherRepository teacherRepository;
     private final ChangeApprovalRepository changeApprovalRepository;
+    private final UserInfoRepository userInfoRepository;
+    private final MemberRepository memberRepository;
 
     @Autowired
-    public ManagerServiceImpl(ManagerRepository managerRepository, RegisterApprovalRepository registerApprovalRepository, SchoolRepository schoolRepository, MailService mailService, ClassRepository classRepository, TeacherRepository teacherRepository, ChangeApprovalRepository changeApprovalRepository) {
+    public ManagerServiceImpl(ManagerRepository managerRepository, RegisterApprovalRepository registerApprovalRepository, SchoolRepository schoolRepository, MailService mailService, ClassRepository classRepository, TeacherRepository teacherRepository, ChangeApprovalRepository changeApprovalRepository, UserInfoRepository userInfoRepository, MemberRepository memberRepository) {
         this.managerRepository = managerRepository;
         this.registerApprovalRepository = registerApprovalRepository;
         this.schoolRepository = schoolRepository;
@@ -30,6 +34,8 @@ public class ManagerServiceImpl implements ManagerService {
         this.classRepository = classRepository;
         this.teacherRepository = teacherRepository;
         this.changeApprovalRepository = changeApprovalRepository;
+        this.userInfoRepository = userInfoRepository;
+        this.memberRepository = memberRepository;
     }
 
     @Override
@@ -120,6 +126,27 @@ public class ManagerServiceImpl implements ManagerService {
         ChangeApprovalEntity changeApprovalEntity=changeApprovalRepository.getOne(id);
         changeApprovalRepository.delete(changeApprovalEntity);
 
+    }
+
+    @Override
+    public List<MemberInfoVo> getalluser() {
+        Helper helper=new Helper();
+        List<MemberInfoVo> memberInfoVoList=new ArrayList<>();
+        List<MemberEntity> memberEntityList=memberRepository.findAll();
+        for(MemberEntity memberEntity : memberEntityList){
+            int id=memberEntity.getId();
+            UserInfoEntity userInfoEntity=userInfoRepository.getOne(id);
+            MemberInfoVo memberInfoVo=new MemberInfoVo();
+            memberInfoVo.setId(id);
+            memberInfoVo.setPoint(memberEntity.getPoint());
+            memberInfoVo.setLevel(memberEntity.getLevel());
+            memberInfoVo.setRegistdate(helper.timeToDateString(userInfoEntity.getRegistdate()));
+            memberInfoVo.setDiscount(""+helper.getDiscount(memberEntity.getAccumulate()));
+            memberInfoVo.setName(userInfoEntity.getName());
+            memberInfoVo.setCoupon(memberEntity.getCoupon());
+            memberInfoVoList.add(memberInfoVo);
+        }
+        return memberInfoVoList;
     }
 
 

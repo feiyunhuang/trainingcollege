@@ -40,33 +40,31 @@
 
             </div>
 
-            <h2 class="sub-header">所有注册机构</h2>
+            <h2 class="sub-header">所有用户</h2>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>机构ID</th>
-                        <th>机构名</th>
-                        <th>登录密码</th>
-                        <th>联系方式</th>
+                        <th>用户ID</th>
+                        <th>用户名</th>
+                        <th>用户等级</th>
                         <th>注册时间</th>
-                        <th>地址</th>
+                        <th>享受折扣</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="school : ${schools}">
+                    <tr th:each="user : ${users}">
 
-                        <td th:text="${school.id}">1234567</td>
+                        <td th:text="${user.id}">1234567</td>
 
-                        <td th:text="${school.name}"></td>
+                        <td th:text="${user.name}"></td>
 
-                        <td th:text="${school.password}"></td>
+                        <td th:text="${user.level}"></td>
 
-                        <td th:text="${school.mail}"></td>
+                        <td th:text="${user.registdate}"></td>
 
-                        <td th:text="${school.registdate}"></td>
+                        <td th:text="${user.discount}+'折'"></td>
 
-                        <td th:text="${school.address}"></td>
 
 
                     </tr>

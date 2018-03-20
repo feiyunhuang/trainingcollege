@@ -7,6 +7,7 @@ import cn.edu.nju.trainingcollege.entity.RegisterApprovalEntity;
 import cn.edu.nju.trainingcollege.entity.SchoolEntity;
 import cn.edu.nju.trainingcollege.service.ManagerService;
 import cn.edu.nju.trainingcollege.vo.DataVo;
+import cn.edu.nju.trainingcollege.vo.MemberInfoVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -84,6 +85,14 @@ public class ManagerController {
         model.addAttribute("schools",schools);
         return "manager/allschools";
     }
+
+    @RequestMapping({"/alluser"})
+    public String allusers(Model model){
+        List<MemberInfoVo> memberInfoVoList =managerService.getalluser();
+        model.addAttribute("users",memberInfoVoList);
+        return "manager/alluser";
+    }
+
 
 
     @RequestMapping({"/changeapproval"})
