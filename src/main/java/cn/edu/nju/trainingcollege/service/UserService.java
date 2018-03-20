@@ -9,6 +9,7 @@ import cn.edu.nju.trainingcollege.vo.ClassInfoVo;
 import cn.edu.nju.trainingcollege.vo.MemberInfoVo;
 import cn.edu.nju.trainingcollege.vo.OrderVo;
 
+import java.text.ParseException;
 import java.util.List;
 
 public interface UserService {
@@ -52,4 +53,6 @@ public interface UserService {
     List<OrderEntity> getsuccessorder(int userid);
 
     List<OrderEntity> getdrawbackorder(int userid);
+
+    void drawbackorder(String orderid)throws ParseException;
 }

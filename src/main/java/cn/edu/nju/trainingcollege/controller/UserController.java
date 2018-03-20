@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 
 import javax.servlet.http.HttpSession;
+import java.text.ParseException;
 import java.util.List;
 
 @RequestMapping(value = "/user")
@@ -307,6 +308,12 @@ public class UserController {
         return "user/classlist";
     }
 
+
+    @RequestMapping("/drawbackorder")
+    public String drawbackorder(String orderid) throws ParseException {
+        userService.drawbackorder(orderid);
+        return "redirect:/user/showdrawbackorder";
+    }
 
 
 

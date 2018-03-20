@@ -334,5 +334,35 @@ public class UserServiceImpl implements UserService {
         return orderRepository.findByUseridAndOrderstate(userid,OrderState.DRAWBACK);
     }
 
+    @Override
+    public void drawbackorder(String orderid) throws ParseException{
+        Helper helper=new Helper();
+        OrderEntity order=orderRepository.getOne(orderid);
+        double totalprice=order.getTotalprice();
+        double backmoney = 0;
+        int userid=order.getUserid();
+        String bankaccount=userInfoRepository.getOne(userid).getPhonenum();
+        BankEntity bankEntity=bankRepository.getOne(bankaccount);
+        Timestamp nowtime=new Timestamp(System.currentTimeMillis());
+        Timestamp classbegintime=order.getClassbegintime();
+        if(helper.compare_date(nowtime,helper.minusnday(classbegintime,2))<=0){//开课两周，自动配班之前
+            backmoney=totalprice*0.8;
+            order.setOrderstate(OrderState.DRAWBACK);
+        }
+        if(helper.compare_date(nowtime,helper.minusnday(classbegintime,2))>0&&helper.compare_date(nowtime,classbegintime)<0){//开课两周到开课之间
+            backmoney=totalprice*0.5;
+            order.setOrderstate(OrderState.DRAWBACK);
+        }
+        if(helper.compare_date(nowtime,classbegintime)>=0){
+            backmoney=0;
+            order.setOrderstate(OrderState.DRAWBACK);
+        }
+        orderRepository.save(order);
+        double balance=bankEntity.getBalance()+backmoney;
+        bankEntity.setBalance(balance);
+        bankRepository.save(bankEntity);
+
+    }
+
 
 }

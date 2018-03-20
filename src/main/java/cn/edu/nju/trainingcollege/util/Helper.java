@@ -140,9 +140,9 @@ public class Helper {
 
     }
 
-    public static Timestamp minusfourteenday(Timestamp time) throws ParseException {
+    public static Timestamp minusnday(Timestamp time,int n) throws ParseException {
 
-        time.setTime(time.getTime() - 14*24*60*60*1000);
+        time.setTime(time.getTime() - n*24*60*60*1000);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
         return Timestamp.valueOf(sdf.format(time));
@@ -156,10 +156,10 @@ public class Helper {
 
         try {
             if (dt1.getTime() > dt2.getTime()) {
-//                System.out.println("dt1 在dt2前");
+//                System.out.println("dt1 在dt2后");
                 return 1;
             } else if (dt1.getTime() < dt2.getTime()) {
-//                System.out.println("dt1在dt2后");
+//                System.out.println("dt1在dt2前");
                 return -1;
             } else {
                 return 0;
@@ -175,11 +175,16 @@ public class Helper {
     public static void main(String[] args) throws ParseException {
 
         Timestamp d1=new Timestamp(System.currentTimeMillis());
-//        Timestamp d2=new Timestamp(System.currentTimeMillis());
-//        System.out.println(compare_date(d1,d2));
-
+        for(int i=0;i<100000;i++){
+            System.out.println(i);
+        }
+        Date date=new Date(System.currentTimeMillis());
+        Timestamp d2=new Timestamp(System.currentTimeMillis());
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        System.out.println(sdf.format(minusfourteenday(d1)));
+        System.out.println(sdf.format(d1));
+        System.out.println(sdf.format(date));
+        System.out.println(sdf.format(d2));
 
+        System.out.println(compare_date(d1,d2));
     }
 }
