@@ -12,6 +12,7 @@ public class OrderEntity {
     private int userid;
     private String schoolid;
     private int teacherid;
+    private int classid;
     private double price;
     private int peoplenum;
     private double totalprice;
@@ -27,11 +28,12 @@ public class OrderEntity {
     private int thirdclass;
 
 
-    public OrderEntity(String id, int userid, String schoolid, int teacherid, double price, int peoplenum, double totalprice, Timestamp createtime, Timestamp topaytime, Timestamp classbegintime, String bankaccount, int usecoupon, OrderState orderstate, int chooseclass, int firstclass, int secondclass, int thirdclass) {
+    public OrderEntity(String id, int userid, String schoolid, int teacherid, int classid, double price, int peoplenum, double totalprice, Timestamp createtime, Timestamp topaytime, Timestamp classbegintime, String bankaccount, int usecoupon, OrderState orderstate, int chooseclass, int firstclass, int secondclass, int thirdclass) {
         this.id = id;
         this.userid = userid;
         this.schoolid = schoolid;
         this.teacherid = teacherid;
+        this.classid = classid;
         this.price = price;
         this.peoplenum = peoplenum;
         this.totalprice = totalprice;
@@ -87,6 +89,16 @@ public class OrderEntity {
 
     public void setTeacherid(int teacherid) {
         this.teacherid = teacherid;
+    }
+
+    @Basic
+    @Column(name = "classid", nullable = false)
+    public int getClassid() {
+        return classid;
+    }
+
+    public void setClassid(int classid) {
+        this.classid = classid;
     }
 
     @Basic

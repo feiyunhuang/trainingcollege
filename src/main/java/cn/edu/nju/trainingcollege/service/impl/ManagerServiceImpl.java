@@ -149,5 +149,10 @@ public class ManagerServiceImpl implements ManagerService {
         return memberInfoVoList;
     }
 
+    @Override
+    public List<ClassEntity> findclassbyschoolid(String schoolid) {
+        return classRepository.findBySchoolid(schoolid);
+    }
+
 
 }

@@ -132,6 +132,7 @@ public class UserController {
             int userid = (int) session.getAttribute("userid");
 
             OrderVo order = userService.generateordervo(id, userid);
+            System.out.println("classid="+id);
             session.setAttribute("classid",id);
             model.addAttribute("order", order);
             return "user/generatechooseorder";
@@ -150,6 +151,7 @@ public class UserController {
 
             int userid = (int) session.getAttribute("userid");
             int classid=(int)session.getAttribute("classid");
+            System.out.println("classid="+classid);
             String orderid=userService.createunchooseorder(classid,userid,people,coupon);
 
             session.setAttribute("orderid",orderid);

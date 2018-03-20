@@ -27,4 +27,6 @@ public interface ManagerService {
     void nochange (String id);
 
     List<MemberInfoVo> getalluser();
+
+    List<ClassEntity> findclassbyschoolid(String schoolid);
 }

@@ -168,6 +168,7 @@ public class UserServiceImpl implements UserService {
         order.setId(id);
         order.setUserid(userid);
         order.setSchoolid(classEntity.getSchoolid());
+        order.setClassid(classid);
         order.setTeacherid(classEntity.getTeacherid());
         order.setPrice(price);
         order.setPeoplenum(people);
@@ -210,6 +211,7 @@ public class UserServiceImpl implements UserService {
         order.setId(id);
         order.setUserid(userid);
         order.setSchoolid(classEntity.getSchoolid());
+        order.setClassid(classid);
         order.setTeacherid(classEntity.getTeacherid());
         order.setPrice(price);
         order.setPeoplenum(people);

@@ -37,40 +37,33 @@
             </h1>
 
             <div class="row placeholders">
-
             </div>
-
-            <h2 class="sub-header">所有注册机构</h2>
+            <h2 class="sub-header">已经发布的课程</h2>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>机构ID</th>
-                        <th>机构名</th>
-                        <th>登录密码</th>
-                        <th>联系方式</th>
-                        <th>注册时间</th>
-                        <th>地址</th>
-                        <th>操作</th>
+                        <th>课id</th>
+                        <th>课程名</th>
+                        <th>发布时间</th>
+                        <th>开始时间</th>
+                        <th>上课时间</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="school : ${schools}">
+                    <tr th:each="class : ${classes}">
 
-                        <td th:text="${school.id}">1234567</td>
+                        <td th:text="${class.id}">1234567</td>
 
-                        <td th:text="${school.name}"></td>
+                        <td th:text="${class.name}"></td>
 
-                        <td th:text="${school.password}"></td>
+                        <td th:text="${class.registdate}"></td>
 
-                        <td th:text="${school.mail}"></td>
+                        <td th:text="${class.begindate}"></td>
 
-                        <td th:text="${school.registdate}"></td>
+                        <td th:text="${class.daytime}"></td>
 
-                        <td th:text="${school.address}"></td>
 
-                        <td><a th:href="@{/manager/watchschool(schoolid=${school.id})}"><button class="btn btn-large btn-success" type="button">查看他发布的课程</button></a>
-                        </td>
 
                     </tr>
 

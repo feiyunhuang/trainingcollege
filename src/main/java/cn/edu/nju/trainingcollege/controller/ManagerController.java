@@ -3,6 +3,7 @@ package cn.edu.nju.trainingcollege.controller;
 
 import cn.edu.nju.trainingcollege.dao.RegisterApprovalRepository;
 import cn.edu.nju.trainingcollege.entity.ChangeApprovalEntity;
+import cn.edu.nju.trainingcollege.entity.ClassEntity;
 import cn.edu.nju.trainingcollege.entity.RegisterApprovalEntity;
 import cn.edu.nju.trainingcollege.entity.SchoolEntity;
 import cn.edu.nju.trainingcollege.service.ManagerService;
@@ -107,6 +108,16 @@ public class ManagerController {
 
         return "manager/statistics";
     }
+
+
+    @RequestMapping("/watchschool")
+    public String watchschool(String schoolid,Model model) {
+        List<ClassEntity> classEntityList=managerService.findclassbyschoolid(schoolid);
+        model.addAttribute("classes",classEntityList);
+        return "manager/watchschool";
+    }
+
+
 
     @GetMapping("/data")
     @ResponseBody
