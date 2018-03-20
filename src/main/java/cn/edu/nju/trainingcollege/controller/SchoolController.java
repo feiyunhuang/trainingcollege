@@ -78,6 +78,17 @@ public class SchoolController {
         return "school/schoolclass";
     }
 
+    @RequestMapping({"/schoolteacher"})
+    public String schoolteacher(Model model,HttpSession session) {
+        String schoolid= (String) session.getAttribute("schoolid");
+        List<TeacherEntity> teacherEntityList=schoolService.findAllTeacher(schoolid);
+        model.addAttribute("teachers",teacherEntityList);
+        return "school/schoolteacher";
+    }
+
+
+
+
 
     @RequestMapping({"/addclass"})
     public String showaddclass(Model model,HttpSession session){
@@ -102,6 +113,28 @@ public class SchoolController {
                 teacherid,daytime,begindate,description);
         return "redirect:/school/schoolclass";
     }
+
+    @RequestMapping({"/addteacher"})
+    public String showaddteacher(){
+        return "school/addteacher";
+    }
+
+    @RequestMapping(value = "/addteacher",method = RequestMethod.POST)
+    public String addteacher(HttpSession session,@RequestParam("name") String name,@RequestParam("description") String description){
+        String schoolid= (String) session.getAttribute("schoolid");
+        schoolService.addteacher(name,description,schoolid);
+        return "redirect:/school/schoolteacher";
+
+    }
+
+
+//    @RequestMapping("/deleteteacher")
+//    public String deleteteacher(int teacherid) {
+//        schoolService.deleteteacher(teacherid);
+//        return "redirect:/school/schoolteacher";
+//    }
+
+
 
     @RequestMapping({"/modifyinfo"})
     public String showmodify(){

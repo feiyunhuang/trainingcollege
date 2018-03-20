@@ -116,4 +116,20 @@ public class SchoolServiceImpl implements SchoolService {
         changeApprovalRepository.save(changeApprovalEntity);
 
     }
+
+    @Override
+    public void addteacher(String name, String description,String schoolid) {
+
+        TeacherEntity teacherEntity=new TeacherEntity();
+        teacherEntity.setName(name);
+        teacherEntity.setSchoolid(schoolid);
+        teacherEntity.setDescription(description);
+        teacherRepository.save(teacherEntity);
+    }
+
+    @Override
+    public void deleteteacher(int teacherid) {
+        TeacherEntity teacherEntity=teacherRepository.getOne(teacherid);
+        teacherRepository.delete(teacherEntity);
+    }
 }

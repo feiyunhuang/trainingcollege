@@ -20,4 +20,9 @@ public interface SchoolService {
     SchoolEntity getschoolinfo(String schoolid);
 
     void modifyschoolinfo(String schoolid,String schoolname,String password,String mail,String address);
+
+    void addteacher(String name,String description,String schoolid);
+
+    void deleteteacher(int teacherid);
+
 }

@@ -44,28 +44,20 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th>课id</th>
-                    <th>课程名</th>
-                    <th>发布时间</th>
-                    <th>开始时间</th>
-                    <th>上课时间</th>
-                    <th>操作</th>
+                    <th>教师id</th>
+                    <th>教师名</th>
+                    <th>教师描述</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="class : ${classes}">
+                <tr th:each="teacher : ${teachers}">
 
-                    <td th:text="${class.id}">1234567</td>
+                    <td th:text="${teacher.id}">1234567</td>
 
-                    <td th:text="${class.name}"></td>
+                    <td th:text="${teacher.name}"></td>
 
-                    <td th:text="${class.registdate}"></td>
+                    <td th:text="${teacher.description}"></td>
 
-                    <td th:text="${class.begindate}"></td>
-
-                    <td th:text="${class.timeaweek}+${class.daytime}"></td>
-
-                    <td><a th:href="@{/school/add(id=${class.id})}"><button class="btn btn-large btn-success" type="button">具体查看</button></a></td>
 
 
 

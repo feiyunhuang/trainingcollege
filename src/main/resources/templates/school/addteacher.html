@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>个人信息</title>
+    <title>会员信息</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="../../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
@@ -35,46 +35,40 @@
         </div>
     </div>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        <h1 class="page-header" th:text="${'机构：'}"></th:text></h1>
 
         <div class="row placeholders">
         </div>
-        <h2 class="sub-header">已经发布的课程</h2>
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>课id</th>
-                    <th>课程名</th>
-                    <th>发布时间</th>
-                    <th>开始时间</th>
-                    <th>上课时间</th>
-                    <th>操作</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="class : ${classes}">
+        <h2 class="sub-header">添加新的老师</h2>
 
-                    <td th:text="${class.id}">1234567</td>
+        <form class="form-horizontal" method="post" role="form"  th:action="@{/school/addteacher}">
 
-                    <td th:text="${class.name}"></td>
+            <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">老师名</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="name"
+                           name="name">
+                </div>
+            </div>
 
-                    <td th:text="${class.registdate}"></td>
 
-                    <td th:text="${class.begindate}"></td>
+            <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">老师的描述</label>
+                <div class="col-sm-4">
+                    <textarea class="form-control" rows="3" cols="20"  placeholder="添加一些对课程的描述吧" name="description"></textarea>
+                </div>
+            </div>
 
-                    <td th:text="${class.timeaweek}+${class.daytime}"></td>
-
-                    <td><a th:href="@{/school/add(id=${class.id})}"><button class="btn btn-large btn-success" type="button">具体查看</button></a></td>
+            <label for="name" class="col-sm-2 control-label"></label>
+            <div class="col-sm-4">
+                <button class="btn btn-lg btn-primary btn-block" type="submit">提交</button>
+            </div>
 
 
 
-                </tr>
 
 
-                </tbody>
-            </table>
-        </div>
+        </form>
+
     </div>
 </div>
 </div>
