@@ -104,11 +104,11 @@ public class ManagerController {
     public List<DataVo> data() {
 
         List<DataVo> list=new ArrayList<>();
-        DataVo vo1=new DataVo(400,"我的电脑");
-        DataVo vo2=new DataVo(335,"直接访问");
-        DataVo vo3=new DataVo(310,"邮件营销");
+        DataVo vo1=new DataVo(40,"我的电脑");
+        DataVo vo2=new DataVo(200,"直接访问");
+        DataVo vo3=new DataVo(3000,"邮件营销");
         DataVo vo4=new DataVo(274,"联盟广告");
-        DataVo vo5=new DataVo(235,"视频广告");
+        DataVo vo5=new DataVo(200,"视频广告");
 
         list.add(vo1);
         list.add(vo2);
