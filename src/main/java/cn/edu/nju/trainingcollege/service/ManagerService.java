@@ -29,4 +29,6 @@ public interface ManagerService {
     List<MemberInfoVo> getalluser();
 
     List<ClassEntity> findclassbyschoolid(String schoolid);
+
+    List<OrderEntity> findorderbyuserid(int userid);
 }

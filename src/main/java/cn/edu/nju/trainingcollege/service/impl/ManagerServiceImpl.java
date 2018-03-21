@@ -24,9 +24,10 @@ public class ManagerServiceImpl implements ManagerService {
     private final ChangeApprovalRepository changeApprovalRepository;
     private final UserInfoRepository userInfoRepository;
     private final MemberRepository memberRepository;
+    private final OrderRepository orderRepository;
 
     @Autowired
-    public ManagerServiceImpl(ManagerRepository managerRepository, RegisterApprovalRepository registerApprovalRepository, SchoolRepository schoolRepository, MailService mailService, ClassRepository classRepository, TeacherRepository teacherRepository, ChangeApprovalRepository changeApprovalRepository, UserInfoRepository userInfoRepository, MemberRepository memberRepository) {
+    public ManagerServiceImpl(ManagerRepository managerRepository, RegisterApprovalRepository registerApprovalRepository, SchoolRepository schoolRepository, MailService mailService, ClassRepository classRepository, TeacherRepository teacherRepository, ChangeApprovalRepository changeApprovalRepository, UserInfoRepository userInfoRepository, MemberRepository memberRepository, OrderRepository orderRepository) {
         this.managerRepository = managerRepository;
         this.registerApprovalRepository = registerApprovalRepository;
         this.schoolRepository = schoolRepository;
@@ -36,6 +37,7 @@ public class ManagerServiceImpl implements ManagerService {
         this.changeApprovalRepository = changeApprovalRepository;
         this.userInfoRepository = userInfoRepository;
         this.memberRepository = memberRepository;
+        this.orderRepository = orderRepository;
     }
 
     @Override
@@ -152,6 +154,11 @@ public class ManagerServiceImpl implements ManagerService {
     @Override
     public List<ClassEntity> findclassbyschoolid(String schoolid) {
         return classRepository.findBySchoolid(schoolid);
+    }
+
+    @Override
+    public List<OrderEntity> findorderbyuserid(int userid) {
+        return orderRepository.findByUserid(userid);
     }
 
 

@@ -37,38 +37,33 @@
             </h1>
 
             <div class="row placeholders">
-
             </div>
-
-            <h2 class="sub-header">所有用户</h2>
+            <h2 class="sub-header">他的订单</h2>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>用户ID</th>
-                        <th>用户名</th>
-                        <th>用户等级</th>
-                        <th>注册时间</th>
-                        <th>享受折扣</th>
-                        <th>操作</th>
+                        <th>订单id</th>
+                        <th>学校id</th>
+                        <th>总价格</th>
+                        <th>创建时间</th>
+                        <th>订单状态</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="user : ${users}">
+                    <tr th:each="order : ${orders}">
 
-                        <td th:text="${user.id}">1234567</td>
+                        <td th:text="${order.id}">1234567</td>
 
-                        <td th:text="${user.name}"></td>
+                        <td th:text="${order.schoolid}"></td>
 
-                        <td th:text="${user.level}"></td>
+                        <td th:text="${order.price}"></td>
 
-                        <td th:text="${user.registdate}"></td>
+                        <td th:text="${order.createtime}"></td>
 
-                        <td th:text="${user.discount}+'折'"></td>
+                        <td th:text="${order.orderstate}"></td>
 
 
-                        <td><a th:href="@{/manager/watchuser(userid=${user.id})}"><button class="btn btn-large btn-success" type="button">查看他的订单</button></a>
-                        </td>
 
                     </tr>
 

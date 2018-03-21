@@ -2,10 +2,7 @@ package cn.edu.nju.trainingcollege.controller;
 
 
 import cn.edu.nju.trainingcollege.dao.RegisterApprovalRepository;
-import cn.edu.nju.trainingcollege.entity.ChangeApprovalEntity;
-import cn.edu.nju.trainingcollege.entity.ClassEntity;
-import cn.edu.nju.trainingcollege.entity.RegisterApprovalEntity;
-import cn.edu.nju.trainingcollege.entity.SchoolEntity;
+import cn.edu.nju.trainingcollege.entity.*;
 import cn.edu.nju.trainingcollege.service.ManagerService;
 import cn.edu.nju.trainingcollege.vo.DataVo;
 import cn.edu.nju.trainingcollege.vo.MemberInfoVo;
@@ -116,6 +113,14 @@ public class ManagerController {
         model.addAttribute("classes",classEntityList);
         return "manager/watchschool";
     }
+
+    @RequestMapping("/watchuser")
+    public String watchuser(int userid,Model model) {
+        List<OrderEntity> orderEntityList=managerService.findorderbyuserid(userid);
+        model.addAttribute("orders",orderEntityList);
+        return "manager/watchuser";
+    }
+
 
 
 

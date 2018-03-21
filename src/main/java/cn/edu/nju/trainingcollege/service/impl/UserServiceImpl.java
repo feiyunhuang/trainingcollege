@@ -12,6 +12,7 @@ import cn.edu.nju.trainingcollege.vo.ClassInfoVo;
 import cn.edu.nju.trainingcollege.vo.MemberInfoVo;
 import cn.edu.nju.trainingcollege.vo.OrderVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
@@ -272,10 +273,13 @@ public class UserServiceImpl implements UserService {
     public List<ClassEntity> searchclass(String label) {
 
         List<ClassAndLabelEntity> classAndLabelEntities=classAndLabelRepository.findAllByLabel(label);
+        List<ClassEntity> classEntityList=classRepository.findAll();
         List<ClassEntity> classlist=new ArrayList<>();
-        for(ClassAndLabelEntity c: classAndLabelEntities){
-            int id=c.getClassid();
-            classlist.add(classRepository.getOne(id));
+        for(ClassEntity c: classEntityList) {
+            String classname = c.getName();
+            if (classname.contains(label)) {
+                classlist.add(c);
+            }
         }
         return classlist;
     }
