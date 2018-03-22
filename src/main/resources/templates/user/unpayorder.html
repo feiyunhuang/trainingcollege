@@ -65,9 +65,12 @@
 
                         <td th:text="${order.totalprice}"></td>
 
-                        <td th:text="${order.createtime}"></td>
 
-                        <td th:text="${order.topaytime}"></td>
+                        <td th:text="${#dates.format(new java.util.Date(order.createtime),'yyyy-MM-dd HH:mm:ss')}">
+
+
+
+                        <td th:text="${#dates.format(new java.util.Date(order.topaytime),'yyyy-MM-dd HH:mm:ss')}">
 
 
                         <td><a th:href="@{/user/topay(orderid=${order.id})}"><button class="btn btn-large btn-success" type="button">去支付</button></a>

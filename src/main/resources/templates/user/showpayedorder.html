@@ -65,7 +65,8 @@
 
                         <td th:text="${order.totalprice}"></td>
 
-                        <td th:text="${order.createtime}"></td>
+
+                        <td th:text="${#dates.format(new java.util.Date(order.createtime),'yyyy-MM-dd HH:mm:ss')}">
 
 
 

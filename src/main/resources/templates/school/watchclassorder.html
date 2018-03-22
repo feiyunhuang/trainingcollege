@@ -64,7 +64,8 @@
 
                     <td th:text="${order.peoplenum}"></td>
 
-                    <td th:text="${order.createtime}"></td>
+
+                    <td th:text="${#dates.format(new java.util.Date(order.createtime),'yyyy-MM-dd HH:mm:ss')}"></td>
 
                     <td th:text="${order.orderstate}"></td>
 

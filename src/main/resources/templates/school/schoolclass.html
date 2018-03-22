@@ -36,10 +36,10 @@
         </div>
     </div>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        <h1 class="page-header" th:text="${'机构：'}"></th:text></h1>
+        <!--<h1 class="page-header" th:text="${'机构：'}"></th:text></h1>-->
 
-        <div class="row placeholders">
-        </div>
+        <!--<div class="row placeholders">-->
+        <!--</div>-->
         <h2 class="sub-header">已经发布的课程</h2>
         <div class="table-responsive">
             <table class="table table-striped">
@@ -60,9 +60,10 @@
 
                     <td th:text="${class.name}"></td>
 
-                    <td th:text="${class.registdate}"></td>
+                    <td th:text="${#dates.format(new java.util.Date(class.registdate),'yyyy-MM-dd HH:mm:ss')}"></td>
 
-                    <td th:text="${class.begindate}"></td>
+                    <td th:text="${#dates.format(new java.util.Date(class.begindate),'yyyy-MM-dd HH:mm:ss')}"></td>
+
 
                     <td th:text="${class.daytime}"></td>
 

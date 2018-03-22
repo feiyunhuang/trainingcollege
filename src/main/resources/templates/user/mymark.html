@@ -64,7 +64,9 @@
 
                         <td th:text="${mark.classname}"></td>
 
-                        <td th:text="${mark.registdate}"></td>
+
+                        <td th:text="${#dates.format(new java.util.Date(mark.registdate),'yyyy-MM-dd HH:mm:ss')}">
+
 
                         <td th:text="${mark.score}"></td>
                     </tr>

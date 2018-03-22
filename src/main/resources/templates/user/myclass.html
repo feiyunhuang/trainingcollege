@@ -64,7 +64,8 @@
 
                         <td th:text="${class.classnum}"></td>
 
-                        <td th:text="${class.classbegintime}"></td>
+
+                        <td th:text="${#dates.format(new java.util.Date(class.classbegintime),'yyyy-MM-dd HH:mm:ss')}">
 
                         <td th:text="${class.week}"></td>
                     </tr>
