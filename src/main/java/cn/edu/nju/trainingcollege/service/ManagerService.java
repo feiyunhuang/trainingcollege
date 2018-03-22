@@ -3,6 +3,7 @@ package cn.edu.nju.trainingcollege.service;
 import cn.edu.nju.trainingcollege.entity.*;
 import cn.edu.nju.trainingcollege.vo.DataVo;
 import cn.edu.nju.trainingcollege.vo.MemberInfoVo;
+import cn.edu.nju.trainingcollege.vo.PriceVo;
 
 import java.util.List;
 
@@ -34,4 +35,6 @@ public interface ManagerService {
     List<OrderEntity> findorderbyuserid(int userid);
 
     DataVo getdata();
+
+    List<PriceVo> getpricedata();
 }

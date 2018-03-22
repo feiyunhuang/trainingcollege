@@ -6,6 +6,7 @@ import cn.edu.nju.trainingcollege.entity.*;
 import cn.edu.nju.trainingcollege.service.ManagerService;
 import cn.edu.nju.trainingcollege.vo.DataVo;
 import cn.edu.nju.trainingcollege.vo.MemberInfoVo;
+import cn.edu.nju.trainingcollege.vo.PriceVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -106,6 +107,12 @@ public class ManagerController {
         return "manager/statistics";
     }
 
+    @RequestMapping({"/pricedata"})
+    public String showpricedata(Model model){
+
+        return "manager/pricedata";
+    }
+
 
     @RequestMapping("/watchschool")
     public String watchschool(String schoolid,Model model) {
@@ -131,5 +138,12 @@ public class ManagerController {
 
     }
 
+
+    @GetMapping("/getdata")
+    @ResponseBody
+    public List<PriceVo> pricedata() {
+        return managerService.getpricedata();
+
+    }
 
 }

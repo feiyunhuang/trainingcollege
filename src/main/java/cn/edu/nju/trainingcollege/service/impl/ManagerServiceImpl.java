@@ -8,6 +8,7 @@ import cn.edu.nju.trainingcollege.service.ManagerService;
 import cn.edu.nju.trainingcollege.util.Helper;
 import cn.edu.nju.trainingcollege.vo.DataVo;
 import cn.edu.nju.trainingcollege.vo.MemberInfoVo;
+import cn.edu.nju.trainingcollege.vo.PriceVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -388,6 +389,66 @@ public class ManagerServiceImpl implements ManagerService {
 
 
         return data;
+    }
+
+    @Override
+    public List<PriceVo> getpricedata() {
+        List<OrderEntity> topayorder=orderRepository.findByOrderstate(OrderState.TOPAY);
+        List<OrderEntity> cancelorder=orderRepository.findByOrderstate(OrderState.CANCEL);
+        List<OrderEntity> payedorder=orderRepository.findByOrderstate(OrderState.PAYED);
+        List<OrderEntity> successorder=orderRepository.findByOrderstate(OrderState.SUCCESS);
+        List<OrderEntity> drawbackorder=orderRepository.findByOrderstate(OrderState.DRAWBACK);
+
+        double topaysum=0;
+        for(OrderEntity n : topayorder){
+            topaysum=topaysum+n.getTotalprice();
+        }
+        PriceVo topay=new PriceVo();
+        topay.setValue(topaysum);
+        topay.setName("待支付订单总额");
+
+
+        double cancelsum=0;
+        for(OrderEntity n : cancelorder){
+            cancelsum=cancelsum+n.getTotalprice();
+        }
+        PriceVo cancel=new PriceVo();
+        cancel.setValue(cancelsum);
+        cancel.setName("取消订单总额");
+
+        double payedsum=0;
+        for(OrderEntity n : payedorder){
+            payedsum=payedsum+n.getTotalprice();
+        }
+        PriceVo payed=new PriceVo();
+        payed.setValue(payedsum);
+        payed.setName("已支付订单总额");
+
+        double successsum=0;
+        for(OrderEntity n : successorder){
+            successsum=successsum+n.getTotalprice();
+        }
+        PriceVo success=new PriceVo();
+        success.setValue(successsum);
+        success.setName("已完成订单总额");
+
+        double drawbacksum=0;
+        for(OrderEntity n : drawbackorder){
+            drawbacksum=drawbacksum+n.getTotalprice();
+        }
+        PriceVo drawback=new PriceVo();
+        drawback.setValue(drawbacksum);
+        drawback.setName("退订订单总额");
+
+        List<PriceVo> list=new ArrayList<>();
+        list.add(topay);
+        list.add(cancel);
+        list.add(payed);
+        list.add(success);
+        list.add(drawback);
+
+        return list;
+
     }
 
 
