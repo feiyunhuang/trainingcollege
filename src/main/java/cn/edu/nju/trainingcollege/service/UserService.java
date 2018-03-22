@@ -1,10 +1,7 @@
 package cn.edu.nju.trainingcollege.service;
 
 
-import cn.edu.nju.trainingcollege.entity.ClassEntity;
-import cn.edu.nju.trainingcollege.entity.OrderEntity;
-import cn.edu.nju.trainingcollege.entity.UserEntity;
-import cn.edu.nju.trainingcollege.entity.UserInfoEntity;
+import cn.edu.nju.trainingcollege.entity.*;
 import cn.edu.nju.trainingcollege.vo.ClassInfoVo;
 import cn.edu.nju.trainingcollege.vo.MemberInfoVo;
 import cn.edu.nju.trainingcollege.vo.OrderVo;
@@ -55,4 +52,8 @@ public interface UserService {
     List<OrderEntity> getdrawbackorder(int userid);
 
     void drawbackorder(String orderid)throws ParseException;
+
+    List<AllocateClassEntity> getmyclass(int userid);
+
+    List<MarkEntity> getmymark(int userid);
 }

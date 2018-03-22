@@ -21,16 +21,20 @@ public class SchoolServiceImpl implements SchoolService {
     private final ClassRepository classRepository;
     private final TeacherRepository teacherRepository;
     private final ChangeApprovalRepository changeApprovalRepository;
+    private final OrderRepository orderRepository;
+    private final MarkRepository markRepository;
 
 
     @Autowired
-    public SchoolServiceImpl(RegisterApprovalRepository registerApprovalRepository, SchoolRepository schoolRepository, MailService mailService, ClassRepository classRepository, TeacherRepository teacherRepository, ChangeApprovalRepository changeApprovalRepository) {
+    public SchoolServiceImpl(RegisterApprovalRepository registerApprovalRepository, SchoolRepository schoolRepository, MailService mailService, ClassRepository classRepository, TeacherRepository teacherRepository, ChangeApprovalRepository changeApprovalRepository, OrderRepository orderRepository, MarkRepository markRepository) {
         this.registerApprovalRepository = registerApprovalRepository;
         this.schoolRepository = schoolRepository;
         this.mailService = mailService;
         this.classRepository = classRepository;
         this.teacherRepository = teacherRepository;
         this.changeApprovalRepository = changeApprovalRepository;
+        this.orderRepository = orderRepository;
+        this.markRepository = markRepository;
     }
 
     @Override
@@ -131,5 +135,21 @@ public class SchoolServiceImpl implements SchoolService {
     public void deleteteacher(int teacherid) {
         TeacherEntity teacherEntity=teacherRepository.getOne(teacherid);
         teacherRepository.delete(teacherEntity);
+    }
+
+    @Override
+    public List<OrderEntity> getclassorder(int classid) {
+        return orderRepository.findByClassid(classid);
+    }
+
+    @Override
+    public void addmark(int userid, int classid, String classname, int score) {
+
+        MarkEntity markEntity=new MarkEntity();
+        markEntity.setUserid(userid);
+        markEntity.setClassid(classid);
+        markEntity.setClassname(classname);
+        markEntity.setScore(score);
+        markRepository.save(markEntity);
     }
 }

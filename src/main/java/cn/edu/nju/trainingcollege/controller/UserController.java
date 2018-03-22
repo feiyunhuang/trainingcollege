@@ -1,10 +1,7 @@
 package cn.edu.nju.trainingcollege.controller;
 
 
-import cn.edu.nju.trainingcollege.entity.ClassEntity;
-import cn.edu.nju.trainingcollege.entity.OrderEntity;
-import cn.edu.nju.trainingcollege.entity.UserEntity;
-import cn.edu.nju.trainingcollege.entity.UserInfoEntity;
+import cn.edu.nju.trainingcollege.entity.*;
 import cn.edu.nju.trainingcollege.service.UserService;
 import cn.edu.nju.trainingcollege.util.Helper;
 import cn.edu.nju.trainingcollege.vo.ClassInfoVo;
@@ -315,6 +312,24 @@ public class UserController {
     public String drawbackorder(String orderid) throws ParseException {
         userService.drawbackorder(orderid);
         return "redirect:/user/showdrawbackorder";
+    }
+
+    @RequestMapping("/showmyclass")
+    public String showmyclass (HttpSession session,Model model){
+        int userid= (int) session.getAttribute("userid");
+        List<AllocateClassEntity> myclass=userService.getmyclass(userid);
+        model.addAttribute("myclass",myclass);
+
+        return "user/myclass";
+    }
+
+    @RequestMapping("/showmymark")
+    public String showmymark (HttpSession session,Model model){
+        int userid= (int) session.getAttribute("userid");
+        List<MarkEntity> mymark=userService.getmymark(userid);
+        model.addAttribute("mymark",mymark);
+
+        return "user/mymark";
     }
 
 

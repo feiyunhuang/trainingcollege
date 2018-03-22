@@ -2,6 +2,7 @@ package cn.edu.nju.trainingcollege.controller;
 
 
 import cn.edu.nju.trainingcollege.entity.ClassEntity;
+import cn.edu.nju.trainingcollege.entity.OrderEntity;
 import cn.edu.nju.trainingcollege.entity.SchoolEntity;
 import cn.edu.nju.trainingcollege.entity.TeacherEntity;
 import cn.edu.nju.trainingcollege.service.SchoolService;
@@ -128,11 +129,25 @@ public class SchoolController {
     }
 
 
-//    @RequestMapping("/deleteteacher")
-//    public String deleteteacher(int teacherid) {
-//        schoolService.deleteteacher(teacherid);
-//        return "redirect:/school/schoolteacher";
-//    }
+    @RequestMapping({"/addmark"})
+    public String showaddmark(){
+        return "school/addmark";
+    }
+
+    @RequestMapping(value = "/addmark",method = RequestMethod.POST)
+    public String addteacher(HttpSession session,@RequestParam("userid") int userid,@RequestParam("classid") int classid,
+                                                 @RequestParam("classname") String classname,@RequestParam("score") int score){
+        schoolService.addmark(userid,classid,classname,score);
+        return "redirect:/school/addmark";
+
+    }
+
+    @RequestMapping("/watchclass")
+    public String watchclass(int classid,Model model) {
+        List<OrderEntity> orderEntityList=schoolService.getclassorder(classid);
+        model.addAttribute("orders",orderEntityList);
+        return "school/watchclassorder";
+    }
 
 
 

@@ -7,5 +7,4 @@ import java.util.List;
 
 public interface ClassRepository extends JpaRepository<ClassEntity,Integer> {
     List<ClassEntity> findBySchoolid(String schoolid);
-
 }

@@ -46,30 +46,27 @@
 
             </div>
 
-            <h2 class="sub-header">已取消订单订单</h2>
+            <h2 class="sub-header">我的成绩</h2>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>订单ID</th>
-                        <th>总价格</th>
-                        <th>创建时间</th>
-                        <th>未支付取消时间</th>
+                        <th>课程id</th>
+                        <th>课程名称</th>
+                        <th>登记时间</th>
+                        <th>分数</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="order : ${cancelorders}">
+                    <tr th:each="mark : ${mymark}">
 
-                        <td th:text="${order.id}">1234567</td>
+                        <td th:text="${mark.classid}">1234567</td>
 
-                        <td th:text="${order.totalprice}"></td>
+                        <td th:text="${mark.classname}"></td>
 
-                        <td th:text="${order.createtime}"></td>
+                        <td th:text="${mark.registdate}"></td>
 
-                        <td th:text="${order.topaytime}"></td>
-
-
-
+                        <td th:text="${mark.score}"></td>
                     </tr>
 
 

@@ -1,6 +1,7 @@
 package cn.edu.nju.trainingcollege.service;
 
 import cn.edu.nju.trainingcollege.entity.ClassEntity;
+import cn.edu.nju.trainingcollege.entity.OrderEntity;
 import cn.edu.nju.trainingcollege.entity.SchoolEntity;
 import cn.edu.nju.trainingcollege.entity.TeacherEntity;
 
@@ -24,5 +25,9 @@ public interface SchoolService {
     void addteacher(String name,String description,String schoolid);
 
     void deleteteacher(int teacherid);
+
+    List<OrderEntity> getclassorder(int classid);
+
+    void addmark(int userid,int classid,String classname,int score);
 
 }

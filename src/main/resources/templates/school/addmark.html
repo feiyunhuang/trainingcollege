@@ -39,56 +39,47 @@
 
         <div class="row placeholders">
         </div>
-        <h2 class="sub-header">修改机构信息</h2>
+        <h2 class="sub-header">为学生打分</h2>
 
-        <form class="form-horizontal" method="post" role="form" action="register.html" th:action="@{/school/modifyinfo}">
+        <form class="form-horizontal" method="post" role="form"  th:action="@{/school/addmark}">
 
             <div class="form-group">
-                <label for="name" class="col-sm-2 control-label">修改机构名</label>
+                <label for="userid" class="col-sm-2 control-label">学生id</label>
                 <div class="col-sm-2">
-                    <input type="text" class="form-control" id="name"
-                           name="name">
+                    <input type="text" class="form-control" id="userid"
+                           name="userid">
                 </div>
             </div>
 
 
             <div class="form-group">
-                <label for="password" class="col-sm-2 control-label">修改密码</label>
+                <label for="classid" class="col-sm-2 control-label">课程id</label>
                 <div class="col-sm-2">
-                    <input type="password" class="form-control" id="password"
-                           name="password">
+                    <input type="text" class="form-control" id="classid"
+                           name="classid">
                 </div>
             </div>
 
-
             <div class="form-group">
-                <label for="passwordagain" class="col-sm-2 control-label">再输一次密码</label>
+                <label for="classname" class="col-sm-2 control-label">课程名</label>
                 <div class="col-sm-2">
-                    <input type="password" class="form-control" id="passwordagain"
-                           name="passwordagain">
+                    <input type="text" class="form-control" id="classname"
+                           name="classname">
                 </div>
             </div>
 
+
             <div class="form-group">
-                <label for="mail" class="col-sm-2 control-label">修改联系方式</label>
+                <label for="score" class="col-sm-2 control-label">成绩</label>
                 <div class="col-sm-2">
-                    <input type="email" class="form-control" id="mail"
-                           name="mail">
+                    <input type="text" class="form-control" id="score"
+                           name="score">
                 </div>
             </div>
 
 
-            <div class="form-group">
-                <label for="address" class="col-sm-2 control-label">修改地址</label>
-                <div class="col-sm-4">
-                    <input type="text" class="form-control" id="address"
-                           name="address">
-                </div>
-            </div>
-
-            <label for="name" class="col-sm-2 control-label"></label>
             <div class="col-sm-4">
-                <button class="btn btn-lg btn-primary btn-block" type="submit">提交管理员审批</button>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">提交</button>
             </div>
 
 

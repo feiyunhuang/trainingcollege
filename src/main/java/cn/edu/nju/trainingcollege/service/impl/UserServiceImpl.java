@@ -12,7 +12,6 @@ import cn.edu.nju.trainingcollege.vo.ClassInfoVo;
 import cn.edu.nju.trainingcollege.vo.MemberInfoVo;
 import cn.edu.nju.trainingcollege.vo.OrderVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
@@ -33,9 +32,11 @@ public class UserServiceImpl implements UserService {
     private final OrderRepository orderRepository;
     private final BankRepository bankRepository;
     private final ClassAndLabelRepository classAndLabelRepository;
+    private final AllocateClassRepository allocateClassRepository;
+    private final MarkRepository markRepository;
 
     @Autowired
-    public UserServiceImpl(UserInfoRepository userInfoRepository, UserRepository userRepository, MemberRepository memberRepository, MailService mailService, ClassRepository classRepository, TeacherRepository teacherRepository, SchoolRepository schoolRepository, OrderRepository orderRepository, BankRepository bankRepository, ClassAndLabelRepository classAndLabelRepository) {
+    public UserServiceImpl(UserInfoRepository userInfoRepository, UserRepository userRepository, MemberRepository memberRepository, MailService mailService, ClassRepository classRepository, TeacherRepository teacherRepository, SchoolRepository schoolRepository, OrderRepository orderRepository, BankRepository bankRepository, ClassAndLabelRepository classAndLabelRepository, AllocateClassRepository allocateClassRepository, MarkRepository markRepository) {
         this.userInfoRepository = userInfoRepository;
         this.userRepository = userRepository;
         this.memberRepository = memberRepository;
@@ -46,6 +47,8 @@ public class UserServiceImpl implements UserService {
         this.orderRepository = orderRepository;
         this.bankRepository = bankRepository;
         this.classAndLabelRepository = classAndLabelRepository;
+        this.allocateClassRepository = allocateClassRepository;
+        this.markRepository = markRepository;
     }
 
     public void register(String mail, String password, String name,String phone,String sex) {
@@ -368,6 +371,16 @@ public class UserServiceImpl implements UserService {
         bankEntity.setBalance(balance);
         bankRepository.save(bankEntity);
 
+    }
+
+    @Override
+    public List<AllocateClassEntity> getmyclass(int userid) {
+        return allocateClassRepository.findByUserid(userid);
+    }
+
+    @Override
+    public List<MarkEntity> getmymark(int userid) {
+        return markRepository.findByUserid(userid);
     }
 
 
