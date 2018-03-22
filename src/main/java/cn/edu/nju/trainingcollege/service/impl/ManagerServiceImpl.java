@@ -2,9 +2,11 @@ package cn.edu.nju.trainingcollege.service.impl;
 
 import cn.edu.nju.trainingcollege.dao.*;
 import cn.edu.nju.trainingcollege.entity.*;
+import cn.edu.nju.trainingcollege.entity.constant.OrderState;
 import cn.edu.nju.trainingcollege.service.MailService;
 import cn.edu.nju.trainingcollege.service.ManagerService;
 import cn.edu.nju.trainingcollege.util.Helper;
+import cn.edu.nju.trainingcollege.vo.DataVo;
 import cn.edu.nju.trainingcollege.vo.MemberInfoVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -159,6 +161,233 @@ public class ManagerServiceImpl implements ManagerService {
     @Override
     public List<OrderEntity> findorderbyuserid(int userid) {
         return orderRepository.findByUserid(userid);
+    }
+
+    @Override
+    public DataVo getdata() {
+
+        DataVo data=new DataVo();
+        Helper helper=new Helper();
+
+        List<String> orderstate=new ArrayList<>();
+        orderstate.add("CANCEL");
+        orderstate.add("PAYED");
+        orderstate.add("SUCCESS");
+        orderstate.add("DRAWBACK");
+        data.setOrderstate(orderstate);
+
+        List<String> weekday=new ArrayList<>();
+        weekday.add("周一");
+        weekday.add("周二");
+        weekday.add("周三");
+        weekday.add("周四");
+        weekday.add("周五");
+        weekday.add("周六");
+        weekday.add("周日");
+        data.setWeekday(weekday);
+
+        List<Integer> cancelnum=new ArrayList<>(7);
+        List<Integer> payednum=new ArrayList<>(7);
+        List<Integer> successnum=new ArrayList<>(7);
+        List<Integer> drawbacknum=new ArrayList<>(7);
+        for(int i=0;i<7;i++){
+            cancelnum.add(0);
+        }
+        for(int i=0;i<7;i++){
+            payednum.add(0);
+        }
+        for(int i=0;i<7;i++){
+            successnum.add(0);
+        }
+        for(int i=0;i<7;i++){
+            drawbacknum.add(0);
+        }
+
+        List<OrderEntity> cancelorder=orderRepository.findByOrderstate(OrderState.CANCEL);
+        List<OrderEntity> payedorder=orderRepository.findByOrderstate(OrderState.PAYED);
+        List<OrderEntity> successorder=orderRepository.findByOrderstate(OrderState.SUCCESS);
+        List<OrderEntity> drawbackorder=orderRepository.findByOrderstate(OrderState.DRAWBACK);
+
+        for(int i=0;i<cancelorder.size();i++){
+            String str=helper.getWeekOfDate(cancelorder.get(i).getCreatetime());
+            int j=0;
+            switch (str){
+                case "周一":
+                    j=cancelnum.get(0);
+                    j++;
+                    cancelnum.set(0,j);
+                    break;
+                case "周二":
+                    j=cancelnum.get(1);
+                    j++;
+                    cancelnum.set(1,j);
+                    break;
+                case "周三":
+                    j=cancelnum.get(2);
+                    j++;
+                    cancelnum.set(2,j);
+                    break;
+                case "周四":
+                    j=cancelnum.get(3);
+                    j++;
+                    cancelnum.set(3,j);
+                    break;
+                case "周五":
+                    j=cancelnum.get(4);
+                    j++;
+                    cancelnum.set(4,j);
+                    break;
+                case "周六":
+                    j=cancelnum.get(5);
+                    j++;
+                    cancelnum.set(5,j);
+                    break;
+                case "周日":
+                    j=cancelnum.get(6);
+                    j++;
+                    cancelnum.set(6,j);
+                    break;
+            }
+
+        }
+        data.setCancelnum(cancelnum);
+
+
+        for(int i=0;i<payedorder.size();i++){
+            String str=helper.getWeekOfDate(payedorder.get(i).getCreatetime());
+            int j=0;
+            switch (str){
+                case "周一":
+                    j=payednum.get(0);
+                    j++;
+                    payednum.set(0,j);
+                    break;
+                case "周二":
+                    j=payednum.get(1);
+                    j++;
+                    payednum.set(1,j);
+                    break;
+                case "周三":
+                    j=payednum.get(2);
+                    j++;
+                    payednum.set(2,j);
+                    break;
+                case "周四":
+                    j=payednum.get(3);
+                    j++;
+                    payednum.set(3,j);
+                    break;
+                case "周五":
+                    j=payednum.get(4);
+                    j++;
+                    payednum.set(4,j);
+                    break;
+                case "周六":
+                    j=payednum.get(5);
+                    j++;
+                    payednum.set(5,j);
+                    break;
+                case "周日":
+                    j=payednum.get(6);
+                    j++;
+                    payednum.set(6,j);
+                    break;
+            }
+
+        }
+        data.setPayednum(payednum);
+
+        for(int i=0;i<successorder.size();i++){
+            String str=helper.getWeekOfDate(successorder.get(i).getCreatetime());
+            int j=0;
+            switch (str){
+                case "周一":
+                    j=successnum.get(0);
+                    j++;
+                    successnum.set(0,j);
+                    break;
+                case "周二":
+                    j=successnum.get(1);
+                    j++;
+                    successnum.set(1,j);
+                    break;
+                case "周三":
+                    j=successnum.get(2);
+                    j++;
+                    successnum.set(2,j);
+                    break;
+                case "周四":
+                    j=successnum.get(3);
+                    j++;
+                    successnum.set(3,j);
+                    break;
+                case "周五":
+                    j=successnum.get(4);
+                    j++;
+                    successnum.set(4,j);
+                    break;
+                case "周六":
+                    j=successnum.get(5);
+                    j++;
+                    successnum.set(5,j);
+                    break;
+                case "周日":
+                    j=successnum.get(6);
+                    j++;
+                    successnum.set(6,j);
+                    break;
+            }
+
+        }
+        data.setSuccessnum(successnum);
+
+
+        for(int i=0;i<drawbackorder.size();i++){
+            String str=helper.getWeekOfDate(drawbackorder.get(i).getCreatetime());
+            int j=0;
+            switch (str){
+                case "周一":
+                    j=drawbacknum.get(0);
+                    j++;
+                    drawbacknum.set(0,j);
+                    break;
+                case "周二":
+                    j=drawbacknum.get(1);
+                    j++;
+                    drawbacknum.set(1,j);
+                    break;
+                case "周三":
+                    j=drawbacknum.get(2);
+                    j++;
+                    drawbacknum.set(2,j);
+                    break;
+                case "周四":
+                    j=drawbacknum.get(3);
+                    j++;
+                    drawbacknum.set(3,j);
+                    break;
+                case "周五":
+                    j=drawbacknum.get(4);
+                    j++;
+                    drawbacknum.set(4,j);
+                    break;
+                case "周六":
+                    j=drawbacknum.get(5);
+                    j++;
+                    drawbacknum.set(5,j);
+                    break;
+                case "周日":
+                    j=drawbacknum.get(6);
+                    j++;
+                    drawbacknum.set(6,j);
+                    break;
+            }
+
+        }
+        data.setDrawbacknum(drawbacknum);
+
+
+        return data;
     }
 
 

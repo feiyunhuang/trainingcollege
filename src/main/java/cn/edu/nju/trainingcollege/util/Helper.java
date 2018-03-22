@@ -171,20 +171,33 @@ public class Helper {
     }
 
 
+    public static String getWeekOfDate(Date dt) {
+        String[] weekDays = {"周日", "周一", "周二", "周三", "周四", "周五", "周六"};
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(dt);
+        int w = cal.get(Calendar.DAY_OF_WEEK) - 1;
+        if (w < 0)
+            w = 0;
+        return weekDays[w];
+    }
+
+
 
     public static void main(String[] args) throws ParseException {
 
         Timestamp d1=new Timestamp(System.currentTimeMillis());
-        for(int i=0;i<100000;i++){
-            System.out.println(i);
-        }
-        Date date=new Date(System.currentTimeMillis());
-        Timestamp d2=new Timestamp(System.currentTimeMillis());
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        System.out.println(sdf.format(d1));
-        System.out.println(sdf.format(date));
-        System.out.println(sdf.format(d2));
+//        for(int i=0;i<100000;i++){
+//            System.out.println(i);
+//        }
+//        Date date=new Date(System.currentTimeMillis());
+//        Timestamp d2=new Timestamp(System.currentTimeMillis());
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        System.out.println(sdf.format(d1));
+//        System.out.println(sdf.format(date));
+//        System.out.println(sdf.format(d2));
+//
+//        System.out.println(compare_date(d1,d2));
 
-        System.out.println(compare_date(d1,d2));
+
     }
 }

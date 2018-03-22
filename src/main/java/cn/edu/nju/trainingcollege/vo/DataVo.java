@@ -1,29 +1,73 @@
 package cn.edu.nju.trainingcollege.vo;
 
+import java.util.List;
+
 public class DataVo {
-    private int value;
-    private String name;
+    private List<String> orderstate;
+    private List<String> weekday;
 
-    public DataVo(int value, String name) {
-        this.value = value;
-        this.name = name;
+    private List<Integer> cancelnum;
+    private List<Integer> payednum;
+    private List<Integer> successnum;
+    private List<Integer> drawbacknum;
+
+    public DataVo(List<String> orderstate, List<String> weekday, List<Integer> cancelnum, List<Integer> payednum, List<Integer> successnum, List<Integer> drawbacknum) {
+        this.orderstate = orderstate;
+        this.weekday = weekday;
+        this.cancelnum = cancelnum;
+        this.payednum = payednum;
+        this.successnum = successnum;
+        this.drawbacknum = drawbacknum;
     }
 
-    public DataVo(){}
-
-    public int getValue() {
-        return value;
+    public DataVo() {
     }
 
-    public void setValue(int value) {
-        this.value = value;
+    public List<String> getOrderstate() {
+        return orderstate;
     }
 
-    public String getName() {
-        return name;
+    public void setOrderstate(List<String> orderstate) {
+        this.orderstate = orderstate;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public List<String> getWeekday() {
+        return weekday;
+    }
+
+    public void setWeekday(List<String> weekday) {
+        this.weekday = weekday;
+    }
+
+    public List<Integer> getCancelnum() {
+        return cancelnum;
+    }
+
+    public void setCancelnum(List<Integer> cancelnum) {
+        this.cancelnum = cancelnum;
+    }
+
+    public List<Integer> getPayednum() {
+        return payednum;
+    }
+
+    public void setPayednum(List<Integer> payednum) {
+        this.payednum = payednum;
+    }
+
+    public List<Integer> getSuccessnum() {
+        return successnum;
+    }
+
+    public void setSuccessnum(List<Integer> successnum) {
+        this.successnum = successnum;
+    }
+
+    public List<Integer> getDrawbacknum() {
+        return drawbacknum;
+    }
+
+    public void setDrawbacknum(List<Integer> drawbacknum) {
+        this.drawbacknum = drawbacknum;
     }
 }

@@ -1,6 +1,7 @@
 package cn.edu.nju.trainingcollege.service;
 
 import cn.edu.nju.trainingcollege.entity.*;
+import cn.edu.nju.trainingcollege.vo.DataVo;
 import cn.edu.nju.trainingcollege.vo.MemberInfoVo;
 
 import java.util.List;
@@ -31,4 +32,6 @@ public interface ManagerService {
     List<ClassEntity> findclassbyschoolid(String schoolid);
 
     List<OrderEntity> findorderbyuserid(int userid);
+
+    DataVo getdata();
 }

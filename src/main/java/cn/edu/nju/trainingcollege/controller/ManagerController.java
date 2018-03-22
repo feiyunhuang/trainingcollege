@@ -126,21 +126,9 @@ public class ManagerController {
 
     @GetMapping("/data")
     @ResponseBody
-    public List<DataVo> data() {
+    public DataVo data() {
+        return managerService.getdata();
 
-        List<DataVo> list=new ArrayList<>();
-        DataVo vo1=new DataVo(40,"我的电脑");
-        DataVo vo2=new DataVo(200,"直接访问");
-        DataVo vo3=new DataVo(3000,"邮件营销");
-        DataVo vo4=new DataVo(274,"联盟广告");
-        DataVo vo5=new DataVo(200,"视频广告");
-
-        list.add(vo1);
-        list.add(vo2);
-        list.add(vo3);
-        list.add(vo4);
-        list.add(vo5);
-        return list;
     }
 
 
