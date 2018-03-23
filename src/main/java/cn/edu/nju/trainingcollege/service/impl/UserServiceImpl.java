@@ -192,6 +192,11 @@ public class UserServiceImpl implements UserService {
         order.setThirdclass(0);
         orderRepository.save(order);
 
+        int oldcoupon=memberEntity.getCoupon();
+        oldcoupon=oldcoupon-coupon;
+        memberEntity.setCoupon(oldcoupon);
+        memberRepository.save(memberEntity);
+
         return id;
     }
 
@@ -245,7 +250,10 @@ public class UserServiceImpl implements UserService {
 
         orderRepository.save(order);
 
-
+        int oldcoupon=memberEntity.getCoupon();
+        oldcoupon=oldcoupon-coupon;
+        memberEntity.setCoupon(oldcoupon);
+        memberRepository.save(memberEntity);
 
         return id;
     }
