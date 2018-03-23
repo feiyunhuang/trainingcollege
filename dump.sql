@@ -16,6 +16,63 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `allocateclass`
+--
+
+DROP TABLE IF EXISTS `allocateclass`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `allocateclass` (
+  `id` int(11) NOT NULL,
+  `classid` int(11) NOT NULL,
+  `classname` varchar(50) COLLATE utf8_bin NOT NULL,
+  `userid` int(11) NOT NULL,
+  `username` varchar(50) COLLATE utf8_bin NOT NULL,
+  `classnum` int(11) NOT NULL,
+  `classbegintime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `week` int(11) NOT NULL,
+  `classstate` int(11) NOT NULL,
+  `score` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `allocateclass`
+--
+
+LOCK TABLES `allocateclass` WRITE;
+/*!40000 ALTER TABLE `allocateclass` DISABLE KEYS */;
+INSERT INTO `allocateclass` VALUES (1,1,'大学数学',1,'小黄',1,'2018-04-14 16:59:16',10,1,0);
+/*!40000 ALTER TABLE `allocateclass` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `bank`
+--
+
+DROP TABLE IF EXISTS `bank`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bank` (
+  `account` varchar(20) COLLATE utf8_bin NOT NULL,
+  `password` varchar(20) COLLATE utf8_bin NOT NULL,
+  `balance` double NOT NULL,
+  PRIMARY KEY (`account`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bank`
+--
+
+LOCK TABLES `bank` WRITE;
+/*!40000 ALTER TABLE `bank` DISABLE KEYS */;
+INSERT INTO `bank` VALUES ('18994360017','123456',10000),('XVQDFKN','123456',0);
+/*!40000 ALTER TABLE `bank` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `changeapproval`
 --
 
@@ -73,7 +130,7 @@ CREATE TABLE `class` (
 
 LOCK TABLES `class` WRITE;
 /*!40000 ALTER TABLE `class` DISABLE KEYS */;
-INSERT INTO `class` VALUES (1,'大学数学','XVQDFKN','0000011',10,3,10,1000,1,'10:00-12:00','2018-03-14 16:59:16','2018-03-14 16:59:16','黄老师授课'),(2,'德育课程','XVQDFKN','0000001',20,1,20,1500,2,'12:00-14:00','2018-03-14 16:59:16','2018-03-14 16:59:16','惠老师授课'),(4,'高等数学','XVQDFKN','0100001',10,2,5,1500,1,'10:00-12:00','2018-03-15 03:33:04','2018-03-13 16:00:00','泰州黄老师的课'),(5,'高中生物','XVQDFKN','0000011',10,3,40,500,1,'16:00-18:00','2018-03-15 03:37:03','2018-04-19 16:00:00','生物课'),(6,'大学数学','XVQDFKN','0000011',10,3,10,1000,1,'10:00-12:00','2018-03-14 16:59:16','2018-03-14 16:59:16','黄老师授课'),(7,'德育课程','XVQDFKN','0000001',20,1,20,1500,2,'12:00-14:00','2018-03-14 16:59:16','2018-03-14 16:59:16','惠老师授课'),(8,'高等数学','XVQDFKN','0100001',10,2,5,1500,1,'10:00-12:00','2018-03-15 03:33:04','2018-03-13 16:00:00','泰州黄老师的课'),(9,'高中生物','XVQDFKN','0000011',10,3,40,500,1,'16:00-18:00','2018-03-15 03:37:03','2018-04-19 16:00:00','生物课'),(10,'大学数学','XVQDFKN','0000011',10,3,10,1000,1,'10:00-12:00','2018-03-14 16:59:16','2018-03-14 16:59:16','黄老师授课'),(11,'德育课程','XVQDFKN','0000001',20,1,20,1500,2,'12:00-14:00','2018-03-14 16:59:16','2018-03-14 16:59:16','惠老师授课'),(12,'高等数学','XVQDFKN','0100001',10,2,5,1500,1,'10:00-12:00','2018-03-15 03:33:04','2018-03-13 16:00:00','泰州黄老师的课'),(13,'高中生物','XVQDFKN','0000011',10,3,40,500,1,'16:00-18:00','2018-03-15 03:37:03','2018-04-19 16:00:00','生物课');
+INSERT INTO `class` VALUES (1,'大学数学','XVQDFKN','0000011',10,3,10,1000,1,'10:00-12:00','2018-03-14 16:59:16','2018-04-14 16:59:16','黄老师授课'),(2,'德育课程','XVQDFKN','0000001',20,1,20,1500,2,'12:00-14:00','2018-03-14 16:59:16','2018-04-14 16:59:16','惠老师授课'),(4,'高等数学','XVQDFKN','0100001',10,2,5,1500,1,'10:00-12:00','2018-03-15 03:33:04','2018-04-13 16:00:00','泰州黄老师的课'),(5,'高中生物','XVQDFKN','0000011',10,3,40,500,1,'16:00-18:00','2018-03-15 03:37:03','2018-04-19 16:00:00','生物课'),(6,'大学数学','XVQDFKN','0000011',10,3,10,1000,1,'10:00-12:00','2018-03-14 16:59:16','2018-04-14 16:59:16','黄老师授课'),(7,'德育课程','XVQDFKN','0000001',20,1,20,1500,2,'12:00-14:00','2018-03-14 16:59:16','2018-04-14 16:59:16','惠老师授课'),(8,'高等数学','XVQDFKN','0100001',10,2,5,1500,1,'10:00-12:00','2018-03-15 03:33:04','2018-04-13 16:00:00','泰州黄老师的课'),(9,'高中生物','XVQDFKN','0000011',10,3,40,500,1,'16:00-18:00','2018-03-15 03:37:03','2018-04-19 16:00:00','生物课'),(10,'大学数学','XVQDFKN','0000011',10,3,10,1000,1,'10:00-12:00','2018-03-14 16:59:16','2018-04-14 16:59:16','黄老师授课'),(11,'德育课程','XVQDFKN','0000001',20,1,20,1500,2,'12:00-14:00','2018-03-14 16:59:16','2018-04-14 16:59:16','惠老师授课'),(12,'高等数学','XVQDFKN','0100001',10,2,5,1500,1,'10:00-12:00','2018-03-15 03:33:04','2018-04-13 16:00:00','泰州黄老师的课'),(13,'高中生物','XVQDFKN','0000011',10,3,40,500,1,'16:00-18:00','2018-03-15 03:37:03','2018-04-19 16:00:00','生物课'),(46,'高考数学','XVQDFKN','1100000',10,1,10,3000,3,'10:00-12:00','2018-03-19 11:09:46','2018-04-18 16:00:00','好课');
 /*!40000 ALTER TABLE `class` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -119,7 +176,7 @@ CREATE TABLE `hibernate_sequence` (
 
 LOCK TABLES `hibernate_sequence` WRITE;
 /*!40000 ALTER TABLE `hibernate_sequence` DISABLE KEYS */;
-INSERT INTO `hibernate_sequence` VALUES (6);
+INSERT INTO `hibernate_sequence` VALUES (56);
 /*!40000 ALTER TABLE `hibernate_sequence` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -148,6 +205,34 @@ INSERT INTO `manager` VALUES ('admin','admin');
 UNLOCK TABLES;
 
 --
+-- Table structure for table `mark`
+--
+
+DROP TABLE IF EXISTS `mark`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `mark` (
+  `id` int(11) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `classid` int(11) NOT NULL,
+  `classname` varchar(50) COLLATE utf8_bin NOT NULL,
+  `registdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `score` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mark`
+--
+
+LOCK TABLES `mark` WRITE;
+/*!40000 ALTER TABLE `mark` DISABLE KEYS */;
+INSERT INTO `mark` VALUES (52,1,1,'大学数学','2018-03-22 15:48:19',90);
+/*!40000 ALTER TABLE `mark` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `member`
 --
 
@@ -170,46 +255,8 @@ CREATE TABLE `member` (
 
 LOCK TABLES `member` WRITE;
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
-INSERT INTO `member` VALUES (1,0,1,0,10),(2,0,1,0,0),(3,0,1,0,0);
+INSERT INTO `member` VALUES (1,700,1,0,7),(2,0,1,0,0);
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `order`
---
-
-DROP TABLE IF EXISTS `order`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `order` (
-  `id` int(11) NOT NULL,
-  `userid` int(11) NOT NULL,
-  `schoolid` varchar(10) COLLATE utf8_bin NOT NULL,
-  `teacherid` int(11) NOT NULL,
-  `price` double NOT NULL,
-  `num` int(11) NOT NULL,
-  `totalprice` double NOT NULL,
-  `createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `topaytime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `classbegintime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `bankaccount` varchar(20) COLLATE utf8_bin NOT NULL,
-  `usecoupon` int(11) NOT NULL,
-  `state` varchar(10) COLLATE utf8_bin NOT NULL,
-  `chooseclass` int(11) NOT NULL,
-  `firstclass` int(11) NOT NULL,
-  `secondclass` int(11) NOT NULL,
-  `thirdclass` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `order`
---
-
-LOCK TABLES `order` WRITE;
-/*!40000 ALTER TABLE `order` DISABLE KEYS */;
-/*!40000 ALTER TABLE `order` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -263,7 +310,7 @@ CREATE TABLE `school` (
 
 LOCK TABLES `school` WRITE;
 /*!40000 ALTER TABLE `school` DISABLE KEYS */;
-INSERT INTO `school` VALUES ('EBG956H','英雄联盟教学','123456','1140617436@qq.com','2018-03-13 03:36:33','华瑞网咖'),('M4ZJHRU','学而思','123456','1140617436@qq.com','2018-03-13 02:31:48','上海'),('W151HTE','新希望','123456','1140617436@qq.com','2018-03-13 02:28:19','南京栖霞'),('XVQDFKN','新东方','123456','1140617436@qq.com','2018-03-12 16:36:08','南京鼓楼');
+INSERT INTO `school` VALUES ('M4ZJHRU','学而思','123456','1140617436@qq.com','2018-03-13 02:31:48','上海'),('W151HTE','新希望','123456','1140617436@qq.com','2018-03-13 02:28:19','南京栖霞'),('XVQDFKN','新东方','123456','1140617436@qq.com','2018-03-12 16:36:08','南京鼓楼');
 /*!40000 ALTER TABLE `school` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -289,8 +336,48 @@ CREATE TABLE `teacher` (
 
 LOCK TABLES `teacher` WRITE;
 /*!40000 ALTER TABLE `teacher` DISABLE KEYS */;
-INSERT INTO `teacher` VALUES (1,'黄泽鹏','XVQDFKN','数学满分老师！'),(2,'惠晗涛','XVQDFKN','德语老师！'),(3,'王后雄','XVQDFKN','出了很多的辅导书！');
+INSERT INTO `teacher` VALUES (1,'黄泽鹏','XVQDFKN','数学满分老师！'),(2,'惠晗涛','XVQDFKN','德语老师！'),(3,'王后雄','XVQDFKN','出了很多的辅导书！'),(47,'123','XVQDFKN','123'),(48,'1234','XVQDFKN','123'),(49,'14','XVQDFKN','23234'),(54,'老师','UF1EQJM','ok');
 /*!40000 ALTER TABLE `teacher` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `trainingorder`
+--
+
+DROP TABLE IF EXISTS `trainingorder`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `trainingorder` (
+  `id` varchar(10) COLLATE utf8_bin NOT NULL,
+  `userid` int(11) NOT NULL,
+  `schoolid` varchar(10) COLLATE utf8_bin NOT NULL,
+  `teacherid` int(11) NOT NULL,
+  `classid` int(11) NOT NULL,
+  `price` double NOT NULL,
+  `peoplenum` int(11) NOT NULL,
+  `totalprice` double NOT NULL,
+  `createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `topaytime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `classbegintime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `bankaccount` varchar(20) COLLATE utf8_bin NOT NULL,
+  `usecoupon` int(11) NOT NULL,
+  `orderstate` varchar(10) COLLATE utf8_bin NOT NULL,
+  `chooseclass` int(11) NOT NULL,
+  `firstclass` int(11) NOT NULL,
+  `secondclass` int(11) NOT NULL,
+  `thirdclass` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `trainingorder`
+--
+
+LOCK TABLES `trainingorder` WRITE;
+/*!40000 ALTER TABLE `trainingorder` DISABLE KEYS */;
+INSERT INTO `trainingorder` VALUES ('LPVBX4O6IX',1,'XVQDFKN',1,4,1500,1,1470,'2018-03-21 12:19:42','2018-03-21 12:34:41','2018-04-09 16:00:00','18994360017',0,'DRAWBACK',1,1,0,0),('NI1O56V52O',1,'XVQDFKN',1,50,1200,1,1166,'2018-03-21 06:10:15','2018-03-21 06:25:14','2018-03-31 16:00:00','18994360017',10,'DRAWBACK',0,0,0,0),('Q5W4BH7616',1,'XVQDFKN',2,2,1500,3,4400,'2018-03-21 02:44:55','2018-03-21 02:59:54','2018-04-14 16:59:16','18994360017',10,'CANCEL',1,0,0,1);
+/*!40000 ALTER TABLE `trainingorder` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -314,7 +401,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'1140617436@qq.com','a3caed36f0fe5a01e5f144db8927235e'),(2,'151250066@smail.nju.edu.cn','a3caed36f0fe5a01e5f144db8927235e'),(3,'151250065@smail.nju.edu.cn','a3caed36f0fe5a01e5f144db8927235e');
+INSERT INTO `user` VALUES (1,'1140617436@qq.com','a3caed36f0fe5a01e5f144db8927235e'),(2,'151250066@smail.nju.edu.cn','a3caed36f0fe5a01e5f144db8927235e');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -342,7 +429,7 @@ CREATE TABLE `userinfo` (
 
 LOCK TABLES `userinfo` WRITE;
 /*!40000 ALTER TABLE `userinfo` DISABLE KEYS */;
-INSERT INTO `userinfo` VALUES (1,'黄韵斐','VALID','男','18994360017','2018-03-12 16:28:15'),(2,'黄泽鹏','VALID','男','1234567890','2018-03-12 16:28:41'),(3,'黄某某','VALID','男','123456','2018-03-12 16:29:01');
+INSERT INTO `userinfo` VALUES (1,'小黄','VALID','男','18994360017','2018-03-12 16:28:15'),(2,'黄泽鹏','VALID','男','1234567890','2018-03-12 16:28:41');
 /*!40000 ALTER TABLE `userinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -355,4 +442,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-03-17  0:12:49
+-- Dump completed on 2018-03-23 11:00:16
