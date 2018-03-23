@@ -173,5 +173,11 @@ public class SchoolController {
         return "school/register";
     }
 
+    @RequestMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/index";
+    }
+
 
 }
