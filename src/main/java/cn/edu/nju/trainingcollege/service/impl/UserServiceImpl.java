@@ -31,12 +31,11 @@ public class UserServiceImpl implements UserService {
     private final SchoolRepository schoolRepository;
     private final OrderRepository orderRepository;
     private final BankRepository bankRepository;
-    private final ClassAndLabelRepository classAndLabelRepository;
     private final AllocateClassRepository allocateClassRepository;
     private final MarkRepository markRepository;
 
     @Autowired
-    public UserServiceImpl(UserInfoRepository userInfoRepository, UserRepository userRepository, MemberRepository memberRepository, MailService mailService, ClassRepository classRepository, TeacherRepository teacherRepository, SchoolRepository schoolRepository, OrderRepository orderRepository, BankRepository bankRepository, ClassAndLabelRepository classAndLabelRepository, AllocateClassRepository allocateClassRepository, MarkRepository markRepository) {
+    public UserServiceImpl(UserInfoRepository userInfoRepository, UserRepository userRepository, MemberRepository memberRepository, MailService mailService, ClassRepository classRepository, TeacherRepository teacherRepository, SchoolRepository schoolRepository, OrderRepository orderRepository, BankRepository bankRepository,  AllocateClassRepository allocateClassRepository, MarkRepository markRepository) {
         this.userInfoRepository = userInfoRepository;
         this.userRepository = userRepository;
         this.memberRepository = memberRepository;
@@ -46,7 +45,6 @@ public class UserServiceImpl implements UserService {
         this.schoolRepository = schoolRepository;
         this.orderRepository = orderRepository;
         this.bankRepository = bankRepository;
-        this.classAndLabelRepository = classAndLabelRepository;
         this.allocateClassRepository = allocateClassRepository;
         this.markRepository = markRepository;
     }
@@ -283,7 +281,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<ClassEntity> searchclass(String label) {
 
-        List<ClassAndLabelEntity> classAndLabelEntities=classAndLabelRepository.findAllByLabel(label);
+
         List<ClassEntity> classEntityList=classRepository.findAll();
         List<ClassEntity> classlist=new ArrayList<>();
         for(ClassEntity c: classEntityList) {
